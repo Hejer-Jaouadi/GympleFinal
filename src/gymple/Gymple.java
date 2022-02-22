@@ -18,7 +18,8 @@ public class Gymple {
      */
     public static void main(String[] args) {
        ConnexionSingleton c=ConnexionSingleton.getInstance();
-       System.out.println("o");
+       
+       System.out.println("okoko");
     }
     
 }

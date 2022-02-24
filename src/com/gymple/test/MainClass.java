@@ -5,10 +5,10 @@
  */
 package com.gymple.test;
 
-import com.gymple.dao.EquipmentCrud;
+
 import com.gymple.dao.GymCrud;
 import com.gymple.dao.RoomCrud;
-import com.gymple.entity.Equipment;
+
 import com.gymple.entity.Room;
 
 public class MainClass {
@@ -28,7 +28,7 @@ public class MainClass {
         //System.out.println(gc.displayByIdGym(2));
         // gc.deleteGym(gc.displayByIdGym(20));
         //System.out.println(gc.displayGym());
-        //  gc.searchByLocation("tunis");
+         gc.searchByLocation("tunis");
 //        gc.modifyGym(1, "bardo centre", "swimmingpool");
 //        System.out.println(gc.displayByIdGym(1));
         // Gym g2 = new Gym("yalahwi", "warrraaaay");
@@ -46,9 +46,11 @@ public class MainClass {
         // rc.updateRoom(new Room(4,"hejer",16));
         // System.out.println(rc.displayByIdRoom(4));
         //  rc.deleteRoom(rc.displayByIdRoom(7));
+        
+           rc.searchByName("xyz");
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        EquipmentCrud ec = EquipmentCrud.getInstance();
+      //  EquipmentCrud ec = EquipmentCrud.getInstance();
        // ec.insertEquipment();
 
 //        Equipment e = new Equipment("weights","lift weights",90);

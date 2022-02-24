@@ -157,7 +157,7 @@ public class GymCrud implements Idao<Gym> {
 
     @Override
     public void searchByLocation(String location) {
-        String req = "select * from gym where location=" + location;
+        String req = "select * from gym where location='" + location+"'";
 
         try {
             rs = st.executeQuery(req);

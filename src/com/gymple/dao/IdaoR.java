@@ -22,7 +22,7 @@ public interface IdaoR <T> {
 
     public void deleteRoom(T o);
 
-    //public void searchByLocation(String location);
+    public void searchByName(String room);
     
     public boolean modifyRoom(int id,String roomName,String roomNumber);
     

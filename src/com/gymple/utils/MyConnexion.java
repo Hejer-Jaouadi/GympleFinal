@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 
 public class MyConnexion {
-    private String url="jdbc:mysql://localhost:3306/gymple";
+    private String url="jdbc:mysql://localhost:3306/gym_db";
     private String login="root";
     private String pwd="";
     private Connection cnx;

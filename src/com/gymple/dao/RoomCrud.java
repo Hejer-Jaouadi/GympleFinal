@@ -5,7 +5,7 @@
  */
 package com.gymple.dao;
 
-import com.gymple.entity.Gym;
+
 import com.gymple.entity.Room;
 import com.gymple.utils.MyConnexion;
 import java.sql.ResultSet;
@@ -178,5 +178,26 @@ public class RoomCrud implements IdaoR<Room>{
         
     }
     
-    
+       @Override
+    public void searchByName(String name) {
+        String req = "select * from room where roomName='" + name+"'";
+
+        try {
+            rs = st.executeQuery(req);
+            rs.last();
+            int nbrRow = rs.getRow();
+            if (nbrRow != 0) {
+                System.out.println("room found");
+            } else {
+                System.out.println("room not found");
+            }
+
+        } catch (SQLException ex) {
+            //Logger.getLogger(GymCrud.class.getName()).log(Level.SEVERE, null, ex);
+            //System.out.println("error searchbylocation");
+            System.err.println(ex.getMessage());
+        }
+
+    }
+
 }

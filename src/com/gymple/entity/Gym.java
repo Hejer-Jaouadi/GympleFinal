@@ -5,6 +5,8 @@
  */
 package com.gymple.entity;
 
+import java.util.Objects;
+
 
 
 public class Gym {
@@ -54,6 +56,39 @@ public class Gym {
     @Override
     public String toString() {
         return "Gym{" + "idG=" + idG + ", location=" + location + ", facilities=" + facilities + '}'+"\n";
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 47 * hash + this.idG;
+        hash = 47 * hash + Objects.hashCode(this.location);
+        hash = 47 * hash + Objects.hashCode(this.facilities);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Gym other = (Gym) obj;
+        if (this.idG != other.idG) {
+            return false;
+        }
+        if (!Objects.equals(this.location, other.location)) {
+            return false;
+        }
+        if (!Objects.equals(this.facilities, other.facilities)) {
+            return false;
+        }
+        return true;
     }
       
       

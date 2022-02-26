@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class GymCrud implements Idao<Gym> {
 
@@ -86,6 +87,7 @@ public class GymCrud implements Idao<Gym> {
                 list.add(g);
 
             }
+             
 
         } catch (SQLException ex) {
             System.out.println("error in display gym");
@@ -94,6 +96,8 @@ public class GymCrud implements Idao<Gym> {
         return list;
 
     }
+    
+    
 
     @Override
     public boolean updateGym(Gym g) {

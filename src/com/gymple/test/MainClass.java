@@ -9,22 +9,21 @@ package com.gymple.test;
 import com.gymple.dao.GymCrud;
 import com.gymple.dao.RoomCrud;
 
-import com.gymple.entity.Room;
 
 public class MainClass {
 
     public static void main(String[] args) {
 
-        // MyConnexion mc = MyConnexion.getInstance() ;
+//         MyConnexion mc = MyConnexion.getInstance() ;
         GymCrud gc = GymCrud.getInstance();
-        //gc.insertGym();
-        //Gym g = new Gym("ariana","sauna");
-
-        //Gym g = new Gym("tunis", "piscine");
-        //gc.insertGym2(g);
-        //System.out.println(gc.displayGym());
-        //  gc.updateGym(g);
-        // System.out.println(gc.displayGym());
+//        gc.insertGym();
+//        Gym g = new Gym("ariana","sauna");
+//
+//        Gym g = new Gym("tunis", "piscine");
+//        gc.insertGym2(g);getInstance
+//        System.out.println(gc.displayGym());
+//          gc.updateGym(g);
+//         System.out.println(gc.displayGym());
         //System.out.println(gc.displayByIdGym(2));
         // gc.deleteGym(gc.displayByIdGym(20));
         //System.out.println(gc.displayGym());

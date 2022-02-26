@@ -6,6 +6,7 @@
 package com.gymple.entity;
 
 import java.util.Objects;
+import javafx.scene.control.TableColumn;
 
 
 
@@ -28,6 +29,10 @@ public class Gym {
 
     public Gym() {
         }
+
+    public Gym(TableColumn<Gym, String> location, TableColumn<Gym, String> facilities) {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     public int getIdG() {
         return idG;

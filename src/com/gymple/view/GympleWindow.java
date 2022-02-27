@@ -5,6 +5,7 @@
  */
 package com.gymple.view;
 
+import com.gymple.controller.GymDisplayController;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -30,11 +31,14 @@ public class GympleWindow extends Application {
             primaryStage.setTitle("Gymple");
             primaryStage.setScene(scene);
             primaryStage.initStyle(StageStyle.TRANSPARENT);
-
             primaryStage.show();
+            
+            
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         }
+       
+        
     }
 
     /**

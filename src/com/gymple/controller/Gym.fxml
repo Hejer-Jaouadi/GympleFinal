@@ -11,16 +11,20 @@
 
 <HBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gymple.controller.GymController">
    <children>
-      <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0">
+      <AnchorPane id="AnchorPane" prefHeight="510.0" prefWidth="600.0">
          <children>
-            <TableView fx:id="tableGym" layoutX="33.0" layoutY="154.0" prefHeight="200.0" prefWidth="504.0" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="63.0" AnchorPane.topAnchor="154.0">
-              <columns>
-                <TableColumn fx:id="idG" prefWidth="75.0" text="ID" />
-                <TableColumn fx:id="location" prefWidth="200.0" text="Location" />
-                  <TableColumn fx:id="facilities" prefWidth="120.0" text="Facilities" />
-                  <TableColumn fx:id="edit" prefWidth="137.0" />
-              </columns>
-            </TableView>
+            <HBox layoutX="33.0" layoutY="154.0" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="63.0" AnchorPane.topAnchor="154.0">
+               <children>
+                  <TableView fx:id="tableGym" editable="true" prefHeight="200.0" prefWidth="504.0" style="-fx-border-color: #ff6600; -fx-border-radius: 15; -fx-background-radius: 15; -fx-opacity: 15;">
+                    <columns>
+                      <TableColumn fx:id="idG" prefWidth="75.0" text="ID" />
+                      <TableColumn fx:id="location" prefWidth="200.0" text="Location" />
+                        <TableColumn fx:id="facilities" minWidth="20.0" prefWidth="120.0" text="Facilities" />
+                        <TableColumn fx:id="edit" prefWidth="101.0" />
+                    </columns>
+                  </TableView>
+               </children>
+            </HBox>
             <HBox layoutX="184.0" layoutY="42.7060546875">
                <children>
                   <Text fill="#ff6600" strokeType="OUTSIDE" strokeWidth="0.0" text="Gym Management" textAlignment="CENTER">
@@ -30,8 +34,8 @@
                   </Text>
                </children>
             </HBox>
-            <Button fx:id="add" layoutX="85.0" layoutY="101.0" mnemonicParsing="false" onMouseClicked="#Add" text="Add" />
-            <Button fx:id="refresh" layoutX="142.0" layoutY="101.0" mnemonicParsing="false" onMouseClicked="#Refresh" prefHeight="25.0" prefWidth="60.0" text="Refresh" />
+            <Button fx:id="add" layoutX="85.0" layoutY="101.0" mnemonicParsing="false" onMouseClicked="#Add" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #ff6600;" text="Add" />
+            <Button fx:id="refresh" layoutX="142.0" layoutY="101.0" mnemonicParsing="false" onMouseClicked="#Refresh" prefHeight="25.0" prefWidth="60.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #ff6600;" text="Refresh" />
             <HBox layoutX="554.0" layoutY="6.0">
                <children>
                   <Button fx:id="Close" mnemonicParsing="false" onMouseClicked="#CloseTab" style="-fx-background-color: transparent; -fx-background-radius: 15;" text="X">

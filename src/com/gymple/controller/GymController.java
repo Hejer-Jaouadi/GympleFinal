@@ -8,10 +8,13 @@ package com.gymple.controller;
 import com.gymple.dao.GymCrud;
 import com.gymple.entity.Gym;
 import com.gymple.utils.MyConnexion;
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.Loader;
 import java.awt.Insets;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import static javafx.collections.FXCollections.observableList;
 import javafx.fxml.FXML;
@@ -23,12 +26,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableCell;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
@@ -42,7 +47,7 @@ public class GymController implements Initializable {
     @FXML
     private TableColumn<Gym, String> facilities;
     @FXML
-    private TableColumn<Gym, String> edit;
+    private TableColumn<Gym, Button> edit;
     @FXML
     private Button add;
     @FXML
@@ -60,6 +65,7 @@ public class GymController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //initTable();
         loadDate();
     }
 
@@ -77,6 +83,7 @@ public class GymController implements Initializable {
         } catch (IOException ex) {
             System.out.println("error" + ex.getMessage());
         }
+        Refresh();
     }
 
     @FXML
@@ -92,15 +99,46 @@ public class GymController implements Initializable {
 
     }
 
-    private void loadDate() {
+    public void loadDate() {
         // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         // MyConnexion mc = MyConnexion.getInstance() ;
+        
         Refresh();
         idG.setCellValueFactory(new PropertyValueFactory<>("idG"));
         location.setCellValueFactory(new PropertyValueFactory<>("location"));
         facilities.setCellValueFactory(new PropertyValueFactory<>("facilities"));
         
-        Callback<TableColumn<Gym,String>,TableCell<Gym,String>>CellFactory=(person)->{
+        tableGym.setOnMousePressed(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+
+               
+                FXMLLoader Loader = new FXMLLoader();
+                Loader.setLocation(getClass().getResource("/com/gymple/controller/GymDisplay.fxml"));
+                try{
+                    Loader.load();
+                }catch (IOException ex) {
+                // ex.printStackTrace();
+                    
+                    System.out.println("error : "+ex.getMessage());;
+                }
+                GymDisplayController gdc = Loader.getController();
+                gdc.setData(tableGym.getSelectionModel().getSelectedItem().getIdG(), tableGym.getSelectionModel().getSelectedItem().getLocation(),""+tableGym.getSelectionModel().getSelectedItem().getFacilities());
+                
+                
+             Parent p = Loader.getRoot();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(p));
+                stage.show();
+            }
+            
+            
+        });
+        
+        
+      // edit.setCellValueFactory(new PropertyValueFactory<>("update"));
+        
+      /*  Callback<TableColumn<Gym,String>,TableCell<Gym,String>>CellFactory=(person)->{
               
             final TableCell<Gym,String> cell = new TableCell<Gym,String>(){
             
@@ -136,7 +174,7 @@ public class GymController implements Initializable {
             
             return cell;
         };
-         
+         */
     }
 
     
@@ -147,5 +185,31 @@ public class GymController implements Initializable {
          Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
          stage.close();
     }
+    
+   /* private void initTable(){
+        initCols();
+       
+        
+    }
+    private void initCols(){
+         loadDate();
+        editTableCol();
+        
+    }
+    private void editTableCol(){
+      /*  idG.setCellFactory(TextFieldTableCell.forTableColumn());
+        
+        idG.setOnEditCommit(e->{
+           e.getTableView().getItems().get(e.getTablePosition().getRow()).setIdG(e.getNewValue());
+        });
+        
+        //location.setCellValueFactory(TextFieldTableCell.forTableColumn());
+        location.setCellValueFactory(TextFieldTableCell.forTableColumn());
+        location.setOnEditCommit(e->{
+           e.getTableView().getItems().get(e.getTablePosition().getRow()).setLocation(e.getNewValue()));
+        });
+        
+    }*/
+    
 
 }

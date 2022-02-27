@@ -71,14 +71,14 @@ public class AddGymController implements Initializable {
         }*/
         if ((location.isEmpty()) || (facilities.isEmpty())) {
             if (locationFi.getText().length() == 0) {
-                locationFi.setStyle("-fx-boodr-color: red ; -fx-border-width: 2px;");
+                locationFi.setStyle("-fx-border-color: red ; -fx-border-width: 2px;-fx-border-radius: 15px;-fx-background-radius: 15px;");
                 new animatefx.animation.Shake(locationFi).play();
                 labelLocation.setText("Location is empty");
             } else {
                 facilitiesFi.setStyle(null);
             }
             if (facilitiesFi.getText().length() == 0) {
-                facilitiesFi.setStyle("-fx-boodr-color: red ; -fx-border-width: 2px;");
+                facilitiesFi.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;-fx-border-radius: 15px;-fx-background-radius: 15px;");
                 new animatefx.animation.Shake(facilitiesFi).play();
                 labelFacility.setText("Facility is empty");
             } else {
@@ -88,16 +88,26 @@ public class AddGymController implements Initializable {
             Gym gym = new Gym(location, facilities);
             GymCrud gc = GymCrud.getInstance();
             gc.insertGym2(gym);
+            GymController g = new GymController();
+            
+        //GymController g = new GymController();
+            
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.close();
+            g.loadDate();
+            stage.close();
         }
 
+        
     }
 
     @FXML
     private void Cancel(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
+//        GymController g = new GymController();
+//        g.loadDate();
+        
+        
     }
 
 }

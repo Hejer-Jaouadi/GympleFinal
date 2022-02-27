@@ -6,6 +6,7 @@
 package com.gymple.entity;
 
 import java.util.Objects;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 
 
@@ -15,6 +16,7 @@ public class Gym {
       private int idG;
       private String location;
       private String facilities;
+      Button update;
 
     public Gym(int idG, String location, String facilities) {
         this.idG = idG;

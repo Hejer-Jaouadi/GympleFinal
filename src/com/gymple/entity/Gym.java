@@ -8,6 +8,7 @@ package com.gymple.entity;
 import java.util.Objects;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TextField;
 
 
 
@@ -34,6 +35,14 @@ public class Gym {
 
     public Gym(TableColumn<Gym, String> location, TableColumn<Gym, String> facilities) {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Gym(String idGym, String location, String facility) {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Gym(String location, TextField facilities) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getIdG() {

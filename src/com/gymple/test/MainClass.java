@@ -20,14 +20,14 @@ public class MainClass {
 //        Gym g = new Gym("ariana","sauna");
 //
 //        Gym g = new Gym("tunis", "piscine");
-//        gc.insertGym2(g);getInstance
+//        gc.insertGym2(g);
 //        System.out.println(gc.displayGym());
 //          gc.updateGym(g);
 //         System.out.println(gc.displayGym());
         //System.out.println(gc.displayByIdGym(2));
         // gc.deleteGym(gc.displayByIdGym(20));
         //System.out.println(gc.displayGym());
-         gc.searchByLocation("tunis");
+        // gc.searchByLocation("tunis");
 //        gc.modifyGym(1, "bardo centre", "swimmingpool");
 //        System.out.println(gc.displayByIdGym(1));
         // Gym g2 = new Gym("yalahwi", "warrraaaay");
@@ -35,6 +35,17 @@ public class MainClass {
         // gc.updateGym(new Gym(19,"rades","piscone olympique"));
         //System.out.println(gc.displayByIdGym(19));
         ///////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         RoomCrud rc = RoomCrud.getInstance();
         //rc.insertRoom();
 
@@ -46,7 +57,7 @@ public class MainClass {
         // System.out.println(rc.displayByIdRoom(4));
         //  rc.deleteRoom(rc.displayByIdRoom(7));
         
-           rc.searchByName("xyz");
+          // rc.searchByName("xyz");
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       //  EquipmentCrud ec = EquipmentCrud.getInstance();

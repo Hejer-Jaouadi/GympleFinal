@@ -49,6 +49,7 @@ public class AddGymController implements Initializable {
         String facilities = facilitiesFi.getText();
 
         /* try{
+       
         if ((location.isEmpty()) || (facilities.isEmpty())) {
         //            /* Alert alert = new Alert(Alert.AlertType.ERROR);
         //            alert.setHeaderText(null);
@@ -69,13 +70,14 @@ public class AddGymController implements Initializable {
         catch(Exception e){
         labelLocation.setText("Error");
         }*/
+        try{
         if ((location.isEmpty()) || (facilities.isEmpty())) {
             if (locationFi.getText().length() == 0) {
                 locationFi.setStyle("-fx-border-color: red ; -fx-border-width: 2px;-fx-border-radius: 15px;-fx-background-radius: 15px;");
                 new animatefx.animation.Shake(locationFi).play();
                 labelLocation.setText("Location is empty");
             } else {
-                facilitiesFi.setStyle(null);
+                locationFi.setStyle(null);
             }
             if (facilitiesFi.getText().length() == 0) {
                 facilitiesFi.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;-fx-border-radius: 15px;-fx-background-radius: 15px;");
@@ -85,17 +87,24 @@ public class AddGymController implements Initializable {
                 facilitiesFi.setStyle(null);
             }
         } else {
+            
             Gym gym = new Gym(location, facilities);
             GymCrud gc = GymCrud.getInstance();
             gc.insertGym2(gym);
-            GymController g = new GymController();
+           // GymController g = new GymController();
             
         //GymController g = new GymController();
             
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            g.loadDate();
+           // g.loadDate();
             stage.close();
         }
+        } catch(Exception ex)
+                {
+                System.out.println("error : "+ex.getMessage());
+                }
+        
+        
 
         
     }

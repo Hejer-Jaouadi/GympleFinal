@@ -186,30 +186,6 @@ public class GymController implements Initializable {
          stage.close();
     }
     
-   /* private void initTable(){
-        initCols();
-       
-        
-    }
-    private void initCols(){
-         loadDate();
-        editTableCol();
-        
-    }
-    private void editTableCol(){
-      /*  idG.setCellFactory(TextFieldTableCell.forTableColumn());
-        
-        idG.setOnEditCommit(e->{
-           e.getTableView().getItems().get(e.getTablePosition().getRow()).setIdG(e.getNewValue());
-        });
-        
-        //location.setCellValueFactory(TextFieldTableCell.forTableColumn());
-        location.setCellValueFactory(TextFieldTableCell.forTableColumn());
-        location.setOnEditCommit(e->{
-           e.getTableView().getItems().get(e.getTablePosition().getRow()).setLocation(e.getNewValue()));
-        });
-        
-    }*/
     
 
 }

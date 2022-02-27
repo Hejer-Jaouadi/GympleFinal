@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class GymCrud implements Idao<Gym> {
@@ -106,7 +107,9 @@ public class GymCrud implements Idao<Gym> {
 
         try {
             if (st.executeUpdate(qry) > 0) {
+                System.out.println("update");
                 return true;
+                
             }
 
         } catch (SQLException ex) {
@@ -198,6 +201,68 @@ public class GymCrud implements Idao<Gym> {
         }
         return false;
         
+    }
+
+    public Gym displayByIdGym(String idGym) {
+        
+     String req = "select * from gym where idG =" + idGym;
+        Gym g = new Gym();
+        try {
+            rs = st.executeQuery(req);
+            // while(rs.next()){
+            rs.next();
+            g.setIdG(rs.getInt(1));
+            g.setLocation(rs.getString(2));
+            g.setFacilities(rs.getString(3));
+            //}  
+        } catch (SQLException ex) {
+            System.out.println("gym does not exist");
+            System.err.println(ex.getMessage());
+            // Logger.getLogger(GymCrud.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return g;
+        //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    }
+
+  /*  public void modifyGym(Gym gym) {
+       
+String qry = "UPDATE gym SET location = '" + location + "', facilities = '" + facilities + "' WHERE idG = " + id;
+
+        try {
+              st.executeUpdate(qry);
+            System.out.println("gym modified successfully");
+                return true;
+            
+
+        } catch (SQLException ex) {
+            System.out.println("error in modify gym");
+            Logger.getLogger(GymCrud.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+        
+
+// throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    */
+
+    
+
+    public boolean modifyGym(String idGym, String location, String facility) {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    String qry = "UPDATE gym SET location = '" + location + "', facilities = '" + facility+ "' WHERE idG = " + idGym;
+
+        try {
+              st.executeUpdate(qry);
+            System.out.println("gym modified successfully");
+                return true;
+            
+
+        } catch (SQLException ex) {
+            System.out.println("error in modify gym");
+            Logger.getLogger(GymCrud.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
     
     

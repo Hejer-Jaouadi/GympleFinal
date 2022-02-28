@@ -25,7 +25,7 @@ public class GympleWindow extends Application {
 
         try {
             Parent root;
-            root = FXMLLoader.load(getClass().getResource("/com/gymple/controller/Gym.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/com/gymple/controller/Menu.fxml"));
             Scene scene = new Scene(root);
 
             primaryStage.setTitle("Gymple");

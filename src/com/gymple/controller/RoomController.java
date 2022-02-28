@@ -149,7 +149,7 @@ public class RoomController implements Initializable {
 
                
                 FXMLLoader Loader = new FXMLLoader();
-                Loader.setLocation(getClass().getResource("/com/gymple/controller/GymDisplay.fxml"));
+                Loader.setLocation(getClass().getResource("/com/gymple/controller/RoomDisplay.fxml"));
                 try{
                     Loader.load();
                 }catch (IOException ex) {
@@ -157,8 +157,9 @@ public class RoomController implements Initializable {
                     
                     System.out.println("error : "+ex.getMessage());;
                 }
-               // RoomDisplayController rdc = Loader.getController();
-                //rdc.setData(tableRoom.getSelectionModel().getSelectedItem().getIdG(), tableGym.getSelectionModel().getSelectedItem().getLocation(),""+tableGym.getSelectionModel().getSelectedItem().getFacilities());
+                RoomDisplayController rdc = Loader.getController();
+                rdc.setData(tableRoom.getSelectionModel().getSelectedItem().getIdR(),""+tableRoom.getSelectionModel().getSelectedItem().getRoomName(),tableRoom.getSelectionModel().getSelectedItem().getRoomNumber());
+
                 
                 
              Parent p = Loader.getRoot();

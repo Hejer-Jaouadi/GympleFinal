@@ -214,4 +214,44 @@ public class RoomCrud implements IdaoR<Room>{
         }
     }
 
+    public boolean modifyRoom(String idRoom, String name, int number1) {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     String qry = "UPDATE room SET roomName = '" + name + "', roomNumber = '" + number1 + "' WHERE idR = " + idRoom;
+
+        try {
+              st.executeUpdate(qry);
+            System.out.println("room modified successfully");
+                return true;
+            
+
+        } catch (SQLException ex) {
+            System.out.println("error in modify room");
+            Logger.getLogger(RoomCrud.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+        
+    
+    }
+
+    public Room displayByIdRoom(String idRoom) {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     String req = "select * from room where idR =" + idRoom;
+        Room r = new Room();
+        try {
+            rs = st.executeQuery(req);
+            // while(rs.next()){
+            rs.next();
+            r.setIdR(rs.getInt(1));
+            r.setRoomName(rs.getString(2));
+            r.setRoomNumber(rs.getInt(3));
+            //}  
+        } catch (SQLException ex) {
+            System.out.println("room does not exist");
+            System.err.println(ex.getMessage());
+            // Logger.getLogger(RoomCrud.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return r;
+    
+    }
+
 }

@@ -57,7 +57,7 @@ public class AddRoomController implements Initializable {
         
          
           
-        System.out.println("hejer");
+       // System.out.println("hejer");
         try{
              try {
                 int number1 = Integer.parseInt(numberFi.getText());

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="420.0" prefWidth="455.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="com.gymple.controller.RoomDisplayController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="410.0" prefWidth="436.0">
+         <children>
+            <HBox alignment="CENTER" layoutX="2.0" prefHeight="100.0" prefWidth="415.0">
+               <children>
+                  <Text fill="#ff6600" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Information" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="32.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="22.0" layoutY="150.0" prefHeight="78.0" prefWidth="408.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Room name : ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="nameFi" alignment="CENTER" prefHeight="37.0" prefWidth="294.0" promptText="Add room name" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: black;">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="6.0" layoutY="217.0" prefHeight="71.0" prefWidth="423.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Room number : ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="numberFi" alignment="CENTER" prefHeight="38.0" prefWidth="294.0" promptText="Add room number" style="-fx-border-color: black; -fx-background-radius: 15; -fx-border-radius: 15;">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="14.0" layoutY="296.0" prefHeight="100.0" prefWidth="423.0">
+               <children>
+                  <Button fx:id="modify" mnemonicParsing="false" onMouseClicked="#modify" prefHeight="35.0" prefWidth="81.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: orange;" text="Modify">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <AnchorPane prefHeight="100.0" prefWidth="37.0" />
+                  <Button fx:id="delete" mnemonicParsing="false" onMouseClicked="#delete" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: black; -fx-border-color: black; -fx-background-color: db1d1d;" text="Delete" textFill="#000000a6">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <AnchorPane prefHeight="100.0" prefWidth="39.0" />
+                  <Button fx:id="cancel" mnemonicParsing="false" onMouseClicked="#cancel" style="-fx-border-radius: 15; -fx-background-radius: 15; -fx-border-color: gray;" text="Cancel">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="7.0" layoutY="106.0" prefHeight="50.0" prefWidth="423.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Room ID : ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="idR" alignment="CENTER" prefHeight="36.0" prefWidth="292.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: black;">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+                  <AnchorPane prefHeight="50.0" prefWidth="4.0" />
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

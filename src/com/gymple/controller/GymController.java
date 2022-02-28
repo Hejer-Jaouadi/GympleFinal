@@ -59,6 +59,10 @@ public class GymController implements Initializable {
     ObservableList<Gym> GymList = FXCollections.observableArrayList();
     @FXML
     private Button Close;
+    @FXML
+    private Button listGymbutton;
+    @FXML
+    private Button listRooms;
 
     /**
      * Initializes the controller class.
@@ -184,6 +188,41 @@ public class GymController implements Initializable {
         
          Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
          stage.close();
+    }
+
+    @FXML
+    private void listGyms(MouseEvent event) {
+        try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("/com/gymple/controller/Gym.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage() ;
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.TRANSPARENT);
+            stage.show();
+            
+        } catch (IOException ex) {
+            System.out.println("error" + ex.getMessage());
+        }
+        Refresh();
+    }
+
+    @FXML
+    private void listRooms(MouseEvent event) {
+        
+        try {
+            Parent root;
+            root = FXMLLoader.load(getClass().getResource("/com/gymple/controller/Room.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage() ;
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.TRANSPARENT);
+            stage.show();
+            
+        } catch (IOException ex) {
+            System.out.println("error" + ex.getMessage());
+        }
+       
     }
     
     

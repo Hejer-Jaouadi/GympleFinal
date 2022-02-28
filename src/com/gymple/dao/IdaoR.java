@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface IdaoR <T> {
     
-     public void insertRoom();
+     public void insertRoom(String roomName,String roomNumber);
 
     public void insertRoom2(T o);
 

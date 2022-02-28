@@ -27,13 +27,13 @@ public class AddGymController implements Initializable {
     @FXML
     private TextField facilitiesFi;
     @FXML
-    private Button AddGym;
-    @FXML
     private Button Cancel;
     @FXML
     private Label labelLocation;
     @FXML
     private Label labelFacility;
+    @FXML
+    private Button AddGym;
 
     /**
      * Initializes the controller class.
@@ -118,5 +118,7 @@ public class AddGymController implements Initializable {
         
         
     }
+
+
 
 }

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -45,35 +47,48 @@
             <Label fx:id="labelLocation" layoutX="160.0" layoutY="3.0" prefHeight="17.0" prefWidth="163.0" text="                    " textFill="RED" />
          </children></AnchorPane>
       <AnchorPane prefHeight="16.0" prefWidth="385.0" />
-      <HBox>
+      <AnchorPane>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gym facilities : ">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <TextField fx:id="facilitiesFi" prefHeight="33.0" prefWidth="243.0" promptText="Enter the facility of the gym" style="-fx-border-color: black; -fx-border-radius: 15; -fx-background-radius: 15;" />
-            <ImageView fitHeight="23.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../Downloads/maintenance.png" />
-               </image>
-            </ImageView>
+            <HBox>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gym facilities : ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="facilitiesFi" prefHeight="33.0" prefWidth="243.0" promptText="Enter the facility of the gym" style="-fx-border-color: black; -fx-border-radius: 15; -fx-background-radius: 15;" />
+                  <ImageView fitHeight="23.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../Downloads/maintenance.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
          </children>
-      </HBox>
+      </AnchorPane>
       <AnchorPane prefHeight="48.0" prefWidth="385.0">
          <children>
-            <Label fx:id="labelFacility" layoutX="161.0" layoutY="6.0" prefHeight="17.0" prefWidth="163.0" text="                    " textFill="RED" />
+            <Label fx:id="labelFacility" layoutX="161.0" layoutY="6.0" prefHeight="17.0" prefWidth="163.0" text=" " textFill="RED" />
          </children></AnchorPane>
       <Button fx:id="AddGym" mnemonicParsing="false" onMouseClicked="#AddGym" prefHeight="37.0" prefWidth="91.0" style="-fx-background-radius: 15; -fx-background-color: #ff6600; -fx-border-color: black; -fx-border-radius: 15;" text="Add Gym" textAlignment="CENTER">
          <font>
             <Font size="15.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <AnchorPane prefHeight="18.0" prefWidth="385.0" />
       <Button fx:id="Cancel" mnemonicParsing="false" onMouseClicked="#Cancel" prefHeight="36.0" prefWidth="87.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: black; -fx-border-radius: 15;" text="Cancel" textFill="#ff6600">
          <font>
             <Font size="15.0" />
          </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
    </children>
 </VBox>

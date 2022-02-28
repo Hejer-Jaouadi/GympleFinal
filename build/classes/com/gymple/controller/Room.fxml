@@ -10,19 +10,19 @@
 <?import javafx.scene.text.Font?>
 
 
-<HBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gymple.controller.GymController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="com.gymple.controller.RoomController">
    <children>
-      <AnchorPane id="AnchorPane" prefHeight="510.0" prefWidth="600.0">
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="510.0" prefWidth="600.0">
          <children>
             <HBox layoutX="33.0" layoutY="154.0" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="63.0" AnchorPane.topAnchor="154.0">
                <children>
-                  <TableView fx:id="tableGym" editable="true" prefHeight="200.0" prefWidth="504.0" style="-fx-border-color: #ff6600; -fx-border-radius: 15; -fx-background-radius: 15; -fx-opacity: 15;">
-                    <columns>
-                      <TableColumn fx:id="idG" prefWidth="75.0" text="ID" />
-                      <TableColumn fx:id="location" prefWidth="200.0" text="Location" />
-                        <TableColumn fx:id="facilities" minWidth="20.0" prefWidth="120.0" text="Facilities" />
+                  <TableView fx:id="tableRoom" editable="true" prefHeight="200.0" prefWidth="504.0" style="-fx-border-color: #ff6600; -fx-border-radius: 15; -fx-background-radius: 15; -fx-opacity: 15;">
+                     <columns>
+                        <TableColumn fx:id="idR" prefWidth="75.0" text="ID" />
+                        <TableColumn fx:id="name" prefWidth="200.0" text="Name" />
+                        <TableColumn fx:id="number" minWidth="20.0" prefWidth="120.0" text="Number" />
                         <TableColumn fx:id="edit" prefWidth="101.0" />
-                    </columns>
+                     </columns>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -58,7 +58,7 @@
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="51.0" layoutY="22.0" prefHeight="79.0" prefWidth="510.0">
+            <HBox alignment="CENTER" layoutX="51.0" layoutY="22.0" prefHeight="75.0" prefWidth="510.0">
                <children>
                   <Button fx:id="listGymbutton" mnemonicParsing="false" onMouseClicked="#listGyms" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: trasparent;" text="List of Gyms" textFill="#ff6600">
                      <cursor>
@@ -82,8 +82,8 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </HBox>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff6600" height="7.0" layoutX="63.0" layoutY="85.0" stroke="#c6b8b8" strokeType="INSIDE" width="250.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff6600" height="7.0" layoutX="300.0" layoutY="94.0" stroke="#c6b8b8" strokeType="INSIDE" width="250.0" />
          </children>
       </AnchorPane>
    </children>
-</HBox>
+</AnchorPane>

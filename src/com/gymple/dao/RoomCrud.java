@@ -44,8 +44,8 @@ public class RoomCrud implements IdaoR<Room>{
 
     
     @Override
-    public void insertRoom() {
-         String req = "insert into room (roomName,roomNumber) values ('Yoga','2')";
+    public void insertRoom(String roomName,String roomNumber) {
+         String req = "insert into room (roomName,roomNumber) values (roomName,roomNumber)";
         try {
             st.executeUpdate(req);
             System.out.println("room added successfully");
@@ -198,6 +198,20 @@ public class RoomCrud implements IdaoR<Room>{
             System.err.println(ex.getMessage());
         }
 
+    }
+
+    public void insertRoom2(String name, String number) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      String req = "insert into room (roomName,roomNumber) values (name,number)";
+        try {
+            st.executeUpdate(req);
+            System.out.println("room added successfully");
+        } catch (SQLException ex) {
+            //Logger.getLogger(RoomCrud.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("error in insert room");
+            System.err.println(ex.getMessage());
+
+        }
     }
 
 }

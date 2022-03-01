@@ -17,7 +17,7 @@ public class Gym {
       private int idG;
       private String location;
       private String facilities;
-      Button update;
+     // Button update;
 
     public Gym(int idG, String location, String facilities) {
         this.idG = idG;

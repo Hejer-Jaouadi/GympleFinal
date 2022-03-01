@@ -26,6 +26,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -33,6 +34,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableCell;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -63,6 +65,8 @@ public class GymController implements Initializable {
     private Button listGymbutton;
     @FXML
     private Button listRooms;
+    @FXML
+    private TextField searchFi;
 
     /**
      * Initializes the controller class.
@@ -71,6 +75,30 @@ public class GymController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         //initTable();
         loadDate();
+        
+        ////initial filtered list
+       /* FilteredList<Gym> filteredData = new FilteredList<>(GymList, b ->true);
+        
+        
+        searchFi.textProperty().addListener((observable, oldValue ,newValue)-> {
+            filteredData.setPredicate(gym-> {
+                
+                ///if no search value display all records if current has no changes
+                
+                if(newValue.isEmpty() || newValue == null){
+                    return true;
+                }
+                String searchkeyword  = newValue.toLowerCase();
+                
+                if(gym.get)
+                
+            });
+            
+            //////
+            
+            
+        });*/
+        
     }
 
     @FXML

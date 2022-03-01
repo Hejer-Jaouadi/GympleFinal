@@ -11,7 +11,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="410.0" prefWidth="436.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="com.gymple.controller.GymDisplayController">
    <children>
-      <HBox alignment="CENTER" layoutX="2.0" prefHeight="100.0" prefWidth="415.0">
+      <HBox alignment="CENTER" layoutX="12.0" prefHeight="100.0" prefWidth="415.0">
          <children>
             <Text fill="#ff6600" strokeType="OUTSIDE" strokeWidth="0.0" text="Gym Information" textAlignment="CENTER">
                <font>
@@ -50,7 +50,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="14.0" layoutY="296.0" prefHeight="100.0" prefWidth="423.0">
          <children>
-            <Button fx:id="modify" mnemonicParsing="false" onMouseClicked="#modify" prefHeight="35.0" prefWidth="81.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: black;" text="Modify">
+            <Button fx:id="modify" mnemonicParsing="false" onMouseClicked="#modify" prefHeight="35.0" prefWidth="81.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #ff6600;" text="Modify">
                <font>
                   <Font size="16.0" />
                </font>

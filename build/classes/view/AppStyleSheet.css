@@ -1,0 +1,46 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 23, 2022, 6:04:58 PM
+    Author     : Asma
+*/
+.root{
+    -fx-background-color:#666666
+}
+.button{
+    -fx-border-radius: 20;
+    -fx-background-radius: 15px;
+    -fx-padding: 6 6 6 6;
+    -fx-font: 16px "SansSerif Regular";
+    -fx-background-color: #ff7f00;
+    -fx-text-fill: #000000;
+}
+.label{
+    -fx-font: 25px "SansSerif Regular";
+    -fx-text-fill:#ff7f00;
+    -fx-font-weight: bold;
+}
+#label2{
+    -fx-font: 12px "Serif Regular";
+    -fx-text-fill:#000000;
+}
+#fgpassword{
+    -fx-font: 12px "SansSerif Regular";
+    -fx-text-fill:#ff7f00;
+    -fx-text-fill: #000000;
+}
+#confirmation{
+    -fx-font: 12px "SansSerif Regular";
+    -fx-text-fill:#ff7f00;
+    -fx-text-fill: #000000;
+    -fx-background-radius: 15px;
+}
+.jfx-text-field {
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20 20 20 20;
+}
+
+ 

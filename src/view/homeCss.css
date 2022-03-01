@@ -1,0 +1,20 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 24, 2022, 9:39:19 PM
+    Author     : Asma
+*/
+
+.btnHome {
+    -fx-background-image: url("ava.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.root{
+    -fx-background-image: url("back.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}

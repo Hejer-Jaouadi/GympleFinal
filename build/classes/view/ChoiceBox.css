@@ -1,0 +1,21 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 27, 2022, 8:48:48 PM
+    Author     : Asma
+*/
+.choice-box {
+  -fx-background-color: #666666;
+  -fx-mark-color: #ff7f00;
+}
+.choice-box .context-menu { -fx-background-color: #666666;
+-fx-background-radius:15;}
+.choice-box .menu-item > .label { -fx-text-fill: whitesmoke; }
+.choice-box .menu-item:focused > .label { -fx-text-fill: #ff7f00 }
+
+
+
+

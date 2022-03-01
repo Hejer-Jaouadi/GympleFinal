@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="410.0" prefWidth="436.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="controller.GymDisplayController">
+   <children>
+      <HBox alignment="CENTER" layoutX="12.0" prefHeight="100.0" prefWidth="415.0">
+         <children>
+            <Text fill="#ff6600" strokeType="OUTSIDE" strokeWidth="0.0" text="Gym Information" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="15.0" layoutY="150.0" prefHeight="78.0" prefWidth="408.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gym location : ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="gymLocation" alignment="CENTER" prefHeight="36.0" prefWidth="289.0" promptText="Add Gym locaion " style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: black;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="15.0" layoutY="218.0" prefHeight="71.0" prefWidth="408.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gym facilities : ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="facilities" alignment="CENTER" prefHeight="38.0" prefWidth="289.0" promptText="Add Gym facilities" style="-fx-border-color: black; -fx-background-radius: 15; -fx-border-radius: 15;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="14.0" layoutY="296.0" prefHeight="100.0" prefWidth="423.0">
+         <children>
+            <Button fx:id="modify" mnemonicParsing="false" onMouseClicked="#modify" prefHeight="35.0" prefWidth="81.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #ff6600;" text="Modify">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <AnchorPane prefHeight="100.0" prefWidth="37.0" />
+            <Button fx:id="delete" mnemonicParsing="false" onMouseClicked="#delete" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: black; -fx-border-color: black; -fx-background-color: db1d1d;" text="Delete" textFill="#000000a6">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <AnchorPane prefHeight="100.0" prefWidth="39.0" />
+            <Button fx:id="cancel" mnemonicParsing="false" onMouseClicked="#cancel" style="-fx-border-radius: 15; -fx-background-radius: 15; -fx-border-color: black;" text="Cancel">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" layoutX="7.0" layoutY="106.0" prefHeight="50.0" prefWidth="423.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gym ID : ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="idG" alignment="CENTER" prefHeight="36.0" prefWidth="292.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: black;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <AnchorPane prefHeight="50.0" prefWidth="4.0" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

@@ -39,8 +39,6 @@ public class RoomController implements Initializable {
     @FXML
     private TableColumn<Room, Integer> number;
     @FXML
-    private TableColumn<Room, Button> edit;
-    @FXML
     private Button add;
     @FXML
     private Button refresh;
@@ -52,6 +50,8 @@ public class RoomController implements Initializable {
     private Button listRooms;
     
     ObservableList<Room> RoomList = FXCollections.observableArrayList();
+    @FXML
+    private TableColumn<Room, Integer> capacity;
 
     /**
      * Initializes the controller class.
@@ -141,7 +141,8 @@ public class RoomController implements Initializable {
         Refresh();
           idR.setCellValueFactory(new PropertyValueFactory<>("idR"));
         name.setCellValueFactory(new PropertyValueFactory<>("roomName"));
-        number.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));       
+        number.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
+        capacity.setCellValueFactory(new PropertyValueFactory<>("max_nbr"));
 // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
      tableRoom.setOnMousePressed(new EventHandler<MouseEvent>(){
             @Override
@@ -158,7 +159,7 @@ public class RoomController implements Initializable {
                     System.out.println("error : "+ex.getMessage());;
                 }
                 RoomDisplayController rdc = Loader.getController();
-                rdc.setData(tableRoom.getSelectionModel().getSelectedItem().getIdR(),""+tableRoom.getSelectionModel().getSelectedItem().getRoomName(),tableRoom.getSelectionModel().getSelectedItem().getRoomNumber());
+                rdc.setData(tableRoom.getSelectionModel().getSelectedItem().getIdR(),""+tableRoom.getSelectionModel().getSelectedItem().getRoomName(),tableRoom.getSelectionModel().getSelectedItem().getRoomNumber(),tableRoom.getSelectionModel().getSelectedItem().getMax_nbr());
 
                 
                 

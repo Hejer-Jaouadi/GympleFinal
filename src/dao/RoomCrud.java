@@ -87,6 +87,7 @@ public class RoomCrud implements IdaoR<Room>{
                 r.setIdR(rs.getInt(1));
                 r.setRoomName(rs.getString(2));
                 r.setRoomNumber(rs.getInt(3));
+                r.setMax_nbr(rs.getInt(4));
                 list.add(r);
 
             }
@@ -102,7 +103,7 @@ public class RoomCrud implements IdaoR<Room>{
     
     @Override
     public boolean updateRoom(Room r) {
-         String qry = "UPDATE room SET roomName = '" + r.getRoomName()+ "', roomNumber = '" + r.getRoomNumber()+ "' WHERE idR = " + r.getIdR();
+         String qry = "UPDATE room SET roomName = '" + r.getRoomName()+ "', roomNumber = '" + r.getRoomNumber()+ "', max_nbr = '" + r.getMax_nbr()+ "' WHERE idR = " + r.getIdR();
 
         try {
             if (st.executeUpdate(qry) > 0) {
@@ -128,6 +129,7 @@ public class RoomCrud implements IdaoR<Room>{
             r.setIdR(rs.getInt(1));
             r.setRoomName(rs.getString(2));
             r.setRoomNumber(rs.getInt(3));
+              r.setMax_nbr(rs.getInt(4));
             //}  
         } catch (SQLException ex) {
             System.out.println("room does not exist");
@@ -214,9 +216,9 @@ public class RoomCrud implements IdaoR<Room>{
         }
     }
 
-    public boolean modifyRoom(String idRoom, String name, int number1) {
+    public boolean modifyRoom(String idRoom, String name, int number1, int capacity1) {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-     String qry = "UPDATE room SET roomName = '" + name + "', roomNumber = '" + number1 + "' WHERE idR = " + idRoom;
+     String qry = "UPDATE room SET roomName = '" + name + "', roomNumber = '" + number1 + "', max_nbr = '" + capacity1 + "' WHERE idR = " + idRoom;
 
         try {
               st.executeUpdate(qry);
@@ -244,6 +246,7 @@ public class RoomCrud implements IdaoR<Room>{
             r.setIdR(rs.getInt(1));
             r.setRoomName(rs.getString(2));
             r.setRoomNumber(rs.getInt(3));
+            r.setMax_nbr(rs.getInt(4));
             //}  
         } catch (SQLException ex) {
             System.out.println("room does not exist");

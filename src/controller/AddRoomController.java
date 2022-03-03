@@ -34,6 +34,10 @@ public class AddRoomController implements Initializable {
     private Label labelnumber;
     @FXML
     private Button AddRoom;
+    @FXML
+    private TextField capacityFi;
+    @FXML
+    private Label labelcapacity;
 
     /**
      * Initializes the controller class.
@@ -54,7 +58,7 @@ public class AddRoomController implements Initializable {
     private void AddRoom(MouseEvent event) {
         String name = nameFi.getText();
         String number = numberFi.getText();
-        
+        String capacity = capacityFi.getText();
          
           
        // System.out.println("hejer");
@@ -67,6 +71,16 @@ public class AddRoomController implements Initializable {
                 new animatefx.animation.Shake(numberFi).play();
                 labelnumber.setText("Number should be an integer"); 
             }
+             try {
+                int capacity1 = Integer.parseInt(capacityFi.getText());
+            } catch (RuntimeException e) {
+                //JOptionPane.showMessageDialog(null, "Prix et quantite doient étre des nombres!", "Input error ", JOptionPane.ERROR_MESSAGE);
+                capacityFi.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;-fx-border-radius: 15px;-fx-background-radius: 15px;");
+                new animatefx.animation.Shake(capacityFi).play();
+                capacityFi.setText("capacity should be an integer"); 
+            }
+             
+             
         if ((name.isEmpty())) {
             System.out.println("hejer");
             if (nameFi.getText().length() == 0) {
@@ -87,13 +101,26 @@ public class AddRoomController implements Initializable {
                 labelnumber.setText("Number is wrong"); 
             }
             } else {
-                numberFi.setStyle(null);
+                numberFi.setStyle("-fx-border-color: black ; -fx-border-width: 2px ;-fx-border-radius: 15px;-fx-background-radius: 15px;");
+            }
+            if ((capacityFi.getText().length() != 0)) {
+                try {
+                int capacity1 = Integer.parseInt(capacityFi.getText());
+            } catch (RuntimeException e) {
+                //JOptionPane.showMessageDialog(null, "Prix et quantite doient étre des nombres!", "Input error ", JOptionPane.ERROR_MESSAGE);
+                capacityFi.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;-fx-border-radius: 15px;-fx-background-radius: 15px;");
+                new animatefx.animation.Shake(capacityFi).play();
+                labelcapacity.setText("capacity should be a number"); 
+            }
+            } else {
+                numberFi.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;-fx-border-radius: 15px;-fx-background-radius: 15px;");
             }
         } else {
                  int number1=Integer.parseInt(numberFi.getText());
+                 int capacity1 = Integer.parseInt(capacityFi.getText());
             
             
-            Room room = new Room(name, number1);
+            Room room = new Room(name, number1,capacity1);
             RoomCrud rc = RoomCrud.getInstance();
             rc.insertRoom2(room);
            // GymController g = new GymController();

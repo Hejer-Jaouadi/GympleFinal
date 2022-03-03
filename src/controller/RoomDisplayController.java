@@ -36,6 +36,8 @@ public class RoomDisplayController implements Initializable {
     private TextField nameFi;
     @FXML
     private TextField numberFi;
+    @FXML
+    private TextField capacityFi;
 
     /**
      * Initializes the controller class.
@@ -52,7 +54,7 @@ public class RoomDisplayController implements Initializable {
         String idRoom = idR.getText();
         String name = nameFi.getText();
         String number = numberFi.getText();
-
+        String capacity = capacityFi.getText();
         // System.out.println("hejer");
         try {
             try {
@@ -61,6 +63,14 @@ public class RoomDisplayController implements Initializable {
                 //JOptionPane.showMessageDialog(null, "Prix et quantite doient étre des nombres!", "Input error ", JOptionPane.ERROR_MESSAGE);
                 numberFi.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;-fx-border-radius: 15px;-fx-background-radius: 15px;");
                 new animatefx.animation.Shake(numberFi).play();
+                // labelnumber.setText("Number should be an integer"); 
+            }
+             try {
+                int capacity1 = Integer.parseInt(capacityFi.getText());
+            } catch (RuntimeException e) {
+                //JOptionPane.showMessageDialog(null, "Prix et quantite doient étre des nombres!", "Input error ", JOptionPane.ERROR_MESSAGE);
+                capacityFi.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;-fx-border-radius: 15px;-fx-background-radius: 15px;");
+                new animatefx.animation.Shake(capacityFi).play();
                 // labelnumber.setText("Number should be an integer"); 
             }
             if ((name.isEmpty())) {
@@ -89,11 +99,11 @@ public class RoomDisplayController implements Initializable {
                 }
             } else {
                 int number1 = Integer.parseInt(numberFi.getText());
-
-                Room room = new Room(idRoom, name, number1);
+                int capacity1 = Integer.parseInt(capacityFi.getText());
+                Room room = new Room(idRoom, name, number1,capacity1);
                 RoomCrud rc = RoomCrud.getInstance();
                 //gc.updateGym(new Gym());
-                rc.modifyRoom(idRoom, name, number1);
+                rc.modifyRoom(idRoom, name, number1 , capacity1);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.close();
             }
@@ -105,10 +115,11 @@ public class RoomDisplayController implements Initializable {
 
     @FXML
     private void delete(MouseEvent event) {
-        
+
         String idRoom = idR.getText();
         String name = nameFi.getText();
         String number = numberFi.getText();
+        String capacity = capacityFi.getText();
 
         // System.out.println("hejer");
         try {
@@ -118,7 +129,15 @@ public class RoomDisplayController implements Initializable {
                 //JOptionPane.showMessageDialog(null, "Prix et quantite doient étre des nombres!", "Input error ", JOptionPane.ERROR_MESSAGE);
                 numberFi.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;-fx-border-radius: 15px;-fx-background-radius: 15px;");
                 new animatefx.animation.Shake(numberFi).play();
-                // labelnumber.setText("Number should be an integer"); 
+
+            }
+            try {
+                int capacity1 = Integer.parseInt(capacityFi.getText());
+            } catch (RuntimeException e) {
+                //JOptionPane.showMessageDialog(null, "Prix et quantite doient étre des nombres!", "Input error ", JOptionPane.ERROR_MESSAGE);
+                capacityFi.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;-fx-border-radius: 15px;-fx-background-radius: 15px;");
+                new animatefx.animation.Shake(capacityFi).play();
+
             }
             if ((name.isEmpty())) {
                 System.out.println("hejer");
@@ -147,17 +166,16 @@ public class RoomDisplayController implements Initializable {
             } else {
                 int number1 = Integer.parseInt(numberFi.getText());
 
-                Room room = new Room(name, number);
-            RoomCrud gc = RoomCrud.getInstance();
-            gc.deleteRoom(gc.displayByIdRoom(idRoom));
-            
+                Room room = new Room(name, number, capacity);
+                RoomCrud gc = RoomCrud.getInstance();
+                gc.deleteRoom(gc.displayByIdRoom(idRoom));
+
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.close();
             }
         } catch (Exception ex) {
             System.out.println("error : " + ex.getMessage());
         }
-        
 
     }
 
@@ -167,11 +185,12 @@ public class RoomDisplayController implements Initializable {
         stage.close();
     }
 
-    public void setData(int idRoom, String Name, int Number) {
+    public void setData(int idRoom, String Name, int Number, int capacity) {
 
         nameFi.setText("" + Name);
         numberFi.setText("" + Number);
         idR.setText("" + idRoom);
+        capacityFi.setText("" + capacity);
 
     }
 }

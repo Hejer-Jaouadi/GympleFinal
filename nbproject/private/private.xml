@@ -3,21 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Yassine/Downloads/gymple_app-user_mgt/src/dao/IdaoR.java</file>
-            <file>file:/C:/Users/Yassine/Downloads/gymple_app-user_mgt/src/dao/RoomCrud.java</file>
-            <file>file:/C:/Users/Yassine/Downloads/gymple_app-user_mgt/src/controller/RoomController.java</file>
-            <file>file:/C:/Users/Yassine/Downloads/gymple_app-user_mgt/src/controller/GymController.java</file>
-            <file>file:/C:/Users/Yassine/Downloads/gymple_app-user_mgt/src/controller/AddRoomController.java</file>
-            <file>file:/C:/Users/Yassine/Downloads/gymple_app-user_mgt/src/entity/Room.java</file>
-            <file>file:/C:/Users/Yassine/Downloads/gymple_app-user_mgt/src/controller/FrontGymController.java</file>
-            <file>file:/C:/Users/Yassine/Downloads/gymple_app-user_mgt/src/dao/IdaoG.java</file>
-            <file>file:/C:/Users/Yassine/Downloads/gymple_app-user_mgt/src/dao/GymCrud.java</file>
-            <file>file:/C:/Users/Yassine/Downloads/gymple_app-user_mgt/src/controller/AddGymController.java</file>
-            <file>file:/C:/Users/Yassine/Downloads/gymple_app-user_mgt/src/controller/StatController.java</file>
-            <file>file:/C:/Users/Yassine/Downloads/gymple_app-user_mgt/src/utils/ConnexionSingleton.java</file>
-            <file>file:/C:/Users/Yassine/Downloads/gymple_app-user_mgt/src/entity/Gym.java</file>
-            <file>file:/C:/Users/Yassine/Downloads/gymple_app-user_mgt/src/utils/SendEmail.java</file>
-            <file>file:/C:/Users/Yassine/Downloads/gymple_app-user_mgt/src/controller/RoomDisplayController.java</file>
+            <file>file:/D:/3A1/pi/java/GympleFinal/src/utils/ConnexionSingleton.java</file>
+            <file>file:/D:/3A1/pi/java/GympleFinal/src/utils/SendEmail.java</file>
+            <file>file:/D:/3A1/pi/java/GympleFinal/src/gymple/Gymple.java</file>
+            <file>file:/D:/3A1/pi/java/GympleFinal/src/controller/RoomController.java</file>
+            <file>file:/D:/3A1/pi/java/GympleFinal/src/controller/AddGymController.java</file>
+            <file>file:/D:/3A1/pi/java/GympleFinal/src/controller/GymController.java</file>
         </group>
     </open-files>
 </project-private>

@@ -11,6 +11,7 @@
 package dao;
 
 import java.util.List;
+import javafx.collections.ObservableList;
 
 public interface IdaoG<T> {
 
@@ -29,4 +30,6 @@ public interface IdaoG<T> {
     public void searchByLocation(String location);
     
     public boolean modifyGym(int id,String location,String facilities);
+    
+    public ObservableList<Integer> ListId();
 }

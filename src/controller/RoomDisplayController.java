@@ -14,15 +14,20 @@ import dao.RoomCrud;
 import entity.Room;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -47,6 +52,8 @@ public class RoomDisplayController implements Initializable {
     private TextField capacityFi;
     @FXML
     private Button pdf;
+    @FXML
+    private TextField gym;
 
     /**
      * Initializes the controller class.
@@ -64,6 +71,7 @@ public class RoomDisplayController implements Initializable {
         String name = nameFi.getText();
         String number = numberFi.getText();
         String capacity = capacityFi.getText();
+        String idG = gym.getText();
         // System.out.println("hejer");
         try {
             try {
@@ -74,12 +82,20 @@ public class RoomDisplayController implements Initializable {
                 new animatefx.animation.Shake(numberFi).play();
                 // labelnumber.setText("Number should be an integer"); 
             }
-             try {
+            try {
                 int capacity1 = Integer.parseInt(capacityFi.getText());
             } catch (RuntimeException e) {
                 //JOptionPane.showMessageDialog(null, "Prix et quantite doient étre des nombres!", "Input error ", JOptionPane.ERROR_MESSAGE);
                 capacityFi.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;-fx-border-radius: 15px;-fx-background-radius: 15px;");
                 new animatefx.animation.Shake(capacityFi).play();
+                // labelnumber.setText("Number should be an integer"); 
+            }
+            try {
+                int idgym1 = Integer.parseInt(gym.getText());
+            } catch (RuntimeException e) {
+                //JOptionPane.showMessageDialog(null, "Prix et quantite doient étre des nombres!", "Input error ", JOptionPane.ERROR_MESSAGE);
+                gym.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;-fx-border-radius: 15px;-fx-background-radius: 15px;");
+                new animatefx.animation.Shake(gym).play();
                 // labelnumber.setText("Number should be an integer"); 
             }
             if ((name.isEmpty())) {
@@ -109,10 +125,11 @@ public class RoomDisplayController implements Initializable {
             } else {
                 int number1 = Integer.parseInt(numberFi.getText());
                 int capacity1 = Integer.parseInt(capacityFi.getText());
-                Room room = new Room(idRoom, name, number1,capacity1);
+                int idgym1 = Integer.parseInt(gym.getText());
+                Room room = new Room(idRoom, name, number1, capacity1, idgym1);
                 RoomCrud rc = RoomCrud.getInstance();
                 //gc.updateGym(new Gym());
-                rc.modifyRoom(idRoom, name, number1 , capacity1);
+                rc.modifyRoom(idRoom, name, number1, capacity1, idgym1);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.close();
             }
@@ -148,6 +165,14 @@ public class RoomDisplayController implements Initializable {
                 new animatefx.animation.Shake(capacityFi).play();
 
             }
+            try {
+                int idgym1 = Integer.parseInt(gym.getText());
+            } catch (RuntimeException e) {
+                //JOptionPane.showMessageDialog(null, "Prix et quantite doient étre des nombres!", "Input error ", JOptionPane.ERROR_MESSAGE);
+                gym.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;-fx-border-radius: 15px;-fx-background-radius: 15px;");
+                new animatefx.animation.Shake(gym).play();
+                // labelnumber.setText("Number should be an integer"); 
+            }
             if ((name.isEmpty())) {
                 System.out.println("hejer");
                 if (nameFi.getText().length() == 0) {
@@ -174,8 +199,8 @@ public class RoomDisplayController implements Initializable {
                 }
             } else {
                 int number1 = Integer.parseInt(numberFi.getText());
-
-                Room room = new Room(name, number, capacity);
+                int idgym1 = Integer.parseInt(gym.getText());
+                Room room = new Room(name, number, capacity,idgym1);
                 RoomCrud gc = RoomCrud.getInstance();
                 gc.deleteRoom(gc.displayByIdRoom(idRoom));
 
@@ -194,19 +219,20 @@ public class RoomDisplayController implements Initializable {
         stage.close();
     }
 
-    public void setData(int idRoom, String Name, int Number, int capacity) {
+    public void setData(int idRoom, String Name, int Number, int capacity,int idgym) {
 
         nameFi.setText("" + Name);
         numberFi.setText("" + Number);
         idR.setText("" + idRoom);
         capacityFi.setText("" + capacity);
+        gym.setText("" + idgym);
 
     }
 
     @FXML
     private void pdf(MouseEvent event) throws FileNotFoundException, DocumentException {
-         
-         String name = nameFi.getText();
+
+        String name = nameFi.getText();
         String number = numberFi.getText();
         String capacity = capacityFi.getText();
 //        int number1 = Integer.parseInt(numberFi.getText());
@@ -216,20 +242,21 @@ public class RoomDisplayController implements Initializable {
         document.open();
         document.add(new Paragraph("Room information display : "));
         document.add(new Paragraph("---------------------------------"));
-       
+
         PdfPTable table = new PdfPTable(3);
         table.addCell("room Name");
         table.addCell(name);
-       // table.addCell();
-       
+        // table.addCell();
+
         table.addCell("room Number");
         table.addCell(number);
-         table.addCell("room Capacity");
+        table.addCell("room Capacity");
         table.addCell(capacity);
-        
+
         System.out.println("pdf done");
-        
+
         document.add(table);
         document.close();
     }
+
 }

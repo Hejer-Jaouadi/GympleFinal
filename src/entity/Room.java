@@ -12,18 +12,33 @@ public class Room {
       private String roomName;
       private int roomNumber;
       private int max_nbr;
+      private int idgym;
 
-    public Room(int idR, String roomName, int roomNumber,int max_nbr) {
+    public Room(String name, String number, String capacity, int idgym1) {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setIdgym(int idgym) {
+        this.idgym = idgym;
+    }
+
+    public int getIdgym() {
+        return idgym;
+    }
+      
+    public Room(int idR, String roomName, int roomNumber,int max_nbr,int idgym) {
         this.idR = idR;
         this.roomName = roomName;
         this.roomNumber = roomNumber;
           this.max_nbr = max_nbr;
+          this.idgym = idgym;
     }
 
-    public Room(String roomName, int roomNumber,int max_nbr) {
+    public Room(String roomName, int roomNumber,int max_nbr, int idgym) {
         this.roomName = roomName;
         this.roomNumber = roomNumber;
          this.max_nbr = max_nbr;
+         this.idgym = idgym;
     }
 
     public Room() {
@@ -33,11 +48,11 @@ public class Room {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Room(String idRoom, String name, String number1) {
+    public Room(String idRoom, String name, String number1,String idgym1) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Room(String idRoom, String name, int number1, int capacity1) {
+    public Room(String idRoom, String name, int number1, int capacity1, int idgym1) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -80,9 +95,9 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Room{" + "idR=" + idR + ", roomName=" + roomName + ", roomNumber=" + roomNumber + ", max_nbr=" + max_nbr + '}'+"\n";
+        return "Room{" + "idR=" + idR + ", roomName=" + roomName + ", roomNumber=" + roomNumber + ", max_nbr=" + max_nbr + ", idgym=" + idgym + '}'+"\n";
     }
-      
+   
     
       
     

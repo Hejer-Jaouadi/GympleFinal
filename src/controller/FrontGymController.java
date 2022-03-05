@@ -33,11 +33,11 @@ public class FrontGymController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         GymCrud g = GymCrud.getInstance();
-        listgym.setItems((ObservableList<Gym>) g.displayGym());
-        /*listgym.addAll(g.displayRoom());
-       rc.displayRoom();
+        listgym.setItems(GymList);
+        GymList.addAll(g.displayGym());
+       g.displayGym();
         
-        tableRoom.setItems(RoomList);*/
+        listgym.setItems(GymList);
         // TODO
         
     }    

@@ -5,14 +5,17 @@
  */
 package controller;
 
+import dao.GymCrud;
 import dao.RoomCrud;
 import entity.Room;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -38,6 +41,8 @@ public class AddRoomController implements Initializable {
     private TextField capacityFi;
     @FXML
     private Label labelcapacity;
+    @FXML
+    private ComboBox<Integer> idG;
 
     /**
      * Initializes the controller class.
@@ -45,6 +50,12 @@ public class AddRoomController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+      GymCrud gc = GymCrud.getInstance();
+      ObservableList<Integer> listID =gc.ListId();
+      idG.setItems(listID);
+
+
     }    
 
 
@@ -59,7 +70,7 @@ public class AddRoomController implements Initializable {
         String name = nameFi.getText();
         String number = numberFi.getText();
         String capacity = capacityFi.getText();
-         
+        int idgym1 = idG.getSelectionModel().getSelectedItem();
           
        // System.out.println("hejer");
         try{
@@ -120,7 +131,7 @@ public class AddRoomController implements Initializable {
                  int capacity1 = Integer.parseInt(capacityFi.getText());
             
             
-            Room room = new Room(name, number1,capacity1);
+            Room room = new Room(name, number1,capacity1,idgym1);
             RoomCrud rc = RoomCrud.getInstance();
             rc.insertRoom2(room);
            // GymController g = new GymController();

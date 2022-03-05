@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface IdaoR <T> {
     
-     public void insertRoom(String roomName,String roomNumber);
+     public void insertRoom(String roomName,String roomNumber,String idgym);
 
     public void insertRoom2(T o);
 
@@ -24,7 +24,7 @@ public interface IdaoR <T> {
 
     public void searchByName(String room);
     
-    public boolean modifyRoom(int id,String roomName,String roomNumber);
+    public boolean modifyRoom(int id,String roomName,String roomNumber,String idgym);
     
     public void stat();
     

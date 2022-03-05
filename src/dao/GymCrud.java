@@ -268,5 +268,29 @@ String qry = "UPDATE gym SET location = '" + location + "', facilities = '" + fa
         return false;
     }
     
+    public ObservableList<Integer> ListId(){
+        
+     ObservableList<Integer> listID = FXCollections.observableArrayList();
+        String req = "select idG from gym";
+     try { 
+            
+             rs = st.executeQuery(req);
+           //  rs = st.executeUpdate(requete3);
+             
+             while (rs.next()){
+                listID.add(rs.getInt(1));
+             }     
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+      return listID;
+    
+    
+    
+    
+    
+    
+    
+    } 
     
 }

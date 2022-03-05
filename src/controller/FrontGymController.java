@@ -15,11 +15,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 
-/**
- * FXML Controller class
- *
- * @author Yassine
- */
+
+
 public class FrontGymController implements Initializable {
 
     @FXML

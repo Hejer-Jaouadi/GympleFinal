@@ -23,11 +23,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import utils.ConnexionSingleton;
 
-/**
- * FXML Controller class
- *
- * @author Yassine
- */
+
 public class StatController implements Initializable {
 
     @FXML

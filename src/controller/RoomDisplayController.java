@@ -29,11 +29,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-/**
- * FXML Controller class
- *
- * @author Yassine
- */
+
 public class RoomDisplayController implements Initializable {
 
     @FXML

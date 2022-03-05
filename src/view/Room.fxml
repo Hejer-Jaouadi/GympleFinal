@@ -84,6 +84,15 @@
                </cursor>
             </HBox>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff6600" height="7.0" layoutX="300.0" layoutY="94.0" stroke="#c6b8b8" strokeType="INSIDE" width="250.0" />
+            <Button fx:id="stat" layoutX="86.0" layoutY="124.0" mnemonicParsing="false" onMouseClicked="#stat" prefHeight="33.0" prefWidth="109.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #ff6600;" text="Statitstics">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="pdf" layoutX="222.0" layoutY="128.0" mnemonicParsing="false" onMouseClicked="#pdf" text="pdf" />
          </children>
       </AnchorPane>
    </children>

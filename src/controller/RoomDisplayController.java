@@ -5,8 +5,15 @@
  */
 package controller;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import dao.RoomCrud;
 import entity.Room;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -38,6 +45,8 @@ public class RoomDisplayController implements Initializable {
     private TextField numberFi;
     @FXML
     private TextField capacityFi;
+    @FXML
+    private Button pdf;
 
     /**
      * Initializes the controller class.
@@ -192,5 +201,35 @@ public class RoomDisplayController implements Initializable {
         idR.setText("" + idRoom);
         capacityFi.setText("" + capacity);
 
+    }
+
+    @FXML
+    private void pdf(MouseEvent event) throws FileNotFoundException, DocumentException {
+         
+         String name = nameFi.getText();
+        String number = numberFi.getText();
+        String capacity = capacityFi.getText();
+//        int number1 = Integer.parseInt(numberFi.getText());
+//         int capacity1 = Integer.parseInt(capacityFi.getText());
+        Document document = new Document();
+        PdfWriter.getInstance(document, new FileOutputStream("roomDisplay1"));
+        document.open();
+        document.add(new Paragraph("Room information display : "));
+        document.add(new Paragraph("---------------------------------"));
+       
+        PdfPTable table = new PdfPTable(3);
+        table.addCell("room Name");
+        table.addCell(name);
+       // table.addCell();
+       
+        table.addCell("room Number");
+        table.addCell(number);
+         table.addCell("room Capacity");
+        table.addCell(capacity);
+        
+        System.out.println("pdf done");
+        
+        document.add(table);
+        document.close();
     }
 }

@@ -88,6 +88,8 @@ public class GymCrud implements IdaoG<Gym> {
                 list.add(g);
 
             }
+            
+            
              
 
         } catch (SQLException ex) {
@@ -97,6 +99,7 @@ public class GymCrud implements IdaoG<Gym> {
         return list;
 
     }
+    
     
     
 

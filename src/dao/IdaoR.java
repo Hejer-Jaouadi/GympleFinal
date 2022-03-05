@@ -26,4 +26,7 @@ public interface IdaoR <T> {
     
     public boolean modifyRoom(int id,String roomName,String roomNumber);
     
+    public void stat();
+    
+    
 }

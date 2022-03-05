@@ -32,8 +32,6 @@ public class StatController implements Initializable {
 
     @FXML
     private BarChart<String, Double> barchart;
-    @FXML
-    private Button loadstat;
     private ConnexionSingleton connexion;
 
     /**
@@ -43,10 +41,11 @@ public class StatController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         // TODO
+        RoomCrud rc = RoomCrud.getInstance();
+       barchart.setData(rc.statistique());
+       barchart.setAnimated(true);
+      // barchart.setCreateSymbols(false);
+        barchart.setTitle("Chart");
     }
 
-    @FXML
-    private void loadstat(ActionEvent event) {
-
-    }
 }

@@ -6,6 +6,8 @@
 package dao;
 
 import java.util.List;
+import javafx.collections.ObservableList;
+import javafx.scene.chart.XYChart;
 
 
 public interface IdaoR <T> {
@@ -26,7 +28,7 @@ public interface IdaoR <T> {
     
     public boolean modifyRoom(int id,String roomName,String roomNumber,String idgym);
     
-    public void stat();
+   public ObservableList<XYChart.Series<String, Double>> statistique();
     
     
 }

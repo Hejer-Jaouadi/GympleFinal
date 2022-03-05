@@ -21,6 +21,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.chart.XYChart.Series;
 import javafx.scene.layout.VBox;
 
 public class RoomCrud implements IdaoR<Room> {
@@ -256,50 +257,26 @@ public class RoomCrud implements IdaoR<Room> {
         return r;
 
     }
+public ObservableList<XYChart.Series<String, Double>> statistique(){
+      ObservableList<XYChart.Series<String, Double>> stats = FXCollections.observableArrayList();
 
-    @Override
-    public void stat() {
-        //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        String sql = "SELECT roomName, max_nbr from room";
-        try {
-            rs = st.executeQuery(sql);
-            ArrayList<String> names = new ArrayList<String>();
-            ArrayList<Integer> max_nbr = new ArrayList<Integer>();
-            
-            while(rs.next()){
-                names.add(rs.getString(1));
-                max_nbr.add(rs.getInt(2));
-            }
-            rs.close();
-            
-             CategoryAxis xaxis = new CategoryAxis();
-        xaxis.setLabel("Names");
-        
-        NumberAxis yaxis = new NumberAxis();
-        yaxis.setLabel("Room capacity");
-        
-        BarChart barchart = new BarChart(xaxis,yaxis);
-        XYChart.Series dataSeries = new XYChart.Series();
-        
-        dataSeries.setName("Rooms table");
-        
-        for(int i = 0 ;i<names.size();i++){
-            dataSeries.getData().add(new XYChart.Data(names.get(i),max_nbr.get(i)));
-        }
-        
-        barchart.getData().add(dataSeries);
-        VBox vbox = new VBox(barchart);
-        
-        Scene scene = new Scene(vbox,400,200);
-      
-        
+     try { 
+         
+        String requete="select count(*) , g.location from room r join gym g where r.idgym = g.idG  group by g.location";
 
+            rs = st.executeQuery(requete);
+             while (rs.next()){
+                 Series<String, Double> serie = new Series<>();
+                 serie.setName(rs.getString("location"));
+                 serie.getData().add(new XYChart.Data(rs.getString("location"),rs.getInt("count(*)")));
+                  stats.addAll(serie);
+                 
+             }     
         } catch (SQLException ex) {
-           // Logger.getLogger(RoomCrud.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println(ex.getMessage());
+            System.err.println(ex.getMessage());
         }
-
-    }
+      return stats;
+}
 
    
 

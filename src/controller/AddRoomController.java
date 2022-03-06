@@ -21,6 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import utils.cnst;
 
 
 public class AddRoomController implements Initializable {
@@ -70,8 +71,8 @@ public class AddRoomController implements Initializable {
         String name = nameFi.getText();
         String number = numberFi.getText();
         String capacity = capacityFi.getText();
-        int idgym1 = idG.getSelectionModel().getSelectedItem();
-          
+       
+          cnst eu = new cnst();
        // System.out.println("hejer");
         try{
              try {
@@ -88,17 +89,19 @@ public class AddRoomController implements Initializable {
                 //JOptionPane.showMessageDialog(null, "Prix et quantite doient étre des nombres!", "Input error ", JOptionPane.ERROR_MESSAGE);
                 capacityFi.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;-fx-border-radius: 15px;-fx-background-radius: 15px;");
                 new animatefx.animation.Shake(capacityFi).play();
-                capacityFi.setText("capacity should be an integer"); 
+                labelcapacity.setText("capacity should be an integer"); 
             }
              
              
-        if ((name.isEmpty())) {
+        if ((name.isEmpty())&&(number.isEmpty())&&(capacity.isEmpty())) {
             System.out.println("hejer");
-            if (nameFi.getText().length() == 0) {
-                nameFi.setStyle("-fx-border-color: red ; -fx-border-width: 2px;-fx-border-radius: 15px;-fx-background-radius: 15px;");
+           if(!eu.testfacility(name)){
+                
+             nameFi.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;-fx-border-radius: 15px;-fx-background-radius: 15px;");
                 new animatefx.animation.Shake(nameFi).play();
-                labelname.setText("Name is empty");
-            } else {
+                labelname.setText("Name must not contain numbers");
+            
+        }else {
                 nameFi.setStyle(null);
             }
             
@@ -129,7 +132,7 @@ public class AddRoomController implements Initializable {
         } else {
                  int number1=Integer.parseInt(numberFi.getText());
                  int capacity1 = Integer.parseInt(capacityFi.getText());
-            
+             int idgym1 = idG.getSelectionModel().getSelectedItem();
             
             Room room = new Room(name, number1,capacity1,idgym1);
             RoomCrud rc = RoomCrud.getInstance();

@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="496.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FrontGymController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="496.0" stylesheets="@AppStyleSheet.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FrontGymController">
    <children>
       <HBox alignment="TOP_CENTER" layoutX="277.0" layoutY="108.0" />
       <Text fill="#ff740d" layoutX="117.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gyms available" wrappingWidth="292.13671875">
@@ -14,6 +14,6 @@
             <Font name="System Bold" size="39.0" />
          </font>
       </Text>
-      <ListView fx:id="listgym" layoutX="99.0" layoutY="145.0" prefHeight="241.0" prefWidth="310.0" />
+      <ListView fx:id="listgym" layoutX="99.0" layoutY="145.0" prefHeight="241.0" prefWidth="310.0" stylesheets="@AppStyleSheet.css" />
    </children>
 </AnchorPane>

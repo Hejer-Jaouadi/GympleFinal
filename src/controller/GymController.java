@@ -201,7 +201,7 @@ public class GymController implements Initializable {
          String searchGym = searchFi.getText();
          GymCrud gc = GymCrud.getInstance();
          
-         GymList.clear();
+       //  GymList.clear();
         // Gym g = new Gym(location,facilities);
         //  GymList.add(new Gym(location,facilities));
         
@@ -209,7 +209,7 @@ public class GymController implements Initializable {
         GymList.addAll(gc.SearchGym(searchGym));
         //gc.SearchGym(searchGym);
         
-        tableGym.setItems(GymList);
+       // tableGym.setItems(GymList);
         
         
     }

@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import utils.cnst;
 
 public class AddGymController implements Initializable {
 
@@ -48,6 +49,7 @@ public class AddGymController implements Initializable {
         String location = locationFi.getText();
         String facilities = facilitiesFi.getText();
 
+        cnst eu = new cnst();
         /* try{
        
         if ((location.isEmpty()) || (facilities.isEmpty())) {
@@ -83,7 +85,12 @@ public class AddGymController implements Initializable {
                 facilitiesFi.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;-fx-border-radius: 15px;-fx-background-radius: 15px;");
                 new animatefx.animation.Shake(facilitiesFi).play();
                 labelFacility.setText("Facility is empty");
-            } else {
+            }else if(!eu.testfacility(facilities)){
+             facilitiesFi.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;-fx-border-radius: 15px;-fx-background-radius: 15px;");
+                new animatefx.animation.Shake(facilitiesFi).play();
+                labelFacility.setText("Facility must not contain numbers");
+            
+        } else {
                 facilitiesFi.setStyle(null);
             }
         } else {

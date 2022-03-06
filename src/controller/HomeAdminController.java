@@ -83,7 +83,7 @@ public class HomeAdminController implements Initializable {
          Scene scene2 = null;
         Stage stageTheLabelBelongs = (Stage) res.getScene().getWindow();
         try {
-            scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/Manage.fxml")));
+            scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/ProductsM.fxml")));
         } catch (IOException ex) {
             ex.printStackTrace();
         }

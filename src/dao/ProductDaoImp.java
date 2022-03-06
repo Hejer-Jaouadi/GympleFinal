@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import utils.ConnexionSingleton;
 
 /**
@@ -105,5 +107,62 @@ return prods;
     
       
 }
+    public ObservableList<Product> getAllProduct()
+   {
+        ObservableList<Product> product =FXCollections.observableArrayList();
+        ConnexionSingleton conn=ConnexionSingleton.getInstance();
+        
+ try {
+     
+    PreparedStatement ps= conn.getCnx().prepareStatement("select * from Product");
+
+    ResultSet rs = ps.executeQuery();
+    while (rs.next()) {
+    Product p = new Product();
+    p.setIdP(rs.getInt("IdP"));
+    p.setName(rs.getString("name"));
+    p.setDescription(rs.getString("description"));
+    p.setQuantity(rs.getInt("quantity"));
+    p.setCategory(rs.getString("category"));
+    p.setPrice(rs.getFloat("price"));
+    product.add(p);
+    
+ 
+    }
+        } catch (SQLException e) {
+            System.out.println("problem in getproduct");
+            e.printStackTrace();
+            
+}
+return product;
+   }
+   
+       // return data which i search about it as observable list because table parmetar is observable
+   public ObservableList<Product> getSearchProduct(String name)
+   {
+        ConnexionSingleton conn=ConnexionSingleton.getInstance();
+        ObservableList<Product> product =FXCollections.observableArrayList();
+        try {
+           
+            PreparedStatement ps =  conn.getCnx().prepareStatement("SELECT * FROM Product WHERE name LIKE '%"+name+"%'");
+            ResultSet rs = ps.executeQuery();
+            
+           
+          while (rs.next()) {
+    Product p = new Product();
+    p.setIdP(rs.getInt("IdP"));
+    p.setName(rs.getString("name"));
+    p.setDescription(rs.getString("quantity"));
+    p.setDescription(rs.getString("description"));
+    p.setCategory(rs.getString("category"));
+    product.add(p);         
+            }
+        } catch (SQLException ex) {
+            System.out.println("problem in dao getsearch product");
+        }
+     
+       return product;
+   }
+   
     
 }

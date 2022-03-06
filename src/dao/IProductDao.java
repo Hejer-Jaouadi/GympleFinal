@@ -6,6 +6,7 @@ package dao;
 
 import entity.Product;
 import java.util.List;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -16,5 +17,7 @@ public interface IProductDao {
     public List<Product> getProduct();
     public Product updateProduct(Product p);
     public void deleteProduct(int idP);
+    public ObservableList<Product> getSearchProduct(String name);
+    public ObservableList<Product> getAllProduct();
     
 }

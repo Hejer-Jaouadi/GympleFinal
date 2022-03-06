@@ -48,8 +48,6 @@ public class GymController implements Initializable {
     @FXML
     private TableColumn<Gym, String> facilities;
     @FXML
-    private TableColumn<Gym, Button> edit;
-    @FXML
     private Button add;
     @FXML
     private Button refresh;
@@ -66,6 +64,8 @@ public class GymController implements Initializable {
     private Button listRooms;
     @FXML
     private TextField searchFi;
+    @FXML
+    private Button search;
 
     /**
      * Initializes the controller class.
@@ -75,28 +75,9 @@ public class GymController implements Initializable {
         //initTable();
         loadDate();
         
-        ////initial filtered list
-       /* FilteredList<Gym> filteredData = new FilteredList<>(GymList, b ->true);
         
-        
-        searchFi.textProperty().addListener((observable, oldValue ,newValue)-> {
-            filteredData.setPredicate(gym-> {
-                
-                ///if no search value display all records if current has no changes
-                
-                if(newValue.isEmpty() || newValue == null){
-                    return true;
-                }
-                String searchkeyword  = newValue.toLowerCase();
-                
-                if(gym.get)
-                
-            });
-            
-            //////
-            
-            
-        });*/
+       
+      
         
     }
 
@@ -131,8 +112,7 @@ public class GymController implements Initializable {
     }
 
     public void loadDate() {
-        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        // MyConnexion mc = MyConnexion.getInstance() ;
+       
         
         Refresh();
         idG.setCellValueFactory(new PropertyValueFactory<>("idG"));
@@ -166,46 +146,9 @@ public class GymController implements Initializable {
             
         });
         
-        
-      // edit.setCellValueFactory(new PropertyValueFactory<>("update"));
-        
-      /*  Callback<TableColumn<Gym,String>,TableCell<Gym,String>>CellFactory=(person)->{
-              
-            final TableCell<Gym,String> cell = new TableCell<Gym,String>(){
+    
             
-                public void updateGym(String item, boolean empty){
-                    super.updateItem(item, empty);
-                    
-                    if(empty){
-                        setGraphic(null);
-                        setText(null);
-                        
-                    }
-                else{
-                        final Button editButton=new Button("EDIT");
-                        editButton.setOnAction(event-> {
-                        Gym g = getTableView().getItems().get(getIndex());
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                  
-                    alert.setContentText("You have clicked the gym with location : \n" +g.getLocation()+"with facility \n"+g.getFacilities());
-                    alert.show();
-                });
-                        setGraphic(editButton);
-                        setText(null);
-                    }
-                    
-                }
-                
-        };
-            
-            
-            
-            
-            
-            
-            return cell;
-        };
-         */
+           
     }
 
     
@@ -250,6 +193,25 @@ public class GymController implements Initializable {
             System.out.println("error" + ex.getMessage());
         }
        
+    }
+
+    @FXML
+    private void search(MouseEvent event) {
+        
+         String searchGym = searchFi.getText();
+         GymCrud gc = GymCrud.getInstance();
+         
+         GymList.clear();
+        // Gym g = new Gym(location,facilities);
+        //  GymList.add(new Gym(location,facilities));
+        
+        // GymList.add(gc.displayGym());
+        GymList.addAll(gc.SearchGym(searchGym));
+        //gc.SearchGym(searchGym);
+        
+        tableGym.setItems(GymList);
+        
+        
     }
     
     

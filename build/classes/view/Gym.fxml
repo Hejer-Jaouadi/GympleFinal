@@ -10,7 +10,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <HBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GymController">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="510.0" prefWidth="600.0">
@@ -30,7 +29,7 @@
                </children>
             </HBox>
             <HBox layoutX="184.0" layoutY="42.7060546875" />
-            <Button fx:id="add" layoutX="384.0" layoutY="115.0" mnemonicParsing="false" onMouseClicked="#Add" prefHeight="33.0" prefWidth="60.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #ff6600;" text="Add">
+            <Button fx:id="add" layoutX="396.0" layoutY="115.0" mnemonicParsing="false" onMouseClicked="#Add" prefHeight="33.0" prefWidth="60.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #ff6600;" text="Add">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -38,7 +37,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="refresh" layoutX="456.0" layoutY="115.0" mnemonicParsing="false" onMouseClicked="#Refresh" prefHeight="33.0" prefWidth="81.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #ff6600;" text="Refresh">
+            <Button fx:id="refresh" layoutX="471.0" layoutY="115.0" mnemonicParsing="false" onMouseClicked="#Refresh" prefHeight="33.0" prefWidth="81.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #ff6600;" text="Refresh">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -83,7 +82,8 @@
                </cursor>
             </HBox>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff6600" height="7.0" layoutX="63.0" layoutY="85.0" stroke="#c6b8b8" strokeType="INSIDE" width="250.0" />
-            <TextField fx:id="searchFi" alignment="CENTER" layoutX="85.0" layoutY="119.0" prefHeight="25.0" prefWidth="258.0" promptText="Search for a gym" style="-fx-background-radius: 15; -fx-border-radius: 15;" />
+            <TextField fx:id="searchFi" alignment="CENTER" layoutX="55.0" layoutY="119.0" prefHeight="25.0" prefWidth="258.0" promptText="Search for a gym" style="-fx-background-radius: 15; -fx-border-radius: 15;" />
+            <Button fx:id="search" layoutX="332.0" layoutY="119.0" mnemonicParsing="false" onMouseClicked="#search" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #ff6600;" text="Search" />
          </children>
       </AnchorPane>
    </children>

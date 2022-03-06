@@ -10,6 +10,7 @@ import utils.ConnexionSingleton;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -100,7 +101,36 @@ public class GymCrud implements IdaoG<Gym> {
 
     }
     
-    
+    @Override
+    public List<Gym> displayGymwithoutid() {
+        String req = "select location,facilities from gym";
+       
+        ObservableList<Gym> list = FXCollections.observableArrayList();
+
+        try {
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+                
+                Gym g = new Gym(req, req);
+                
+                g.setLocation(rs.getString(1));
+                g.setFacilities(rs.getString(2));
+               
+                list.add(g);
+
+            }
+            
+            
+             
+
+        } catch (SQLException ex) {
+            System.out.println("error in display gym");
+            //Logger.getLogger(GymCrud.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+        return list;
+
+    }
     
 
     @Override
@@ -291,6 +321,38 @@ String qry = "UPDATE gym SET location = '" + location + "', facilities = '" + fa
     
     
     
-    } 
+    }
+    public List<Gym> SearchGym(String recherche) {
+        List<Gym> myList = new ArrayList();
+
+        try {
+            String req = "SELECT * \n"
+                    + "FROM gym AS g,gym \n"
+                    + " WHERE  g.idG LIKE '%" + recherche + "%' OR\n"
+                    + "         g.location LIKE '%" + recherche + "%' OR\n"
+                    + "           g.facilities LIKE '%" + recherche + "%'";
+          
+
+            
+                rs = st.executeQuery(req);
+            while (rs.next()) {
+
+                Gym g = new Gym();
+
+                rs.next();
+            g.setIdG(rs.getInt(1));
+            g.setLocation(rs.getString(2));
+            g.setFacilities(rs.getString(3));
+            
+                myList.add(g);
+
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("search error");
+            System.out.println(ex.getMessage());
+        }
+        return myList;
+    }
     
 }

@@ -17,6 +17,7 @@ public interface IdaoR <T> {
     public void insertRoom2(T o);
 
     public List<T> displayRoom();
+    
 
     public boolean updateRoom(T os);
 

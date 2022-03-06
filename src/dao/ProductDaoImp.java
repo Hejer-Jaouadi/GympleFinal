@@ -5,14 +5,36 @@
 package dao;
 
 import entity.Product;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javax.swing.JFileChooser;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CreationHelper;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Table;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import utils.ConnexionSingleton;
 
 /**
@@ -152,9 +174,10 @@ return product;
     Product p = new Product();
     p.setIdP(rs.getInt("IdP"));
     p.setName(rs.getString("name"));
-    p.setDescription(rs.getString("quantity"));
     p.setDescription(rs.getString("description"));
+    p.setQuantity(rs.getInt("quantity"));
     p.setCategory(rs.getString("category"));
+    p.setPrice(rs.getFloat("price"));
     product.add(p);         
             }
         } catch (SQLException ex) {
@@ -163,6 +186,133 @@ return product;
      
        return product;
    }
+   public void writeToExcel(JTable jt){
+        ConnexionSingleton conn=ConnexionSingleton.getInstance();
+        try {
+            DefaultTableModel model = new DefaultTableModel(new String[]{
+            "Id",
+            "Name",
+             "Quantity",
+             "Description",
+             "Category",
+             "Price"
+            },0);
+     
+    PreparedStatement ps= conn.getCnx().prepareStatement("select * from Product");
+
+    ResultSet rs = ps.executeQuery();
+    while (rs.next()) {
+    int id = rs.getInt("IdP");
+    String name = rs.getString("name");
+    int quantity = rs.getInt("quantity");
+    String description = rs.getString("description");
+    String category = rs.getString("category");
+    Float price = rs.getFloat("price");
+    
+    model.addRow(new Object[]{
+    id,name,quantity,description,category,price
+    });
+    jt.setModel(model);
+    
+   
    
     
+ 
+    }
+        } catch (SQLException e) {
+            System.out.println("problem in getproduct");
+            e.printStackTrace();
+            
+}
+        
+       
+   };
+   public void openFile(String file){
+   
+        try {
+            File path = new File(file);
+            Desktop.getDesktop().open(path);
+        } catch (IOException ex) {
+            System.out.println("problem in openfile");
+        }
+   }
+   
+   
+      
+       
+         public void writetoExcel()  {
+             ConnexionSingleton conn=ConnexionSingleton.getInstance();
+        try {
+            XSSFWorkbook wb = new XSSFWorkbook();
+            XSSFSheet ws = wb.createSheet("products");
+        
+ 
+        Row headerRow = ws.createRow(0);
+ 
+        Cell headerCell = headerRow.createCell(0);
+        headerCell.setCellValue("Product Name");
+ 
+        headerCell = headerRow.createCell(1);
+        headerCell.setCellValue("Quantity");
+ 
+        headerCell = headerRow.createCell(2);
+        headerCell.setCellValue("Description");
+ 
+        headerCell = headerRow.createCell(3);
+        headerCell.setCellValue("Category");
+ 
+        headerCell = headerRow.createCell(4);
+        headerCell.setCellValue("Price");
+            
+            
+            
+            int rowCount = 1;
+            
+            PreparedStatement ps= conn.getCnx().prepareStatement("select * from Product");
+            
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("IdP");
+                String name = rs.getString("name");
+                int quantity = rs.getInt("quantity");
+                String description = rs.getString("description");
+                String category = rs.getString("category");
+                Float price = rs.getFloat("price");
+                
+                Row row = ws.createRow(rowCount++);
+                
+                int columnCount = 0;
+                Cell cell = row.createCell(columnCount++);
+                cell.setCellValue(name);
+                
+                cell = row.createCell(columnCount++);
+                cell.setCellValue(quantity);
+                
+                cell = row.createCell(columnCount++);
+                cell.setCellValue(description);
+                cell = row.createCell(columnCount++);
+                cell.setCellValue(category);
+                cell = row.createCell(columnCount++);
+                cell.setCellValue(price);
+                
+                
+               
+                wb.write(new FileOutputStream("products.xls"));
+            }
+           
+        } catch (SQLException ex) {
+           System.out.println("problem in excel");
+           
+           
+       
+    }   catch (FileNotFoundException ex) {
+            Logger.getLogger(ProductDaoImp.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ProductDaoImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    
+   
+    
+}
 }

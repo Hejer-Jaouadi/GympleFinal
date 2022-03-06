@@ -59,18 +59,22 @@ public class ProductsMController implements Initializable {
     @FXML
     private TableColumn id;
     @FXML
-    private TableColumn<?, ?> descp;
+    private TableColumn descp;
     @FXML
-    private TableColumn<?, ?> qtep;
+    private TableColumn qtep;
     @FXML
-    private TableColumn<?, ?> catp;
+    private TableColumn catp;
     @FXML
-    private TableColumn<?, ?> pricep;
+    private TableColumn pricep;
     @FXML
-    private TableColumn<?, ?> nameprod;
+    private TableColumn nameprod;
+    
+ 
     
     
       ProductDaoImp pc = new ProductDaoImp();
+    @FXML
+    private Button btnex;
      
 
     /**
@@ -188,7 +192,12 @@ public class ProductsMController implements Initializable {
 
     @FXML
     private void clickTable(KeyEvent event) {
-       
+        Product prod =  (Product) table.getSelectionModel().getSelectedItem();
+           name.setText(prod.getName());
+           desc.setText(prod.getDescription());
+           qte.setText(prod.getQuantity()+"");
+           cat.setText(prod.getCategory());
+           price.setText(prod.getPrice()+"");
           
          
           
@@ -208,6 +217,12 @@ public class ProductsMController implements Initializable {
     private void SearchItem(ActionEvent event) {
           ProductDaoImp pc = new ProductDaoImp();
            table.setItems(pc.getSearchProduct(txtSearch.getText()));
+    }
+
+    @FXML
+    private void extractexcel(ActionEvent event) {
+        ProductDaoImp prods = new ProductDaoImp();
+        prods.writetoExcel();
     }
     
 }

@@ -9,13 +9,13 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RoomController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="572.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RoomController">
    <children>
-      <AnchorPane id="AnchorPane" layoutX="14.0" prefHeight="520.0" prefWidth="596.0">
+      <AnchorPane id="AnchorPane" layoutY="8.0" prefHeight="538.0" prefWidth="596.0">
          <children>
             <HBox alignment="CENTER" layoutX="17.0" layoutY="172.0" prefHeight="320.0" prefWidth="578.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="172.0">
                <children>
-                  <TableView fx:id="tableRoom" editable="true" prefHeight="320.0" prefWidth="598.0" style="-fx-border-color: #ff6600; -fx-border-radius: 15; -fx-background-radius: 15; -fx-opacity: 15; -fx-background-color: gray; ">
+                  <TableView fx:id="tableRoom" editable="true" prefHeight="278.0" prefWidth="564.0" style="-fx-border-color: #ff6600; -fx-border-radius: 15; -fx-background-radius: 15; -fx-opacity: 15; -fx-background-color: gray; ">
                      
 
                       <columns>
@@ -32,7 +32,7 @@
                </children>
             </HBox>
             <HBox layoutX="184.0" layoutY="42.7060546875" />
-            <Button fx:id="add" layoutX="338.0" layoutY="124.0" mnemonicParsing="false" onMouseClicked="#Add" prefHeight="33.0" prefWidth="60.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #ff6600;" text="Add">
+            <Button fx:id="add" layoutX="410.0" layoutY="124.0" mnemonicParsing="false" onMouseClicked="#Add" prefHeight="33.0" prefWidth="60.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #ff6600;" text="Add">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -40,7 +40,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="refresh" layoutX="410.0" layoutY="124.0" mnemonicParsing="false" onMouseClicked="#Refresh" prefHeight="33.0" prefWidth="81.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #ff6600;" text="Refresh">
+            <Button fx:id="refresh" layoutX="480.0" layoutY="124.0" mnemonicParsing="false" onMouseClicked="#Refresh" prefHeight="33.0" prefWidth="81.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #ff6600;" text="Refresh">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -85,7 +85,7 @@
                </cursor>
             </HBox>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff6600" height="7.0" layoutX="300.0" layoutY="94.0" stroke="#c6b8b8" strokeType="INSIDE" width="250.0" />
-            <Button fx:id="stat" layoutX="86.0" layoutY="124.0" mnemonicParsing="false" onMouseClicked="#stat" prefHeight="33.0" prefWidth="109.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #ff6600;" text="Statitstics">
+            <Button fx:id="stat" layoutX="112.0" layoutY="121.0" mnemonicParsing="false" onMouseClicked="#stat" prefHeight="33.0" prefWidth="109.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #ff6600;" text="Statitstics">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -93,7 +93,11 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="pdf" layoutX="222.0" layoutY="128.0" mnemonicParsing="false" onMouseClicked="#pdf" text="pdf" />
+            <Button fx:id="pdf" layoutX="51.0" layoutY="121.0" mnemonicParsing="false" onMouseClicked="#pdf" style="-fx-border-color: orange; -fx-background-radius: 15; -fx-border-radius: 15;" text="pdf">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

@@ -74,11 +74,7 @@ public class GymController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         //initTable();
         loadDate();
-        
-        
-       
-      
-        
+
     }
 
     @FXML
@@ -87,11 +83,11 @@ public class GymController implements Initializable {
             Parent root;
             root = FXMLLoader.load(getClass().getResource("/view/AddGym.fxml"));
             Scene scene = new Scene(root);
-            Stage stage = new Stage() ;
+            Stage stage = new Stage();
             stage.setScene(scene);
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
-            
+
         } catch (IOException ex) {
             System.out.println("error" + ex.getMessage());
         }
@@ -112,52 +108,43 @@ public class GymController implements Initializable {
     }
 
     public void loadDate() {
-       
-        
+
         Refresh();
         idG.setCellValueFactory(new PropertyValueFactory<>("idG"));
         location.setCellValueFactory(new PropertyValueFactory<>("location"));
         facilities.setCellValueFactory(new PropertyValueFactory<>("facilities"));
-        
-        tableGym.setOnMousePressed(new EventHandler<MouseEvent>(){
+
+        tableGym.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
 
-               
                 FXMLLoader Loader = new FXMLLoader();
                 Loader.setLocation(getClass().getResource("/view/GymDisplay.fxml"));
-                try{
+                try {
                     Loader.load();
-                }catch (IOException ex) {
-                // ex.printStackTrace();
-                    
-                    System.out.println("error : "+ex.getMessage());;
+                } catch (IOException ex) {
+                    // ex.printStackTrace();
+
+                    System.out.println("error : " + ex.getMessage());;
                 }
                 GymDisplayController gdc = Loader.getController();
-                gdc.setData(tableGym.getSelectionModel().getSelectedItem().getIdG(), tableGym.getSelectionModel().getSelectedItem().getLocation(),""+tableGym.getSelectionModel().getSelectedItem().getFacilities());
-                
-                
-             Parent p = Loader.getRoot();
+                gdc.setData(tableGym.getSelectionModel().getSelectedItem().getIdG(), tableGym.getSelectionModel().getSelectedItem().getLocation(), "" + tableGym.getSelectionModel().getSelectedItem().getFacilities());
+
+                Parent p = Loader.getRoot();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(p));
                 stage.show();
             }
-            
-            
-        });
-        
-    
-            
-           
-    }
 
-    
+        });
+
+    }
 
     @FXML
     private void CloseTab(MouseEvent event) {
-        
-         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-         stage.close();
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
     }
 
     @FXML
@@ -166,11 +153,11 @@ public class GymController implements Initializable {
             Parent root;
             root = FXMLLoader.load(getClass().getResource("/view/Gym.fxml"));
             Scene scene = new Scene(root);
-            Stage stage = new Stage() ;
+            Stage stage = new Stage();
             stage.setScene(scene);
             stage.initStyle(StageStyle.TRANSPARENT);
             stage.show();
-            
+
         } catch (IOException ex) {
             System.out.println("error" + ex.getMessage());
         }
@@ -179,41 +166,33 @@ public class GymController implements Initializable {
 
     @FXML
     private void listRooms(MouseEvent event) {
-        
+
         try {
             Parent root;
             root = FXMLLoader.load(getClass().getResource("/view/Room.fxml"));
             Scene scene = new Scene(root);
-            Stage stage = new Stage() ;
+            Stage stage = new Stage();
             stage.setScene(scene);
             stage.initStyle(StageStyle.TRANSPARENT);
             stage.show();
-            
+
         } catch (IOException ex) {
             System.out.println("error" + ex.getMessage());
         }
-       
+
     }
 
     @FXML
     private void search(MouseEvent event) {
-        
-         String searchGym = searchFi.getText();
-         GymCrud gc = GymCrud.getInstance();
-         
-       //  GymList.clear();
+
+        String searchGym = searchFi.getText();
+        GymCrud gc = GymCrud.getInstance();
+        //Refresh();
+        GymList.clear();
         // Gym g = new Gym(location,facilities);
-        //  GymList.add(new Gym(location,facilities));
-        
-        // GymList.add(gc.displayGym());
         GymList.addAll(gc.SearchGym(searchGym));
-        //gc.SearchGym(searchGym);
-        
-       // tableGym.setItems(GymList);
-        
-        
+
+        //  tableGym.setItems(GymList);
     }
-    
-    
 
 }

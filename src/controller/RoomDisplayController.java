@@ -248,6 +248,7 @@ public class RoomDisplayController implements Initializable {
         table.addCell(number);
         table.addCell("room Capacity");
         table.addCell(capacity);
+       
 
         System.out.println("pdf done");
 

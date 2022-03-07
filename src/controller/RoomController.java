@@ -40,7 +40,6 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import javax.swing.text.View;
 
-
 public class RoomController implements Initializable {
 
     @FXML
@@ -61,7 +60,7 @@ public class RoomController implements Initializable {
     private Button listGymbutton;
     @FXML
     private Button listRooms;
-    
+
     ObservableList<Room> RoomList = FXCollections.observableArrayList();
     @FXML
     private TableColumn<Room, Integer> capacity;
@@ -78,21 +77,21 @@ public class RoomController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-         loadDate();
-       
-    }    
+        loadDate();
+
+    }
 
     @FXML
     private void Add(MouseEvent event) {
-         try {
+        try {
             Parent root;
             root = FXMLLoader.load(getClass().getResource("/view/AddRoom.fxml"));
             Scene scene = new Scene(root);
-            Stage stage = new Stage() ;
+            Stage stage = new Stage();
             stage.setScene(scene);
             stage.initStyle(StageStyle.TRANSPARENT);
             stage.show();
-            
+
         } catch (IOException ex) {
             System.out.println("error" + ex.getMessage());
         }
@@ -101,21 +100,20 @@ public class RoomController implements Initializable {
 
     @FXML
     private void Refresh() {
-         RoomList.clear();
+        RoomList.clear();
         RoomCrud rc = RoomCrud.getInstance();
-       // RoomList.addAll(rc.displayRoom());
-            RoomList.addAll(rc.displayRoom());
-       rc.displayRoom();
-        
+        // RoomList.addAll(rc.displayRoom());
+        RoomList.addAll(rc.displayRoom());
+        rc.displayRoom();
+
         tableRoom.setItems(RoomList);
 
-        
     }
 
     @FXML
     private void CloseTab(MouseEvent event) {
-           Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-         stage.close();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
     }
 
     @FXML
@@ -124,11 +122,11 @@ public class RoomController implements Initializable {
             Parent root;
             root = FXMLLoader.load(getClass().getResource("/view/Gym.fxml"));
             Scene scene = new Scene(root);
-            Stage stage = new Stage() ;
+            Stage stage = new Stage();
             stage.setScene(scene);
             stage.initStyle(StageStyle.TRANSPARENT);
             stage.show();
-            
+
         } catch (IOException ex) {
             System.out.println("error" + ex.getMessage());
         }
@@ -141,60 +139,52 @@ public class RoomController implements Initializable {
             Parent root;
             root = FXMLLoader.load(getClass().getResource("/view/Room.fxml"));
             Scene scene = new Scene(root);
-            Stage stage = new Stage() ;
+            Stage stage = new Stage();
             stage.setScene(scene);
-            
-             // primaryStage.initStyle(StageStyle.TRANSPARENT);
+
+            // primaryStage.initStyle(StageStyle.TRANSPARENT);
             stage.initStyle(StageStyle.TRANSPARENT);
             stage.show();
-              Refresh();
-            
-            
-            
+            Refresh();
+
         } catch (IOException ex) {
             System.out.println("error" + ex.getMessage());
         }
-      
+
     }
 
     private void loadDate() {
         Refresh();
-          idR.setCellValueFactory(new PropertyValueFactory<>("idR"));
+        idR.setCellValueFactory(new PropertyValueFactory<>("idR"));
         name.setCellValueFactory(new PropertyValueFactory<>("roomName"));
         number.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
         capacity.setCellValueFactory(new PropertyValueFactory<>("max_nbr"));
-         gym.setCellValueFactory(new PropertyValueFactory<>("idgym"));
+        gym.setCellValueFactory(new PropertyValueFactory<>("idgym"));
 // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-     tableRoom.setOnMousePressed(new EventHandler<MouseEvent>(){
+        tableRoom.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
 
-               
                 FXMLLoader Loader = new FXMLLoader();
                 Loader.setLocation(getClass().getResource("/view/RoomDisplay.fxml"));
-                try{
+                try {
                     Loader.load();
-                }catch (IOException ex) {
-                // ex.printStackTrace();
-                    
-                    System.out.println("error : "+ex.getMessage());;
+                } catch (IOException ex) {
+                    // ex.printStackTrace();
+
+                    System.out.println("error : " + ex.getMessage());;
                 }
                 RoomDisplayController rdc = Loader.getController();
-                rdc.setData(tableRoom.getSelectionModel().getSelectedItem().getIdR(),""+tableRoom.getSelectionModel().getSelectedItem().getRoomName(),tableRoom.getSelectionModel().getSelectedItem().getRoomNumber(),tableRoom.getSelectionModel().getSelectedItem().getMax_nbr(),tableRoom.getSelectionModel().getSelectedItem().getIdgym());
+                rdc.setData(tableRoom.getSelectionModel().getSelectedItem().getIdR(), "" + tableRoom.getSelectionModel().getSelectedItem().getRoomName(), tableRoom.getSelectionModel().getSelectedItem().getRoomNumber(), tableRoom.getSelectionModel().getSelectedItem().getMax_nbr(), tableRoom.getSelectionModel().getSelectedItem().getIdgym());
 
-                
-                
-             Parent p = Loader.getRoot();
+                Parent p = Loader.getRoot();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(p));
                 stage.show();
             }
-            
-            
+
         });
-        
-    
-    
+
     }
 
     @FXML
@@ -203,51 +193,47 @@ public class RoomController implements Initializable {
             Parent root;
             root = FXMLLoader.load(getClass().getResource("/view/stat.fxml"));
             Scene scene = new Scene(root);
-            Stage stage = new Stage() ;
+            Stage stage = new Stage();
             stage.setScene(scene);
-            
-             // primaryStage.initStyle(StageStyle.TRANSPARENT);
+
+            // primaryStage.initStyle(StageStyle.TRANSPARENT);
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
-              Refresh();
-            
-            
-            
+            Refresh();
+
         } catch (IOException ex) {
             System.out.println("error" + ex.getMessage());
         }
-        
+
     }
 
     @FXML
-    private void pdf(MouseEvent event)throws FileNotFoundException, DocumentException {
-       
-        
+    private void pdf(MouseEvent event) throws FileNotFoundException, DocumentException {
+
         Document document = new Document();
         PdfWriter.getInstance(document, new FileOutputStream("roomPdf2"));
         document.open();
         document.add(new Paragraph("The list of rooms : "));
         document.add(new Paragraph("---------------------------------"));
-       
+
         PdfPTable table = new PdfPTable(3);
         table.addCell("room Name");
-       // table.addCell();
+        // table.addCell();
         table.addCell("room Number");
         table.addCell("room capacity");
-        
-        
-        
+
         document.add(table);
         document.close();
-        
-        
+
     }
-    
+
     private PdfPCell getCell(String text, int alignment) {
-    PdfPCell cell = new PdfPCell(new Phrase(text));
-    cell.setPadding(0);
-    cell.setHorizontalAlignment(alignment);
-    cell.setBorder(PdfPCell.NO_BORDER);
-    return cell;
-}
+        PdfPCell cell = new PdfPCell(new Phrase(text));
+        cell.setPadding(0);
+        cell.setHorizontalAlignment(alignment);
+        cell.setBorder(PdfPCell.NO_BORDER);
+        return cell;
+    }
+
+    
 }

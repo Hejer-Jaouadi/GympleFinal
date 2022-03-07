@@ -29,7 +29,6 @@ public class RoomCrud implements IdaoR<Room> {
     private static RoomCrud instance;
     private Statement st;
     private ResultSet rs;
-    
 
     private RoomCrud() {
         ConnexionSingleton cs = ConnexionSingleton.getInstance();
@@ -50,7 +49,7 @@ public class RoomCrud implements IdaoR<Room> {
     }
 
     @Override
-    public void insertRoom(String roomName, String roomNumber,String idgym) {
+    public void insertRoom(String roomName, String roomNumber, String idgym) {
         String req = "insert into room (roomName,roomNumber,idgym) values (roomName,roomNumber,idgym)";
         try {
             st.executeUpdate(req);
@@ -67,7 +66,7 @@ public class RoomCrud implements IdaoR<Room> {
     @Override
     public void insertRoom2(Room o) {
         String req = "insert into room (roomName,roomNumber,idgym) values "
-                + "('" + o.getRoomName() + "','" + o.getRoomNumber() + "','" + o.getIdgym()+ "')";
+                + "('" + o.getRoomName() + "','" + o.getRoomNumber() + "','" + o.getIdgym() + "')";
         try {
             st.executeUpdate(req);
             System.out.println("room added successfully");
@@ -133,7 +132,7 @@ public class RoomCrud implements IdaoR<Room> {
             r.setRoomName(rs.getString(2));
             r.setRoomNumber(rs.getInt(3));
             r.setMax_nbr(rs.getInt(4));
-             r.setIdgym(rs.getInt(5));
+            r.setIdgym(rs.getInt(5));
             //}  
         } catch (SQLException ex) {
             System.out.println("room does not exist");
@@ -204,7 +203,7 @@ public class RoomCrud implements IdaoR<Room> {
 
     }
 
-    public void insertRoom2(String name, String number,String idgym) {
+    public void insertRoom2(String name, String number, String idgym) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         String req = "insert into room (roomName,roomNumber,idgym) values (name,number,idgym)";
         try {
@@ -247,7 +246,7 @@ public class RoomCrud implements IdaoR<Room> {
             r.setRoomName(rs.getString(2));
             r.setRoomNumber(rs.getInt(3));
             r.setMax_nbr(rs.getInt(4));
-             r.setIdgym(rs.getInt(5));
+            r.setIdgym(rs.getInt(5));
             //}  
         } catch (SQLException ex) {
             System.out.println("room does not exist");
@@ -257,7 +256,8 @@ public class RoomCrud implements IdaoR<Room> {
         return r;
 
     }
-public ObservableList<XYChart.Series<String, Double>> statistique(){
+
+    public ObservableList<XYChart.Series<String, Double>> statistique(){
       ObservableList<XYChart.Series<String, Double>> stats = FXCollections.observableArrayList();
 
      try { 
@@ -279,5 +279,6 @@ public ObservableList<XYChart.Series<String, Double>> statistique(){
 }
 
    
+    
 
 }

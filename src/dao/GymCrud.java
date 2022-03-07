@@ -81,7 +81,7 @@ public class GymCrud implements IdaoG<Gym> {
         try {
             rs = st.executeQuery(req);
             while (rs.next()) {
-                
+
                 Gym g = new Gym();
                 g.setIdG(rs.getInt(1));
                 g.setLocation(rs.getString(2));
@@ -89,9 +89,6 @@ public class GymCrud implements IdaoG<Gym> {
                 list.add(g);
 
             }
-            
-            
-             
 
         } catch (SQLException ex) {
             System.out.println("error in display gym");
@@ -100,28 +97,25 @@ public class GymCrud implements IdaoG<Gym> {
         return list;
 
     }
-    
+
     @Override
     public List<Gym> displayGymwithoutid() {
         String req = "select location,facilities from gym";
-       
+
         ObservableList<Gym> list = FXCollections.observableArrayList();
 
         try {
             rs = st.executeQuery(req);
             while (rs.next()) {
-                
+
                 Gym g = new Gym(req, req);
-                
+
                 g.setLocation(rs.getString(1));
                 g.setFacilities(rs.getString(2));
-               
+
                 list.add(g);
 
             }
-            
-            
-             
 
         } catch (SQLException ex) {
             System.out.println("error in display gym");
@@ -131,7 +125,6 @@ public class GymCrud implements IdaoG<Gym> {
         return list;
 
     }
-    
 
     @Override
     public boolean updateGym(Gym g) {
@@ -142,7 +135,7 @@ public class GymCrud implements IdaoG<Gym> {
             if (st.executeUpdate(qry) > 0) {
                 System.out.println("update");
                 return true;
-                
+
             }
 
         } catch (SQLException ex) {
@@ -197,7 +190,7 @@ public class GymCrud implements IdaoG<Gym> {
 
     @Override
     public void searchByLocation(String location) {
-        String req = "select * from gym where location='" + location+"'";
+        String req = "select * from gym where location='" + location + "'";
 
         try {
             rs = st.executeQuery(req);
@@ -217,28 +210,26 @@ public class GymCrud implements IdaoG<Gym> {
 
     }
 
-    
     @Override
-    public boolean modifyGym(int id,String location, String facilities) {
-       String qry = "UPDATE gym SET location = '" + location + "', facilities = '" + facilities + "' WHERE idG = " + id;
+    public boolean modifyGym(int id, String location, String facilities) {
+        String qry = "UPDATE gym SET location = '" + location + "', facilities = '" + facilities + "' WHERE idG = " + id;
 
         try {
-              st.executeUpdate(qry);
+            st.executeUpdate(qry);
             System.out.println("gym modified successfully");
-                return true;
-            
+            return true;
 
         } catch (SQLException ex) {
             System.out.println("error in modify gym");
             Logger.getLogger(GymCrud.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
-        
+
     }
 
     public Gym displayByIdGym(String idGym) {
-        
-     String req = "select * from gym where idG =" + idGym;
+
+        String req = "select * from gym where idG =" + idGym;
         Gym g = new Gym();
         try {
             rs = st.executeQuery(req);
@@ -255,10 +246,10 @@ public class GymCrud implements IdaoG<Gym> {
         }
         return g;
         //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    
+
     }
 
-  /*  public void modifyGym(Gym gym) {
+    /*  public void modifyGym(Gym gym) {
        
 String qry = "UPDATE gym SET location = '" + location + "', facilities = '" + facilities + "' WHERE idG = " + id;
 
@@ -277,19 +268,15 @@ String qry = "UPDATE gym SET location = '" + location + "', facilities = '" + fa
 
 // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    */
-
-    
-
+     */
     public boolean modifyGym(String idGym, String location, String facility) {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    String qry = "UPDATE gym SET location = '" + location + "', facilities = '" + facility+ "' WHERE idG = " + idGym;
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String qry = "UPDATE gym SET location = '" + location + "', facilities = '" + facility + "' WHERE idG = " + idGym;
 
         try {
-              st.executeUpdate(qry);
+            st.executeUpdate(qry);
             System.out.println("gym modified successfully");
-                return true;
-            
+            return true;
 
         } catch (SQLException ex) {
             System.out.println("error in modify gym");
@@ -297,62 +284,52 @@ String qry = "UPDATE gym SET location = '" + location + "', facilities = '" + fa
         }
         return false;
     }
-    
-    public ObservableList<Integer> ListId(){
-        
-     ObservableList<Integer> listID = FXCollections.observableArrayList();
+
+    public ObservableList<Integer> ListId() {
+
+        ObservableList<Integer> listID = FXCollections.observableArrayList();
         String req = "select idG from gym";
-     try { 
-            
-             rs = st.executeQuery(req);
-           //  rs = st.executeUpdate(requete3);
-             
-             while (rs.next()){
+        try {
+
+            rs = st.executeQuery(req);
+            //  rs = st.executeUpdate(requete3);
+
+            while (rs.next()) {
                 listID.add(rs.getInt(1));
-             }     
+            }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-      return listID;
-    
-    
-    
-    
-    
-    
-    
-    }
-    public List<Gym> SearchGym(String recherche) {
-        List<Gym> myList = new ArrayList();
+        return listID;
 
+    }
+
+    public List<Gym> SearchGym(String recherche) {
+        //  List<Gym> myList = new ArrayList();
+        ObservableList<Gym> list = FXCollections.observableArrayList();
         try {
             String req = "SELECT * \n"
                     + "FROM gym AS g,gym \n"
                     + " WHERE  g.idG LIKE '%" + recherche + "%' OR\n"
                     + "         g.location LIKE '%" + recherche + "%' OR\n"
                     + "           g.facilities LIKE '%" + recherche + "%'";
-          
 
-            
-                rs = st.executeQuery(req);
-            while (rs.next()) {
+            rs = st.executeQuery(req);
 
-                Gym g = new Gym();
+            Gym g = new Gym();
 
-                rs.next();
+            rs.next();
             g.setIdG(rs.getInt(1));
             g.setLocation(rs.getString(2));
             g.setFacilities(rs.getString(3));
-            
-                myList.add(g);
 
-            }
+            list.add(g);
 
         } catch (SQLException ex) {
             System.err.println("search error");
             System.out.println(ex.getMessage());
         }
-        return myList;
+        return list;
     }
-    
+
 }

@@ -71,7 +71,7 @@ public class Gym {
 
     @Override
     public String toString() {
-        return "Gym{" + "idG=" + idG + ", location=" + location + ", facilities=" + facilities + '}'+"\n";
+        return "location : " + location + ", facilities : " + facilities ;
     }
 
     @Override

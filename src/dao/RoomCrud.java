@@ -65,8 +65,8 @@ public class RoomCrud implements IdaoR<Room> {
 
     @Override
     public void insertRoom2(Room o) {
-        String req = "insert into room (roomName,roomNumber,idgym) values "
-                + "('" + o.getRoomName() + "','" + o.getRoomNumber() + "','" + o.getIdgym() + "')";
+        String req = "insert into room (roomName,roomNumber,idgym,max_nbr) values "
+                + "('" + o.getRoomName() + "','" + o.getRoomNumber() + "','" + o.getIdgym()+ "'," + o.getMax_nbr() + ")";
         try {
             st.executeUpdate(req);
             System.out.println("room added successfully");

@@ -47,9 +47,9 @@ public class MemberDao extends AllUsersDao implements Idao<Member>  {
     
     
     public void insert(Member o) {
-        String req="insert into user (role,first_name,last_name,email,password,id_card,height,weight,training_level,membership) values "
+        String req="insert into user (role,first_name,last_name,email,password,id_card,height,weight,training_level,membership,block) values "
                 + "('member','"+o.getFirst_name()+"','"+o.getLast_name()+"','"+o.getEmail()+"','"+o.getPassword()+"','"+o.getId_card()+"','"+o.getHeight()+"','"
-                +o.getWeight()+"','"+o.getTraining_level()+"','"+o.getMembership().getIdm()+"')";
+                +o.getWeight()+"','"+o.getTraining_level()+"','"+o.getMembership().getIdm()+"','n"+"')";
         try {
             st.executeUpdate(req);
         } catch (SQLException ex) {
@@ -74,7 +74,7 @@ public class MemberDao extends AllUsersDao implements Idao<Member>  {
     
     
     public ObservableList<Member> displayAll() {
-        String req="select * from user natural join membership";
+        String req="select * from user join membership on membership=idm where role='member'";
         ObservableList<Member> list=FXCollections.observableArrayList();       
         
         try {
@@ -89,6 +89,8 @@ public class MemberDao extends AllUsersDao implements Idao<Member>  {
                 p.setId_card(rs.getInt("id_card"));
                 p.setHeight(rs.getFloat("height"));
                 p.setWeight(rs.getFloat("weight"));
+                p.setBlock(rs.getString("block"));
+                p.setPicture(rs.getString("picture"));
                 p.setTraining_level(rs.getString("training_level"));
                 p.setMembership(new Membership(rs.getInt("idm"),this.parse(rs.getString("expire_date")),this.parse(rs.getString("start_date")),rs.getString("type")));
                 list.add(p);
@@ -101,7 +103,7 @@ public class MemberDao extends AllUsersDao implements Idao<Member>  {
     }
     
     public List<Member> displayAllList() {
-        String req="select * from user natural join membership";
+        String req="select * from user join membership on membership=idm where user.role='member'";
         List<Member> list=new ArrayList<>();
         
         try {
@@ -116,6 +118,7 @@ public class MemberDao extends AllUsersDao implements Idao<Member>  {
                 p.setId_card(rs.getInt("id_card"));
                 p.setHeight(rs.getFloat("height"));
                 p.setWeight(rs.getFloat("weight"));
+                p.setBlock(rs.getString("block"));
                 p.setTraining_level(rs.getString("training_level"));
                 p.setMembership(new Membership(rs.getInt("idm"),this.parse(rs.getString("expire_date")),this.parse(rs.getString("start_date")),rs.getString("type")));
                 list.add(p);
@@ -143,6 +146,7 @@ public class MemberDao extends AllUsersDao implements Idao<Member>  {
                 p.setId_card(rs.getInt("id_card"));
                 p.setHeight(rs.getFloat("height"));
                 p.setWeight(rs.getFloat("weight"));
+                p.setBlock(rs.getString("block"));
                 p.setTraining_level(rs.getString("training_level"));
                 p.setMembership(new Membership(rs.getInt("idm"),this.parse(rs.getString("expire_date")),this.parse(rs.getString("start_date")),rs.getString("type")));
             //}  
@@ -157,7 +161,8 @@ public class MemberDao extends AllUsersDao implements Idao<Member>  {
         String qry = "UPDATE user SET first_name = '"+p.getFirst_name()+"', last_name = '"+p.getLast_name()
                 +"', email = '"+p.getEmail()+"', password = '"+p.getPassword()+"', id_card = '"+p.getId_card()
                 +"', height = '"+p.getHeight()+"', weight = '"+p.getWeight()+"', training_level = '"
-                +p.getTraining_level()+"' WHERE id = "+p.getId();
+                +p.getTraining_level()+"', block = '"
+                +p.getBlock()+"' WHERE id = "+p.getId();
         
         try {
             if (st.executeUpdate(qry) > 0) {

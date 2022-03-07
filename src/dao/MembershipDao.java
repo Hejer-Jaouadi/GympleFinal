@@ -6,7 +6,10 @@
 package dao;
 
 
+import entity.Gym;
+import entity.Member;
 import entity.Membership;
+import entity.Trainer;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -168,6 +171,25 @@ public class MembershipDao implements Idao<Membership>{
     {
         LocalDate localDate = LocalDate.parse(s);
         return localDate;
+    }
+     public void getMembership(Member o) {
+        String req="select idm,expire_date,start_date,type from user natural join membership where id="+o.getId();
+       Membership m=new Membership();
+              try {
+           
+           
+            rs=st.executeQuery(req);
+           // while(rs.next()){
+            rs.next();
+               
+                m.setIdm(rs.getInt("idm"));
+                m.setStart_date(this.parse(rs.getString("start_date")));
+                m.setExpire_date(this.parse(rs.getString("expire_date")));
+                m.setType(rs.getString("type"));
+                o.setMembership(m);
+              } catch (SQLException ex) {
+            Logger.getLogger(MembershipDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     

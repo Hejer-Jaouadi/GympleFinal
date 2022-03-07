@@ -25,6 +25,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import utils.Control;
 
 /**
  * FXML Controller class
@@ -49,9 +50,10 @@ public class Signup2Controller implements Initializable {
     @FXML
     private Button cancel2;
     @FXML
-    private Button next2;
-    @FXML
     private Button back;
+    @FXML
+    private Button next2;
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -65,12 +67,14 @@ public class Signup2Controller implements Initializable {
     private void next(ActionEvent event) {
         float h, w;
         String period_of_membership, training_level;
-        period_of_membership = (String) type.getValue();
-        training_level = (String) TL.getValue();
+        
         Scene scene2 = null;
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        if ((height.getText() != null) && (weight.getText() != null) && (!type.getSelectionModel().isEmpty()) && (!TL.getSelectionModel().isEmpty())) {
-            h = Float.parseFloat(height.getText());
+        Control co=new Control();
+        if ((co.trueFloat(height.getText())) && (co.trueFloat(weight.getText())) && (!type.getSelectionModel().isEmpty()) && (!TL.getSelectionModel().isEmpty())) {
+        period_of_membership = (String) type.getValue();
+        training_level = (String) TL.getValue();    
+        h = Float.parseFloat(height.getText());
             w = Float.parseFloat(weight.getText());
             Member u = (Member) stage.getUserData();
             System.out.println(u.getEmail());
@@ -107,6 +111,7 @@ public class Signup2Controller implements Initializable {
                 }
             }
             try {
+                u.setPicture("file:/C:/Users/Asma/Downloads/img.png");
                 stage.setUserData(u);
                 scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/payment.fxml")));
             } catch (IOException ex) {
@@ -150,6 +155,7 @@ public class Signup2Controller implements Initializable {
         alert.showAndWait();
     }
 
+   
     
 
 }

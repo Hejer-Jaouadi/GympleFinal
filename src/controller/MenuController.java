@@ -75,8 +75,15 @@ public class MenuController implements Initializable {
 
     @FXML
     private void CloseTab(MouseEvent event) {
-         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-         stage.close();
+      Scene scene2 = null;
+        Stage stageTheLabelBelongs = (Stage) Close.getScene().getWindow();
+        try {
+            scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/homeAdmin.fxml")));
+           
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        stageTheLabelBelongs.setScene(scene2);
     }
     
 }

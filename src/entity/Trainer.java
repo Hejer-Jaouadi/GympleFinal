@@ -15,6 +15,15 @@ public class Trainer extends User {
     private String description;
     private String experience;
     private Gym gym;
+    private int reports=0;
+
+    public int getReports() {
+        return reports;
+    }
+
+    public void setReports(int reports) {
+        this.reports = reports;
+    }
 
     public Trainer(float cost_per_hour, String description, String experience,Gym g, String first_name, String last_name, String email, String password) {
         super(first_name, last_name, email, password);
@@ -72,7 +81,7 @@ public class Trainer extends User {
 
     @Override
     public String toString() {
-        return super.toString()+" Trainer{" + "cost_per_hour=" + cost_per_hour + ", description=" + description + ", experience=" + experience +" "+gym.toString()+ '}';
+        return super.toString() + ", Cost(h) : " + cost_per_hour + ", Description : " + description + ", Experience :" + experience +" "+gym.toString();
     }
     
 }

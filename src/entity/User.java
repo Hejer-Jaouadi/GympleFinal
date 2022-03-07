@@ -19,6 +19,24 @@ public class User {
     private String email;
     private String password;
     private String role;
+    private String picture;
+    private String block="n";
+
+    public String getBlock() {
+        return block;
+    }
+
+    public void setBlock(String block) {
+        this.block = block;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
 
     public String getRole() {
         return role;
@@ -46,7 +64,13 @@ public class User {
        
     }
     
-    public User(){   
+    public User(String first,String last){
+        this.first_name=first;
+        this.last_name=last;
+    }
+    
+    public User(){ 
+        
     }
 
     public int getId() {
@@ -93,7 +117,7 @@ public class User {
 
     @Override
     public String toString() {
-        return " User{" + "id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", email=" + email + ", password=" + password + + '}';
+        return "First Name : " + first_name + ", Last Name : " + last_name + ", Email :" + email;
     }
 
    

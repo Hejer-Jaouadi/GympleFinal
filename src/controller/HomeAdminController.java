@@ -159,6 +159,18 @@ public class HomeAdminController implements Initializable {
         stageTheLabelBelongs.setScene(scene2);
     }
 
+    @FXML
+    private void getCourses(MouseEvent event) {
+         Scene scene2 = null;
+        Stage stageTheLabelBelongs = (Stage) res.getScene().getWindow();
+        try {
+            scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/course_plan.fxml")));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        stageTheLabelBelongs.setScene(scene2);
+    }
+
     
 
 }

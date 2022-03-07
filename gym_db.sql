@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 07 mars 2022 à 22:06
+-- Généré le : lun. 07 mars 2022 à 23:53
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 7.4.27
 
@@ -67,24 +67,13 @@ CREATE TABLE `cart` (
 
 CREATE TABLE `course` (
   `id` int(11) NOT NULL,
-  `start_time` date NOT NULL,
-  `end_time` date NOT NULL,
+  `date` varchar(255) NOT NULL,
+  `start_time` varchar(20) NOT NULL,
+  `end_time` varchar(20) NOT NULL,
   `nbr` int(11) NOT NULL,
-  `category` int(11) NOT NULL,
-  `planning` int(11) NOT NULL,
-  `trainer` int(11) NOT NULL,
-  `room` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `course_category`
---
-
-CREATE TABLE `course_category` (
-  `id` int(11) NOT NULL,
-  `name` varchar(20) NOT NULL
+  `category` varchar(20) NOT NULL,
+  `planning` varchar(20) NOT NULL,
+  `trainer` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -301,16 +290,6 @@ ALTER TABLE `cart`
 -- Index pour la table `course`
 --
 ALTER TABLE `course`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `category` (`category`),
-  ADD KEY `planning` (`planning`),
-  ADD KEY `trainer` (`trainer`),
-  ADD KEY `room` (`room`);
-
---
--- Index pour la table `course_category`
---
-ALTER TABLE `course_category`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -354,8 +333,7 @@ ALTER TABLE `reservation`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user` (`user`),
   ADD KEY `course` (`course`),
-  ADD KEY `trainer` (`trainer`) USING BTREE,
-  ADD KEY `category` (`category`);
+  ADD KEY `trainer` (`trainer`) USING BTREE;
 
 --
 -- Index pour la table `room`
@@ -368,8 +346,7 @@ ALTER TABLE `room`
 -- Index pour la table `tip`
 --
 ALTER TABLE `tip`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `category` (`category`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `user`
@@ -399,13 +376,7 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT pour la table `course`
 --
 ALTER TABLE `course`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `course_category`
---
-ALTER TABLE `course_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `gym`
@@ -472,15 +443,6 @@ ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`user`) REFERENCES `user` (`id`) ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `course`
---
-ALTER TABLE `course`
-  ADD CONSTRAINT `course_ibfk_1` FOREIGN KEY (`category`) REFERENCES `course_category` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `course_ibfk_2` FOREIGN KEY (`planning`) REFERENCES `planning` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `course_ibfk_3` FOREIGN KEY (`trainer`) REFERENCES `user` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `course_ibfk_4` FOREIGN KEY (`room`) REFERENCES `room` (`idR`) ON UPDATE CASCADE;
-
---
 -- Contraintes pour la table `planning`
 --
 ALTER TABLE `planning`
@@ -499,7 +461,6 @@ ALTER TABLE `purchase`
 ALTER TABLE `reservation`
   ADD CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`trainer`) REFERENCES `user` (`id`),
   ADD CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`trainer`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `reservation_ibfk_3` FOREIGN KEY (`category`) REFERENCES `course_category` (`id`),
   ADD CONSTRAINT `reservation_ibfk_4` FOREIGN KEY (`course`) REFERENCES `course` (`id`);
 
 --
@@ -507,12 +468,6 @@ ALTER TABLE `reservation`
 --
 ALTER TABLE `room`
   ADD CONSTRAINT `room_ibfk_1` FOREIGN KEY (`idgym`) REFERENCES `gym` (`idG`) ON DELETE NO ACTION ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `tip`
---
-ALTER TABLE `tip`
-  ADD CONSTRAINT `tip_ibfk_1` FOREIGN KEY (`category`) REFERENCES `course_category` (`id`);
 
 --
 -- Contraintes pour la table `user`

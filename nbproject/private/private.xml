@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/amorl/Documents/NetBeansProjects/ReservationModule/src/utils/DBConnection.java</file>
+            <file>file:/C:/Users/amorl/Documents/NetBeansProjects/ReservationModule/src/dao/DAOFactory.java</file>
+            <file>file:/C:/Users/amorl/Documents/NetBeansProjects/ReservationModule/src/views/ReservationsController.java</file>
+            <file>file:/C:/Users/amorl/Documents/NetBeansProjects/ReservationModule/src/views/reservation.java</file>
+            <file>file:/C:/Users/amorl/Documents/NetBeansProjects/ReservationModule/src/dao/ReservationDAO.java</file>
+            <file>file:/C:/Users/amorl/Documents/NetBeansProjects/ReservationModule/src/utils/CrudUtils.java</file>
+            <file>file:/C:/Users/amorl/Documents/NetBeansProjects/ReservationModule/src/dao/impl/ReservationDAOImpl.java</file>
+            <file>file:/C:/Users/amorl/Documents/NetBeansProjects/ReservationModule/src/dao/CrudDAO.java</file>
+            <file>file:/C:/Users/amorl/Documents/NetBeansProjects/ReservationModule/src/dao/SuperDAO.java</file>
+        </group>
+    </open-files>
+</project-private>

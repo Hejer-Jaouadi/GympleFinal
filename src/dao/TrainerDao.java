@@ -45,8 +45,8 @@ public class TrainerDao implements Idao<Trainer> {
     
     
     public void insert(Trainer o) {
-        String req="insert into user (role,first_name,last_name,email,password,training_level,cost_per_hour,description,experience,gym) values ('trainer','"+o.getFirst_name()+"','"+o.getLast_name()+"','"+o.getEmail()+"','"+o.getPassword()+"','"+"','"
-                +o.getCost_per_hour()+"','"+o.getDescription()+"','"+o.getExperience()+"','"+o.getGym().getIdG()+"')";
+        String req="insert into user (role,first_name,last_name,email,password,training_level,cost_per_hour,description,experience,gym,block,reports) values ('trainer','"+o.getFirst_name()+"','"+o.getLast_name()+"','"+o.getEmail()+"','"+o.getPassword()+"','"+"','"
+                +o.getCost_per_hour()+"','"+o.getDescription()+"','"+o.getExperience()+"','"+o.getGym().getIdG()+"','n"+"',0"+")";
         try {
             st.executeUpdate(req);
         } catch (SQLException ex) {
@@ -69,14 +69,28 @@ public class TrainerDao implements Idao<Trainer> {
         }else System.out.println("n'existe pas");
     }
     
+     public void deleteAll() {
+        String req="delete from user where role='trainer' ";
+        
+          
+              try {
+           
+            st.executeUpdate(req);
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(TrainerDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     
     public ObservableList<Trainer> displayAll() {
-        String req="select * from user natural join gym";
+        String req="select * from user join gym on idG=gym where role='trainer' ";
         ObservableList<Trainer> list=FXCollections.observableArrayList();       
         
         try {
             rs=st.executeQuery(req);
             while(rs.next()){
+                
                 Trainer p=new Trainer();
                 p.setId(rs.getInt("id"));
                 p.setFirst_name(rs.getString("first_name"));
@@ -86,8 +100,12 @@ public class TrainerDao implements Idao<Trainer> {
                 p.setCost_per_hour(rs.getFloat("cost_per_hour"));
                 p.setDescription(rs.getString("description"));
                 p.setExperience(rs.getString("experience"));
-                p.setGym(new Gym(rs.getInt("gym"),rs.getString("location"),rs.getString("facilities")));
+                p.setPicture(rs.getString("picture"));
+                p.setBlock(rs.getString("block"));
+                p.setReports(rs.getInt("reports"));
+                p.setGym(new Gym(rs.getInt("idG"),rs.getString("location"),rs.getString("facilities")));
                 list.add(p);
+                
             }
             
         } catch (SQLException ex) {
@@ -113,6 +131,8 @@ public class TrainerDao implements Idao<Trainer> {
                 p.setCost_per_hour(rs.getFloat("cost_per_hour"));
                 p.setDescription(rs.getString("description"));
                 p.setExperience(rs.getString("experience"));
+                p.setBlock(rs.getString("block"));
+                p.setReports(rs.getInt("reports"));
                 p.setGym(new Gym(rs.getInt("gym"),rs.getString("location"),rs.getString("facilities")));
                 list.add(p);
             }
@@ -139,6 +159,8 @@ public class TrainerDao implements Idao<Trainer> {
                 p.setCost_per_hour(rs.getFloat("cost_per_hour"));
                 p.setDescription(rs.getString("description"));
                 p.setExperience(rs.getString("experience"));
+                p.setReports(rs.getInt("reports"));
+                p.setBlock(rs.getString("block"));
                 p.setGym(new Gym(rs.getInt("gym"),rs.getString("location"),rs.getString("facilities")));
             //}  
         } catch (SQLException ex) {
@@ -153,7 +175,7 @@ public class TrainerDao implements Idao<Trainer> {
                 +p.getLast_name()+"', email = '"+p.getEmail()+"', password = '"+p.getPassword()
                 +"', cost_per_hour = '"
                 +p.getCost_per_hour()+"', description = '"+p.getDescription()+"', experience = '"
-                +p.getExperience()+"', gym = '"+p.getGym().getIdG()+"' WHERE id = "+p.getId();
+                +p.getExperience()+"', gym = '"+p.getGym().getIdG()+"', block = '"+p.getBlock()+"', reports = "+p.getReports()+" WHERE id = "+p.getId();
         
         try {
             if (st.executeUpdate(qry) > 0) {
@@ -164,6 +186,25 @@ public class TrainerDao implements Idao<Trainer> {
             Logger.getLogger(TrainerDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
+    }
+    
+    public void getGym(Trainer o) {
+        String req="select idG,location,facilities from user natural join gym where id="+o.getId();
+       Gym g=new Gym();
+              try {
+           
+           
+            rs=st.executeQuery(req);
+           // while(rs.next()){
+            rs.next();
+                g.setIdG(rs.getInt("idG"));
+                g.setFacilities(rs.getString("facilities"));
+                g.setLocation(rs.getString("location"));
+                o.setGym(g);
+             
+              } catch (SQLException ex) {
+            Logger.getLogger(TrainerDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

@@ -6,6 +6,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="819.0" style="-fx-background-color: #666666;" stylesheets="@homeAdminCss.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeAdminController">
@@ -61,7 +62,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </AnchorPane>
-      <AnchorPane onMouseClicked="#coach"  id="coaches" layoutX="90.0" layoutY="302.0" prefHeight="169.0" prefWidth="169.0" style="-fx-background-radius: 30;">
+      <AnchorPane id="coaches" layoutX="90.0" layoutY="302.0" onMouseClicked="#coach" prefHeight="169.0" prefWidth="169.0" style="-fx-background-radius: 30;">
          <children>
             <Button alignment="CENTER" layoutX="44.0" layoutY="134.0" prefHeight="35.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Coaches" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="134.0">
                <font>
@@ -78,7 +79,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </AnchorPane>
-      <AnchorPane id="gyms" onMouseClicked="#getGyms"  layoutX="322.0" layoutY="302.0" prefHeight="169.0" prefWidth="169.0" style="-fx-background-radius: 30;">
+      <AnchorPane id="gyms" layoutX="322.0" layoutY="302.0" onMouseClicked="#getGyms" prefHeight="169.0" prefWidth="169.0" style="-fx-background-radius: 30;">
          <children>
             <Button alignment="CENTER" layoutX="44.0" layoutY="134.0" prefHeight="35.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Gyms" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="134.0">
                <font>
@@ -117,6 +118,16 @@
             <Font name="Serif Regular" size="41.0" />
          </font>
       </Label>
-      <Button fx:id="btnProfile" onAction="#profile"  layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="67.0" style="-fx-border-radius: 20; -fx-background-radius: 100; -fx-background-color: #ff7f00;" />
+      <Circle fx:id="c" fill="DODGERBLUE" layoutX="59.0" layoutY="54.0" onMouseClicked="#profile" radius="38.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label layoutX="12.0" layoutY="477.0" onMouseClicked="#members" style="-fx-background-color: #F5F5F5; -fx-background-radius: 10; -fx-padding: 4;" text="Gym members" textFill="#ff7f00">
+         <font>
+            <Font name="Serif Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="729.0" layoutY="477.0" onMouseClicked="#weather" style="-fx-background-color: #F5F5F5; -fx-padding: 4; -fx-background-radius: 10;" text="My Agenda" textFill="#ff7f00">
+         <font>
+            <Font name="Serif Bold" size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

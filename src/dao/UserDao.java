@@ -47,7 +47,8 @@ public class UserDao implements Idao<User> {
 
     @Override
     public void insert(User o) {
-        String req = "insert into user (role,first_name,last_name,email,password) values ('admin','" + o.getFirst_name() + "','" + o.getLast_name() + "','" + o.getEmail() + "','" + o.getPassword() + "')";
+        String req = "insert into user (role,first_name,last_name,email,password,block) values ('admin','" + o.getFirst_name() + "','" + o.getLast_name() + "','" 
+                + o.getEmail() + "','" + o.getPassword()+ "','n"  + "')";
         try {
             st.executeUpdate(req);
         } catch (SQLException ex) {
@@ -110,6 +111,7 @@ public class UserDao implements Idao<User> {
                 p.setLast_name(rs.getString("last_name"));
                 p.setEmail(rs.getString("email"));
                 p.setPassword(rs.getString("password"));
+                p.setBlock(rs.getString("block"));
 
                 list.add(p);
             }
@@ -133,6 +135,7 @@ public class UserDao implements Idao<User> {
             p.setLast_name(rs.getString("last_name"));
             p.setEmail(rs.getString("email"));
             p.setPassword(rs.getString("password"));
+            p.setBlock(rs.getString("block"));
 
             //}  
         } catch (SQLException ex) {
@@ -143,7 +146,7 @@ public class UserDao implements Idao<User> {
 
     @Override
     public boolean update(User p) {
-        String qry = "UPDATE user SET first_name = '" + p.getFirst_name() + "', last_name = '" + p.getLast_name() + "', email = '" + p.getEmail() + "', password = '" + p.getPassword() + "' WHERE id = " + p.getId();
+        String qry = "UPDATE user SET first_name = '" + p.getFirst_name() + "', last_name = '" + p.getLast_name() + "', email = '" + p.getEmail() + "', password = '" + p.getPassword()+ "', picture = '" + p.getPicture()+ "', block = '" + p.getBlock() + "' WHERE id = " + p.getId();
 
         try {
             if (st.executeUpdate(qry) > 0) {
@@ -165,7 +168,7 @@ public class UserDao implements Idao<User> {
         try {
             rs = st.executeQuery(req);
             // while(rs.next()){
-            rs.next();
+            if(rs.next())
             switch (rs.getString("role")) {
                 case "member":
                     Member m = new Member();
@@ -179,8 +182,10 @@ public class UserDao implements Idao<User> {
                     m.setId_card(rs.getInt("id_card"));
                     m.setTraining_level(rs.getString("training_level"));
                     MembershipDao md = MembershipDao.getInstance();
-                    m.setMembership(md.displayById(rs.getInt("membership")));
+                    md.getMembership(m);
                     m.setRole("member");
+                    m.setBlock("n");
+                    m.setPicture(rs.getString("picture"));
                     return m;
                     
                 case "trainer":
@@ -193,8 +198,13 @@ public class UserDao implements Idao<User> {
                     t.setCost_per_hour(rs.getFloat("cost_per_hour"));
                     t.setDescription(rs.getString("description"));
                     t.setExperience(rs.getString("experience"));
-                    t.setGym(null);
                     t.setRole("trainer");
+                    t.setPicture(rs.getString("picture"));
+                    t.setGym(null);
+                    t.setBlock(rs.getString("block"));
+                    t.setReports(rs.getInt("reports"));
+                    TrainerDao td=TrainerDao.getInstance();
+                    td.getGym(t);
                     return t;
                     
                     
@@ -206,6 +216,8 @@ public class UserDao implements Idao<User> {
                     u.setEmail(rs.getString("email"));
                     u.setPassword(rs.getString("password"));
                     u.setRole("admin");
+                    u.setBlock("n");
+                    u.setPicture(rs.getString("picture"));
                     return u;
                  
                     

@@ -15,8 +15,8 @@
             <Font name="SansSerif Bold" size="34.0" />
          </font>
       </Label>
-      <TextField layoutX="203.0" layoutY="127.0" prefHeight="33.0" prefWidth="192.0" promptText="Card number" style="-fx-background-radius: 15; -fx-padding: 8; -fx-border-color: #ff7f00; -fx-border-radius: 15; -fx-border-width: 2; -fx-background-color: #666666;" />
-      <TextField layoutX="204.0" layoutY="176.0" prefHeight="33.0" prefWidth="192.0" promptText="PIN" style="-fx-background-radius: 15; -fx-padding: 8; -fx-border-color: #ff7f00; -fx-background-color: #666666; -fx-border-width: 2; -fx-border-radius: 15;" />
+      <TextField fx:id="card" layoutX="203.0" layoutY="127.0" prefHeight="33.0" prefWidth="192.0" promptText="Card number" style="-fx-background-radius: 15; -fx-padding: 8; -fx-border-color: #ff7f00; -fx-border-radius: 15; -fx-border-width: 2; -fx-background-color: #666666;" />
+      <TextField fx:id="pin" layoutX="204.0" layoutY="176.0" prefHeight="33.0" prefWidth="192.0" promptText="PIN" style="-fx-background-radius: 15; -fx-padding: 8; -fx-border-color: #ff7f00; -fx-background-color: #666666; -fx-border-width: 2; -fx-border-radius: 15;" />
       <Button fx:id="sign" onAction="#sign_me"  layoutX="309.0" layoutY="306.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="93.0" style="-fx-background-radius: 15; -fx-background-color: #ff7f00;" text="Go!">
          <font>
             <Font name="Serif Bold" size="15.0" />

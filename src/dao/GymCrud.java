@@ -99,6 +99,32 @@ public class GymCrud implements IdaoG<Gym> {
     }
     
     
+    public ObservableList<Gym> getGyms() {
+        String req = "select * from gym";
+        ObservableList<Gym> list = FXCollections.observableArrayList();
+
+        try {
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+                
+                Gym g = new Gym();
+                g.setIdG(rs.getInt(1));
+                g.setLocation(rs.getString(2));
+                g.setFacilities(rs.getString(3));
+                list.add(g);
+
+            }
+             
+
+        } catch (SQLException ex) {
+            System.out.println("error in display gym");
+            Logger.getLogger(GymCrud.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+
+    }
+    
+    
 
     @Override
     public boolean updateGym(Gym g) {

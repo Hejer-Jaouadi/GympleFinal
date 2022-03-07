@@ -6,6 +6,7 @@
 package controller;
 
 import static controller.SignupController.infoBox;
+import dao.GymCrud;
 import dao.TrainerDao;
 import entity.Gym;
 import entity.Trainer;
@@ -13,6 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,8 +22,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import utils.Control;
 import utils.SendEmail;
 
 /**
@@ -47,18 +51,24 @@ public class AddTrainerController implements Initializable {
     private TextField em;
     @FXML
     private TextField exp;
+    @FXML
+    private Button back;
+    @FXML
+    private ChoiceBox gym;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        GymCrud gc=GymCrud.getInstance();
+        gym.setItems(gc.getGyms());
     }
 
     @FXML
     private void add(ActionEvent event) {
-        if ((!first.getText().isEmpty()) && (!last.getText().isEmpty()) && (!em.getText().isEmpty()) && (!cost.getText().isEmpty()) && (!desc.getText().isEmpty()) && (!exp.getText().isEmpty()) && (isNumeric(cost.getText()))) {
+        Control c=new Control();
+        if ((c.trueString(first.getText())) && (c.trueString(last.getText()))&& (!gym.getSelectionModel().isEmpty())  && (c.trueEmail(em.getText())) && (c.trueFloat(cost.getText())) && (c.trueString(desc.getText())) && (exp.getText().isEmpty())) {
 
             Trainer t = new Trainer();
             t.setCost_per_hour(toFloat(cost.getText()));
@@ -67,7 +77,9 @@ public class AddTrainerController implements Initializable {
             t.setDescription(desc.getText());
             t.setExperience(exp.getText());
             t.setEmail(em.getText());
-            t.setGym(new Gym(1, "ok", "ok"));
+            t.setPicture(null);
+            Gym g=(Gym)gym.getValue();
+            t.setGym(g);
             t.setPassword(new Random().ints(10, 33, 122).collect(StringBuilder::new,
                     StringBuilder::appendCodePoint, StringBuilder::append)
                     .toString());
@@ -91,14 +103,19 @@ public class AddTrainerController implements Initializable {
 
     @FXML
     private void cancel(ActionEvent event) {
-        this.returnto();
+        first.setText("");
+        last.setText("");
+        em.setText("");
+        cost.setText("");
+        exp.setText("");
+        desc.setText("");
     }
 
     private void returnto() {
         Scene scene2 = null;
         Stage stageTheLabelBelongs = (Stage) add.getScene().getWindow();
         try {
-            scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/homeAdmin.fxml")));
+            scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/listTrainers.fxml")));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -120,6 +137,11 @@ public class AddTrainerController implements Initializable {
         } catch (NumberFormatException e) {
             return 0;
         }
+    }
+
+    @FXML
+    private void getBack(ActionEvent event) {
+        returnto();
     }
 
 }

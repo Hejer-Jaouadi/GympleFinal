@@ -31,7 +31,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextInputControl;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import utils.Control;
 
 /**
  * FXML Controller class
@@ -80,73 +83,59 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
     }
-
-   /* @FXML
-    private void handleButtonAction2(javafx.event.ActionEvent event) {
-        String email = textEmail.getText().toString();
-        String password = textPassword.getText().toString();
-
-        String sql = "SELECT * FROM user WHERE email = ? and password = ?";
-
-        try {
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, email);
-            preparedStatement.setString(2, password);
-            resultSet = preparedStatement.executeQuery();
-            if (!resultSet.next()) {
-                infoBox("Enter Correct Email and Password", "Failed", null);
-            } else {
-                Stage stageTheLabelBelongs = (Stage) fgpassword.getScene().getWindow();
-                try {
-                    scene3 = new Scene(FXMLLoader.load(getClass().getResource("/view/home.fxml")));
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-                stageTheLabelBelongs.setScene(scene3);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-     
-    }*/
     @FXML
     private void handleButtonAction(javafx.event.ActionEvent event) {
         
         String email = textEmail.getText().toString();
         String password = textPassword.getText().toString();
+        Control t=new Control();
+        if((t.trueEmail(email))&&(!password.isEmpty())){
         UserDao ud=UserDao.getInstance();
         User u=ud.Login(email, password);
         Scene scene=null;
-        if(u!=null)
+        if((u!=null))
         {
             Stage stage = (Stage) fgpassword.getScene().getWindow();
+            Scene scene2 = null;
             String role=u.getRole();
             switch(role){
-                case "member": try {
-                    scene = new Scene(FXMLLoader.load(getClass().getResource("/view/home.fxml")));
-                    stage.setUserData((Member)u);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }break;
-                case "trainer": try {
-                    scene = new Scene(FXMLLoader.load(getClass().getResource("/view/homeTrainer.fxml")));
-                    stage.setUserData((Trainer)u);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }break;
-                case "admin": try {
-                    scene = new Scene(FXMLLoader.load(getClass().getResource("/view/homeAdmin.fxml")));
-                    stage.setUserData(u);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }break;
-            }
-             stage.setScene(scene);
+                case "member":HomeController.setUser((Member)u);
+        
+        
+        try {
+            scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/home.fxml")));
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
+        break;
+                case "trainer":
+                    if(((Trainer)u).getBlock().equals("y")){
+            infoBox("You are blocked from entering this platform.", "Failed", null);
+        }else{
+                    HomeTrainerController.setUser((Trainer)u);
+                 
+        try {
+            scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/homeTrainer.fxml")));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }}
+        break;
+                case "admin": HomeAdminController.setUser(u);
+         
+        try {
+            scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/homeAdmin.fxml")));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }break;
+            } stage.setScene(scene2);
+            
+        }
+        
         else{
             infoBox("Please Enter Correct Email and Password", "Failed", null);
+        }}
+        else{
+            infoBox("Please Enter Correct Informations", "Failed", null);
         }
     }
 

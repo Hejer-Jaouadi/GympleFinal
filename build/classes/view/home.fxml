@@ -12,7 +12,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="819.0" style="-fx-background-color: #666666;" stylesheets="@homeCss.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
    
    <children>
-      <AnchorPane layoutX="320.0" layoutY="108.0" prefHeight="169.0" prefWidth="169.0" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+      <AnchorPane onMouseClicked="#showReservation" layoutX="320.0" layoutY="108.0" prefHeight="169.0" prefWidth="169.0" style="-fx-background-radius: 30; -fx-border-radius: 30;">
          <children>
             <Button alignment="CENTER" layoutX="44.0" layoutY="134.0" prefHeight="35.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Reservation" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="134.0">
                <font>

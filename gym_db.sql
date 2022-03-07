@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 07 mars 2022 à 23:53
+-- Généré le : mar. 08 mars 2022 à 00:25
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 7.4.27
 
@@ -179,18 +179,24 @@ CREATE TABLE `purchase` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `reservation`
+-- Structure de la table `reservations`
 --
 
-CREATE TABLE `reservation` (
-  `id` int(11) NOT NULL,
-  `type` varchar(20) NOT NULL,
-  `user` int(11) NOT NULL,
-  `course` int(11) NOT NULL,
-  `trainer` int(11) DEFAULT NULL,
-  `category` int(11) DEFAULT NULL,
-  `date` date NOT NULL
+CREATE TABLE `reservations` (
+  `idr` int(11) NOT NULL,
+  `coach_name` varchar(255) NOT NULL,
+  `course_name` varchar(255) NOT NULL,
+  `reserved_date` varchar(255) NOT NULL,
+  `reserved_time` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `reservations`
+--
+
+INSERT INTO `reservations` (`idr`, `coach_name`, `course_name`, `reserved_date`, `reserved_time`, `type`) VALUES
+(1, 'louay', 'karate', '14/04/1998', '17', 'public');
 
 -- --------------------------------------------------------
 
@@ -327,13 +333,10 @@ ALTER TABLE `purchase`
   ADD KEY `idP` (`idP`) USING BTREE;
 
 --
--- Index pour la table `reservation`
+-- Index pour la table `reservations`
 --
-ALTER TABLE `reservation`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user` (`user`),
-  ADD KEY `course` (`course`),
-  ADD KEY `trainer` (`trainer`) USING BTREE;
+ALTER TABLE `reservations`
+  ADD PRIMARY KEY (`idr`);
 
 --
 -- Index pour la table `room`
@@ -409,10 +412,10 @@ ALTER TABLE `purchase`
   MODIFY `idPu` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `reservation`
+-- AUTO_INCREMENT pour la table `reservations`
 --
-ALTER TABLE `reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `reservations`
+  MODIFY `idr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `room`
@@ -454,14 +457,6 @@ ALTER TABLE `planning`
 ALTER TABLE `purchase`
   ADD CONSTRAINT `purchase_ibfk_1` FOREIGN KEY (`idC`) REFERENCES `cart` (`idC`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `purchase_ibfk_2` FOREIGN KEY (`idP`) REFERENCES `product` (`idP`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Contraintes pour la table `reservation`
---
-ALTER TABLE `reservation`
-  ADD CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`trainer`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`trainer`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `reservation_ibfk_4` FOREIGN KEY (`course`) REFERENCES `course` (`id`);
 
 --
 -- Contraintes pour la table `room`

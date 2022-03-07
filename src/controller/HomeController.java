@@ -27,61 +27,67 @@ import javafx.stage.Stage;
  * @author Asma
  */
 public class HomeController implements Initializable {
+
     @FXML
     private Circle c;
     private static Member user;
-public static Member getUser(){
-       return user;
+
+    public static Member getUser() {
+        return user;
     }
+
     /**
      * Initializes the controller class.
      */
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         user.setPicture(null);
-        if(user.getPicture()==null){
+        if (user.getPicture() == null) {
             user.setPicture("file:/C:/Users/Yassine/Downloads/img.png");
         }
-        
-         javafx.scene.paint.ImagePattern p;
+
+        javafx.scene.paint.ImagePattern p;
         p = new javafx.scene.paint.ImagePattern(new Image(user.getPicture()));
-       this.c.setFill(p);
+        this.c.setFill(p);
     }
 
     @FXML
     private void profile(MouseEvent event) {
-          
- Stage stage = (Stage) c.getScene().getWindow();
+
+        Stage stage = (Stage) c.getScene().getWindow();
         //User u=(User)stage.getUserData();
-       // System.out.println(u.getId());
+        // System.out.println(u.getId());
         ProfileController.setUser(user);
-         Scene scene2 = null;
-        
+        Scene scene2 = null;
+
         try {
-            
+
             scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/profile.fxml")));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
         stage.setScene(scene2);
     }
-     public static void setUser(Member u){
-        user=u;
+
+    public static void setUser(Member u) {
+        user = u;
         System.out.println(u.getEmail());
-       // first.setText(user.getFirst_name());
+        // first.setText(user.getFirst_name());
         //last.setText(user.getLast_name());
         //e.setText(user.getEmail());
     }
 
     @FXML
     private void showTrainers(MouseEvent event) {
-                
- Stage stage = (Stage) c.getScene().getWindow();
-         Scene scene2 = null;
-        
+
+        Stage stage = (Stage) c.getScene().getWindow();
+        Scene scene2 = null;
+
         try {
-            
+
             scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/showAllTrainers.fxml")));
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -92,10 +98,10 @@ public static Member getUser(){
     @FXML
     private void gyms(MouseEvent event) {
         Stage stage = (Stage) c.getScene().getWindow();
-         Scene scene2 = null;
-        
+        Scene scene2 = null;
+
         try {
-            
+
             scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/FrontGym.fxml")));
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -105,11 +111,11 @@ public static Member getUser(){
 
     @FXML
     private void showProducts(MouseEvent event) {
-         Stage stage = (Stage) c.getScene().getWindow();
-         Scene scene2 = null;
-        
+        Stage stage = (Stage) c.getScene().getWindow();
+        Scene scene2 = null;
+
         try {
-            
+
             scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/ClientProduct.fxml")));
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -117,5 +123,18 @@ public static Member getUser(){
         stage.setScene(scene2);
     }
 
+    @FXML
+    private void showReservation(MouseEvent event) {
+        Stage stage = (Stage) c.getScene().getWindow();
+        Scene scene2 = null;
+
+        try {
+
+            scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/Reservations.fxml")));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        stage.setScene(scene2);
+    }
 
 }

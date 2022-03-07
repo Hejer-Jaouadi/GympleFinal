@@ -30,7 +30,9 @@ public class HomeController implements Initializable {
     @FXML
     private Circle c;
     private static Member user;
-
+public static Member getUser(){
+       return user;
+    }
     /**
      * Initializes the controller class.
      */

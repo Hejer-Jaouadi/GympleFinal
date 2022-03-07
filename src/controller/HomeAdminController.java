@@ -36,30 +36,34 @@ public class HomeAdminController implements Initializable {
      */
     @FXML
     Button res;
-    
+
     @FXML
     private Circle c;
     private static User user;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         if(user.getPicture()==null){
+        if (user.getPicture() == null) {
             user.setPicture("file:/C:/Users/Asma/Downloads/img.png");
         }
-        
-         javafx.scene.paint.ImagePattern p;
-        p = new javafx.scene.paint.ImagePattern(new Image(user.getPicture()));
-       this.c.setFill(p);
-    }    
 
-    public static void setUser(User u){
-        user=u;
+        javafx.scene.paint.ImagePattern p;
+        p = new javafx.scene.paint.ImagePattern(new Image(user.getPicture()));
+        this.c.setFill(p);
+    }
+
+    public static void setUser(User u) {
+        user = u;
         System.out.println(u.getEmail());
-       // first.setText(user.getFirst_name());
+        // first.setText(user.getFirst_name());
         //last.setText(user.getLast_name());
         //e.setText(user.getEmail());
     }
-    
-    
+
+    public static User getUser() {
+        return user;
+    }
+
     @FXML
     private void coach(MouseEvent event) {
         Scene scene2 = null;
@@ -73,7 +77,7 @@ public class HomeAdminController implements Initializable {
         stageTheLabelBelongs.setScene(scene2);
     }
 
-   /* @FXML
+    /* @FXML
     private void profile(ActionEvent event) {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         //stage.setUserData(u);
@@ -89,26 +93,25 @@ public class HomeAdminController implements Initializable {
     }*/
     @FXML
     private void profile(MouseEvent event) {
-         
+
         Stage stage = (Stage) res.getScene().getWindow();
         //User u=(User)stage.getUserData();
-       // System.out.println(u.getId());
+        // System.out.println(u.getId());
         ProfileAdminController.setUser(user);
-         Scene scene2 = null;
-        
+        Scene scene2 = null;
+
         try {
-            
+
             scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/profileAdmin.fxml")));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
         stage.setScene(scene2);
     }
-    
 
     @FXML
     private void getGyms(MouseEvent event) {
-         Scene scene2 = null;
+        Scene scene2 = null;
         Stage stageTheLabelBelongs = (Stage) res.getScene().getWindow();
         try {
             scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/Menu.fxml")));
@@ -120,7 +123,7 @@ public class HomeAdminController implements Initializable {
 
     @FXML
     private void members(MouseEvent event) {
-         Scene scene2 = null;
+        Scene scene2 = null;
         Stage stageTheLabelBelongs = (Stage) res.getScene().getWindow();
         try {
             scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/listMembers.fxml")));
@@ -132,7 +135,7 @@ public class HomeAdminController implements Initializable {
 
     @FXML
     private void weather(MouseEvent event) {
-         Scene scene2 = null;
+        Scene scene2 = null;
         Stage stageTheLabelBelongs = (Stage) res.getScene().getWindow();
         try {
             scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/agenda.fxml")));
@@ -141,5 +144,5 @@ public class HomeAdminController implements Initializable {
         }
         stageTheLabelBelongs.setScene(scene2);
     }
-    
+
 }

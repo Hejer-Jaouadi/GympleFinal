@@ -46,6 +46,10 @@ public class HomeTrainerController implements Initializable {
         HomeTrainerController.trainer = trainer;
     }
     
+    public static Trainer getUser( ){
+       return trainer;
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         

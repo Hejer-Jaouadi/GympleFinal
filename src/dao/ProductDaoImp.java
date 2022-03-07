@@ -4,7 +4,13 @@
  */
 package dao;
 
+import com.stripe.Stripe;
+import com.stripe.exception.StripeException;
+import com.stripe.model.Card;
+import com.stripe.model.Charge;
+import com.stripe.model.Customer;
 import entity.Product;
+import entity.User;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,7 +21,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -315,4 +323,55 @@ return product;
    
     
 }
+
+    @Override
+    public void payment(int idc) {
+            ConnexionSingleton conn=ConnexionSingleton.getInstance();
+            Stripe.apiKey = "sk_test_51K9oMoFGG3TCydWDIAAn0Ewahl2peotVjBwuq6aaox3rDW2Bqs1ned3JHuCwRqicCtI4pgOEp1HwQQ4tYtqAClul00dXq3fpiH";
+            try {
+                
+     
+    PreparedStatement ps= conn.getCnx().prepareStatement("select * from User where id = ?");
+    ps.setInt(1,idc);
+    ResultSet rs = ps.executeQuery();
+   
+    Map< String , Object> customerParameter = new HashMap<String,Object>();
+   while (rs.next()) {
+    int idclient1 = rs.getInt("id");
+    String idclient = idclient1+"";
+    String emailclient = rs.getString("email");
+    customerParameter.put("email",emailclient);
+            Customer cus = Customer.create(customerParameter);
+
+    Map<String, Object> cardParam = new HashMap<String, Object>(); //add card details
+		cardParam.put("number", "4111111111111111");
+		cardParam.put("exp_month", "11");
+		cardParam.put("exp_year", "2026");
+		cardParam.put("cvc", "123");
+                 Customer customer = Customer.retrieve(cus.getId());
+                Card card = (Card)customer.getSources().create(cardParam);
+
+         Map<String, Object> params = new HashMap<>();
+		params.put("amount", 3000);
+		params.put("currency", "usd");
+		params.put("customer", cus.getId());
+
+		Charge charge = Charge.create(params);
+		System.out.println(charge);
+                
+         System.out.println("done");
+   }
+ 
+    }
+         catch (SQLException e) {
+            System.out.println("problem in payment methode");
+            e.printStackTrace();
+            
+}       catch (StripeException ex) {
+            Logger.getLogger(ProductDaoImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+   
+       
+    }
 }

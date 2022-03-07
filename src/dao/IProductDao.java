@@ -25,9 +25,7 @@ public interface IProductDao {
     public ObservableList<Product> getSearchProduct(String name);
     public ObservableList<Product> getAllProduct();
     public void openFile(String file);
- 
-    
-  
-     public void writetoExcel();
+    public void writetoExcel();
+    public void payment(int idc);
     
 }

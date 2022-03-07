@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 05 mars 2022 à 13:03
+-- Généré le : lun. 07 mars 2022 à 22:06
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 7.4.27
 
@@ -24,6 +24,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `appointment`
+--
+
+CREATE TABLE `appointment` (
+  `id` int(11) NOT NULL,
+  `start` date NOT NULL,
+  `start_time` int(11) NOT NULL,
+  `end_time` int(11) NOT NULL,
+  `description` varchar(200) DEFAULT NULL,
+  `location` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `appointment`
+--
+
+INSERT INTO `appointment` (`id`, `start`, `start_time`, `end_time`, `description`, `location`) VALUES
+(1, '2022-03-08', 12, 19, 'Add a trainer', 'loc'),
+(4, '2022-03-08', 1, 6, 'Add a gym', 'ok'),
+(5, '2022-03-10', 2, 6, 'Add a tip', 'my gym'),
+(6, '2022-03-10', 7, 11, 'Check new members', 'null'),
+(7, '2022-03-11', 2, 11, 'Add a product', 'null');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `cart`
 --
 
@@ -31,17 +57,6 @@ CREATE TABLE `cart` (
   `idC` int(11) NOT NULL,
   `user` int(11) NOT NULL,
   `total` float DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `category`
---
-
-CREATE TABLE `category` (
-  `idCt` int(11) NOT NULL,
-  `name` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -90,7 +105,8 @@ CREATE TABLE `gym` (
 
 INSERT INTO `gym` (`idG`, `location`, `facilities`) VALUES
 (1, 'ok', 'ok'),
-(2, 'ok', 'okkkkk');
+(2, 'ok2', 'okkkkk'),
+(3, 'okk3', 'dkjfgbeg');
 
 -- --------------------------------------------------------
 
@@ -110,13 +126,17 @@ CREATE TABLE `membership` (
 --
 
 INSERT INTO `membership` (`idm`, `expire_date`, `start_date`, `type`) VALUES
-(1, '2020-04-18', '2020-04-18', 'ok'),
+(1, '2020-04-18', '2020-04-18', '1 year'),
 (5, '2023-02-27', '2022-02-27', '1 year'),
 (6, '2022-03-27', '2022-02-27', '1 month'),
 (7, '2022-05-27', '2022-02-27', '3 months'),
 (8, '2022-05-29', '2022-01-22', '3 months'),
 (9, '2022-06-01', '2022-03-01', '3 months'),
-(10, '2023-03-03', '2022-03-03', '1 year');
+(10, '2022-06-01', '2022-03-01', '3 months'),
+(11, '2022-04-06', '2022-03-06', '1 month'),
+(12, '2022-06-06', '2022-03-06', '3 months'),
+(13, '2022-06-06', '2022-03-06', '3 months'),
+(14, '2022-06-07', '2022-03-07', '3 months');
 
 -- --------------------------------------------------------
 
@@ -142,9 +162,17 @@ CREATE TABLE `product` (
   `name` varchar(30) NOT NULL,
   `quantity` int(11) NOT NULL,
   `description` varchar(100) NOT NULL,
-  `category` int(11) NOT NULL,
+  `category` varchar(255) NOT NULL,
   `price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `product`
+--
+
+INSERT INTO `product` (`idP`, `name`, `quantity`, `description`, `category`, `price`) VALUES
+(1, 'test', 22, 'test', 'gggg', 1222),
+(2, 'test', 22, 'test', 'gggjjjjjj', 30);
 
 -- --------------------------------------------------------
 
@@ -185,7 +213,7 @@ CREATE TABLE `room` (
   `idR` int(11) NOT NULL,
   `roomName` varchar(255) NOT NULL,
   `roomNumber` int(11) NOT NULL,
-  `max_nbr` int(11) DEFAULT NULL,
+  `max_nbr` int(11) NOT NULL,
   `idgym` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -194,11 +222,12 @@ CREATE TABLE `room` (
 --
 
 INSERT INTO `room` (`idR`, `roomName`, `roomNumber`, `max_nbr`, `idgym`) VALUES
-(4, 'hejer', 16, 111, 1),
-(5, 'piscine', 4, 111, 1),
-(6, 'piscine', 4, 11, 1),
-(8, 'tennis', 7, 222, 1),
-(10, 'hejer', 111, 520, 1);
+(1, 'Yoga', 2, 0, 1),
+(3, 'Yoga', 2, 0, 1),
+(5, 'piscine', 4, 0, 2),
+(6, 'piscine', 4, 0, 2),
+(8, 'tennis', 7, 0, 2),
+(9, 'tennis', 7, 0, 3);
 
 -- --------------------------------------------------------
 
@@ -232,33 +261,34 @@ CREATE TABLE `user` (
   `cost_per_hour` float DEFAULT NULL,
   `description` varchar(500) DEFAULT NULL,
   `experience` varchar(200) DEFAULT NULL,
-  `picture` varchar(30) DEFAULT NULL,
+  `picture` varchar(300) DEFAULT 'file:/C:/Users/Asma/Downloads/img.png',
   `code` int(11) DEFAULT NULL,
   `membership` int(11) DEFAULT NULL,
-  `gym` int(11) DEFAULT NULL
+  `gym` int(11) DEFAULT NULL,
+  `block` varchar(10) DEFAULT NULL,
+  `reports` int(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`id`, `role`, `first_name`, `last_name`, `email`, `password`, `id_card`, `height`, `weight`, `training_level`, `cost_per_hour`, `description`, `experience`, `picture`, `code`, `membership`, `gym`) VALUES
-(13, 'admin', 'test', 'my', 'email', 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 8, NULL),
-(14, '', 'MyMEM', 'MyMEMM', 'MyMEM', 'MyMEM', 45674345, 169, 50, 'MyMEM', NULL, NULL, NULL, NULL, NULL, 1, NULL),
-(18, 'trainer', 'trainer', 'trainer', 'test', 'test', NULL, NULL, NULL, '', 5, 'test', 'trainer', NULL, NULL, NULL, 1),
-(28, 'member', 'Asma', 'Hejaiej', 'asma', 'gym', 12345678, 1.69, 55, 'Intermediate', NULL, NULL, NULL, NULL, NULL, 5, NULL),
-(29, 'member', 'a', 's', 'm', 'p', 23432343, 1.1, 1.1, 'Beginner', NULL, NULL, NULL, NULL, NULL, 6, NULL),
-(30, 'member', 'aa', 'aa', 'hejaiej.asma@gmail.com', 'p', 22222222, 1.1, 1.1, 'Intermediate', NULL, NULL, NULL, NULL, 5340, 7, NULL),
-(31, 'trainer', 'f', 'l', 'em', 'VJMbh8[tl', NULL, NULL, NULL, '', 12.1, 'des', 'exp', NULL, NULL, NULL, 1),
-(32, 'trainer', 'first', 'last', 'mail', '>.26&Ko2uS', NULL, NULL, NULL, '', 11, 'desc', 'exp', NULL, NULL, NULL, 1),
-(33, 'trainer', 'f', 'l', 'hejaiej.asma@gmail.com', 'n(FJdTGm>(', NULL, NULL, NULL, '', 12, 'des', 'exp', NULL, 5340, NULL, 1),
-(34, 'member', 'name', 'last', 'hejaiej.asma@gmail.com', 'pass', 12345678, 1.5, 55, 'Intermediate', NULL, NULL, NULL, NULL, 5340, 9, NULL),
-(35, 'trainer', 'name', 'lastname', 'hejaiej.asma@gmail.com', 'g>RiduJ>[b', NULL, NULL, NULL, '', 1.4, 'desc', 'exp', NULL, NULL, NULL, 1),
-(36, 'member', 'hejer', 'hejer', 'hejer.jaouadi@esprit.tn', 'hejer', 52152521, 122, 122, 'Beginner', NULL, NULL, NULL, NULL, NULL, 10, NULL);
+INSERT INTO `user` (`id`, `role`, `first_name`, `last_name`, `email`, `password`, `id_card`, `height`, `weight`, `training_level`, `cost_per_hour`, `description`, `experience`, `picture`, `code`, `membership`, `gym`, `block`, `reports`) VALUES
+(13, 'admin', 'Asma', 'Hejaiej', 'email@e.com', 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'file:/C:/Users/Asma/Downloads/img.png', NULL, 8, NULL, 'n', NULL),
+(18, 'trainer', 'trainerrrrr', 'trainer', 'test', 'train2', NULL, NULL, NULL, '', 5, 'tessssssst', 'trainer1234566', 'file:/C:/Users/Asma/Downloads/img.png', NULL, NULL, 1, 'y', 5),
+(28, 'member', 'Asmaa', 'Hejaiej', 'asmah@gmail.com', 'gym2', 12345678, 1.69, 55, 'Intermediate', NULL, NULL, NULL, 'file:/C:/Users/Asma/Downloads/img.png', NULL, 5, NULL, 'n', NULL),
+(46, 'trainer', 'f', 'f', 'hejaiej.asma@gmail.com', ';0+[pH6$\"l', NULL, NULL, NULL, '', 13, 'f', 'f', 'file:/C:/Users/Asma/Downloads/img.png', NULL, NULL, 2, 'n', 2),
+(50, 'member', 'f', 'f', 'e@email.com', 'azerty9Z/', 12345678, 1, 1, 'Intermediate', NULL, NULL, NULL, 'file:/C:/Users/Asma/Downloads/img.png', NULL, 14, NULL, 'n', NULL);
 
 --
 -- Index pour les tables déchargées
 --
+
+--
+-- Index pour la table `appointment`
+--
+ALTER TABLE `appointment`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `cart`
@@ -266,12 +296,6 @@ INSERT INTO `user` (`id`, `role`, `first_name`, `last_name`, `email`, `password`
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`idC`),
   ADD KEY `user` (`user`) USING BTREE;
-
---
--- Index pour la table `category`
---
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`idCt`);
 
 --
 -- Index pour la table `course`
@@ -312,8 +336,7 @@ ALTER TABLE `planning`
 -- Index pour la table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`idP`),
-  ADD KEY `category` (`category`);
+  ADD PRIMARY KEY (`idP`);
 
 --
 -- Index pour la table `purchase`
@@ -361,16 +384,16 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT pour la table `appointment`
+--
+ALTER TABLE `appointment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT pour la table `cart`
 --
 ALTER TABLE `cart`
   MODIFY `idC` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT pour la table `category`
---
-ALTER TABLE `category`
-  MODIFY `idCt` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `course`
@@ -388,13 +411,13 @@ ALTER TABLE `course_category`
 -- AUTO_INCREMENT pour la table `gym`
 --
 ALTER TABLE `gym`
-  MODIFY `idG` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idG` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `membership`
 --
 ALTER TABLE `membership`
-  MODIFY `idm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT pour la table `planning`
@@ -406,7 +429,7 @@ ALTER TABLE `planning`
 -- AUTO_INCREMENT pour la table `product`
 --
 ALTER TABLE `product`
-  MODIFY `idP` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `purchase`
@@ -436,7 +459,7 @@ ALTER TABLE `tip`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- Contraintes pour les tables déchargées
@@ -464,12 +487,6 @@ ALTER TABLE `planning`
   ADD CONSTRAINT `planning_ibfk_1` FOREIGN KEY (`gym`) REFERENCES `gym` (`idG`) ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `product`
---
-ALTER TABLE `product`
-  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`category`) REFERENCES `category` (`idCt`) ON DELETE NO ACTION ON UPDATE CASCADE;
-
---
 -- Contraintes pour la table `purchase`
 --
 ALTER TABLE `purchase`
@@ -489,7 +506,7 @@ ALTER TABLE `reservation`
 -- Contraintes pour la table `room`
 --
 ALTER TABLE `room`
-  ADD CONSTRAINT `fk_gymid` FOREIGN KEY (`idgym`) REFERENCES `gym` (`idG`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `room_ibfk_1` FOREIGN KEY (`idgym`) REFERENCES `gym` (`idG`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `tip`

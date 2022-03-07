@@ -38,7 +38,8 @@ public class Gymple extends Application {
         stage.show();
     }
      public static void main(String[] args) {
-       
+       //ProductDaoImp prods = new ProductDaoImp();
+       //prods.payment(36);
         launch(args);
                  
         

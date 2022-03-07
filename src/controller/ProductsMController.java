@@ -13,9 +13,11 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -24,6 +26,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -134,6 +138,9 @@ public class ProductsMController implements Initializable {
         table.setItems(prod.getAllProduct());
         
        
+     
+        
+       
     }
          
     
@@ -190,18 +197,6 @@ public class ProductsMController implements Initializable {
     }
 
 
-    @FXML
-    private void clickTable(KeyEvent event) {
-        Product prod =  (Product) table.getSelectionModel().getSelectedItem();
-           name.setText(prod.getName());
-           desc.setText(prod.getDescription());
-           qte.setText(prod.getQuantity()+"");
-           cat.setText(prod.getCategory());
-           price.setText(prod.getPrice()+"");
-          
-         
-          
-    }
 
     @FXML
     private void clickTable(MouseEvent event) {
@@ -211,6 +206,8 @@ public class ProductsMController implements Initializable {
            qte.setText(prod.getQuantity()+"");
            cat.setText(prod.getCategory());
            price.setText(prod.getPrice()+"");
+           
+           
     }
 
     @FXML
@@ -224,5 +221,41 @@ public class ProductsMController implements Initializable {
         ProductDaoImp prods = new ProductDaoImp();
         prods.writetoExcel();
     }
+
+    @FXML
+    private void notifadd(MouseEvent event) throws Exception {
+           Notifications notif = Notifications.create()
+           .title("Success").text("Product added successfully").graphic(null).position(Pos.TOP_RIGHT);
+            
+            notif.showConfirm();
+
+
+    }
+
+    @FXML
+    private void notifup(MouseEvent event) {
+         Notifications notif = Notifications.create()
+           .title("Success").text("Product updated successfully").graphic(null).position(Pos.TOP_RIGHT);
+           
+            notif.showConfirm();
+    }
+
+    @FXML
+    private void notifdel(MouseEvent event) {
+        Notifications notif = Notifications.create()
+           .title("Success").text("Product deleted successfully").graphic(null).position(Pos.TOP_RIGHT);
+         
+            notif.showConfirm();
+    }
+
+    @FXML
+    private void notifex(MouseEvent event) {
+        Notifications notif = Notifications.create()
+           .title("Success").text("File generated successfully").graphic(null).position(Pos.TOP_RIGHT);
+            
+            notif.showConfirm();
+    }
+
+    
     
 }

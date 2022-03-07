@@ -53,7 +53,7 @@
                         <Blend />
                      </effect>
                   </TextField>
-                  <Button fx:id="btnadd" focusTraversable="false" layoutX="25.0" layoutY="380.0" mnemonicParsing="false" onAction="#addProduct" prefHeight="52.0" prefWidth="254.0" style="-fx-background-color: #f08011; -fx-background-radius: 8;" text="Add" textFill="#fcf8f8">
+                  <Button fx:id="btnadd" focusTraversable="false" layoutX="25.0" layoutY="380.0" mnemonicParsing="false" onAction="#addProduct" onMouseClicked="#notifadd" prefHeight="52.0" prefWidth="254.0" style="-fx-background-color: #f08011; -fx-background-radius: 8;" text="Add" textFill="#fcf8f8">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
@@ -61,7 +61,7 @@
                        
                      </cursor>
                   </Button>
-                  <Button fx:id="btnupdate" focusTraversable="false" layoutX="156.0" layoutY="442.0" mnemonicParsing="false" onAction="#updateProd" prefHeight="52.0" prefWidth="126.0" style="-fx-background-color: #f08011; -fx-background-radius: 8;" text="Update" textFill="#fcf8f8">
+                  <Button fx:id="btnupdate" focusTraversable="false" layoutX="156.0" layoutY="442.0" mnemonicParsing="false" onAction="#updateProd" onMouseClicked="#notifup" prefHeight="52.0" prefWidth="126.0" style="-fx-background-color: #f08011; -fx-background-radius: 8;" text="Update" textFill="#fcf8f8">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -69,7 +69,7 @@
                       
                      </cursor>
                   </Button>
-                  <Button fx:id="btnDelete" focusTraversable="false" layoutX="24.0" layoutY="440.0" mnemonicParsing="false" onAction="#delProd" prefHeight="52.0" prefWidth="126.0" style="-fx-background-color: #f08011; -fx-background-radius: 8;" text="Delete" textFill="#fcf8f8">
+                  <Button fx:id="btnDelete" focusTraversable="false" layoutX="24.0" layoutY="440.0" mnemonicParsing="false" onAction="#delProd" onMouseClicked="#notifdel" prefHeight="52.0" prefWidth="126.0" style="-fx-background-color: #f08011; -fx-background-radius: 8;" text="Delete" textFill="#fcf8f8">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -95,7 +95,7 @@
                   </TextField>
                   <Pane layoutX="29.0" layoutY="501.0">
                      <children>
-                        <Button fx:id="btnex" blendMode="GREEN" focusTraversable="false" mnemonicParsing="false" onAction="#extractexcel" prefHeight="52.0" prefWidth="254.0" stylesheets="@Stylee1.css" text="Extract Excel ">
+                        <Button fx:id="btnex" blendMode="GREEN" focusTraversable="false" mnemonicParsing="false" onAction="#extractexcel" onMouseClicked="#notifex" prefHeight="52.0" prefWidth="254.0" stylesheets="@Stylee1.css" text="Extract Excel ">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -154,7 +154,7 @@
                   </Pane>
                </top>
                <bottom>
-                  <TableView fx:id="table" onKeyReleased="#clickTable" onMouseClicked="#clickTable" prefHeight="529.0" prefWidth="667.0" BorderPane.alignment="CENTER">
+                  <TableView fx:id="table" onMouseClicked="#clickTable" prefHeight="529.0" prefWidth="667.0" BorderPane.alignment="CENTER">
                     <columns>
                       <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
                       <TableColumn fx:id="nameprod" prefWidth="75.0" text="Name" />

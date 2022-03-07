@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="819.0" style="-fx-background-color: #666666;" stylesheets="@homeAdminCss.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeAdminController">
+   <children>
+      <AnchorPane id="reservation" layoutX="320.0" layoutY="108.0" prefHeight="169.0" prefWidth="169.0" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+         <children>
+            <Button fx:id="res" alignment="CENTER" layoutX="44.0" layoutY="134.0" prefHeight="35.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Reservation" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="134.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <ImageView depthTest="ENABLE" fitHeight="137.0" fitWidth="177.0">
+               <image>
+                  <Image url="@pl.jpg" />
+               </image>
+            </ImageView>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <AnchorPane layoutX="556.0" layoutY="108.0" prefHeight="169.0" prefWidth="169.0" style="-fx-background-radius: 30; -fx-border-radius: 50;" styleClass="products">
+         <children>
+            <Button alignment="CENTER" layoutX="-8.0" layoutY="134.0" prefHeight="35.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Products" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="134.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="137.0" fitWidth="177.0" layoutX="-8.0" pickOnBounds="true">
+               <image>
+                  <Image url="@Sans%20titre%20(11).png" />
+               </image>
+            </ImageView>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <AnchorPane fx:id="tip" layoutX="552.0" layoutY="302.0" onMouseClicked="#Tips" prefHeight="175.0" prefWidth="177.0" style="-fx-background-radius: 30; -fx-border-radius: 20;" styleClass="tips">
+         <children>
+            <Button alignment="CENTER" layoutX="-4.0" layoutY="131.0" prefHeight="41.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Tips" textAlignment="CENTER" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="131.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="137.0" fitWidth="177.0" layoutX="-4.0" pickOnBounds="true">
+               <image>
+                  <Image url="@tips.png" />
+               </image>
+            </ImageView>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <AnchorPane id="coaches" layoutX="90.0" layoutY="302.0" onMouseClicked="#coach" prefHeight="169.0" prefWidth="169.0" style="-fx-background-radius: 30;">
+         <children>
+            <Button alignment="CENTER" layoutX="44.0" layoutY="134.0" prefHeight="35.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Coaches" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="134.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="137.0" fitWidth="177.0" pickOnBounds="true">
+               <image>
+                  <Image url="@co.jpg" />
+               </image>
+            </ImageView>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <AnchorPane id="gyms" layoutX="322.0" layoutY="302.0" prefHeight="169.0" prefWidth="169.0" style="-fx-background-radius: 30;">
+         <children>
+            <Button alignment="CENTER" layoutX="44.0" layoutY="134.0" prefHeight="35.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Gyms" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="134.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="137.0" fitWidth="177.0" pickOnBounds="true">
+               <image>
+                  <Image url="@gmmm.jpg" />
+               </image>
+            </ImageView>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <AnchorPane id="planning" layoutX="90.0" layoutY="108.0" onMouseClicked="#courseMain" prefHeight="169.0" prefWidth="169.0" style="-fx-background-radius: 30;">
+         <children>
+            <Button alignment="CENTER" layoutX="44.0" layoutY="134.0" prefHeight="35.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Planning" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="134.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="137.0" fitWidth="177.0" pickOnBounds="true">
+               <image>
+                  <Image url="@plan.jpg" />
+               </image>
+            </ImageView>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <Label layoutX="156.0" layoutY="30.0" prefHeight="47.0" prefWidth="521.0" style="-fx-background-color: #F5F5F5; -fx-background-radius: 15;" text=" Get Fit, Strong and Motivated" textFill="#ff7f00">
+         <font>
+            <Font name="Serif Regular" size="41.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnProfile" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#profile" prefHeight="68.0" prefWidth="67.0" style="-fx-border-radius: 20; -fx-background-radius: 100; -fx-background-color: #ff7f00;" />
+   </children>
+</AnchorPane>

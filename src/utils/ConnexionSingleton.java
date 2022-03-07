@@ -14,6 +14,7 @@ import java.sql.SQLException;
  * @author Asma
  */
 public class ConnexionSingleton {
+    
     private String url="jdbc:mysql://localhost:3306/gym_db";
     private String login="root";
     private String pwd="";
@@ -25,10 +26,11 @@ public class ConnexionSingleton {
     }
     
     
-    private ConnexionSingleton() {
+    private ConnexionSingleton()  {
         try {
+            //Class.forName("com.mysql.jdbc.Driver");
             cnx=DriverManager.getConnection(url, login, pwd);
-            System.out.println("ok");
+            System.out.println("connexion to database established successfuly");
         } catch (SQLException ex) {
             //Logger.getLogger(ConnexSingleton.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getMessage());

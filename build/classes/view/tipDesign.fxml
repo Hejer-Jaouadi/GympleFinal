@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <SplitPane dividerPositions="0.39849624060150374" layoutX="6.0" layoutY="39.0" prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Label layoutX="36.0" layoutY="49.0" text="Caption:">
+                     <font>
+                        <Font name="Calibri Bold Italic" size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tip_caption" layoutX="32.0" layoutY="96.0" prefHeight="25.0" prefWidth="269.0" style="-fx-border-radius: 10;">
+                     <effect>
+                        <Lighting bumpInput="$null">
+                           <light>
+                              <Light.Distant>
+                                 <color>
+                                    <Color red="0.9607843160629272" green="0.95686274766922" blue="0.95686274766922" />
+                                 </color>
+                              </Light.Distant>
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </TextField>
+                  <Label layoutX="32.0" layoutY="146.0" text="Text:">
+                     <font>
+                        <Font name="Calibri Bold Italic" size="20.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="tip_text" layoutX="36.0" layoutY="177.0" prefHeight="129.0" prefWidth="269.0" style="-fx-background-radius: 10;">
+                     <effect>
+                        <Lighting>
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </TextArea>
+                  <Label layoutX="32.0" layoutY="325.0" text="Category:">
+                     <font>
+                        <Font name="Calibri Bold Italic" size="20.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="tip_category" layoutX="36.0" layoutY="370.0" prefHeight="25.0" prefWidth="269.0" style="-fx-background-radius: 10;" />
+                  <Button fx:id="cancel" layoutX="27.0" layoutY="14.0" mnemonicParsing="false" text="Cancel" />
+                  <Button fx:id="add_tips" layoutX="92.0" layoutY="440.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="119.0" text="ADD" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TableView fx:id="tips_view" layoutX="14.0" layoutY="14.0" prefHeight="360.0" prefWidth="477.0" AnchorPane.bottomAnchor="138.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="ID" />
+                      <TableColumn prefWidth="191.0" text="Caption" />
+                        <TableColumn prefWidth="210.0" text="Category" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="modify_tips" layoutX="86.0" layoutY="441.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="119.0" text="Modify" />
+                  <Button fx:id="delete_tips" layoutX="338.0" layoutY="441.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="119.0" text="Delete" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

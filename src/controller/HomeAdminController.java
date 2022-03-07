@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
@@ -40,11 +41,12 @@ public class HomeAdminController implements Initializable {
     @FXML
     private Circle c;
     private static User user;
-
+  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+         user.setPicture(null);
         if (user.getPicture() == null) {
-            user.setPicture("file:/C:/Users/Asma/Downloads/img.png");
+            user.setPicture("file:/C:/Users/Yassine/Downloads/img.png");
         }
 
         javafx.scene.paint.ImagePattern p;
@@ -144,5 +146,19 @@ public class HomeAdminController implements Initializable {
         }
         stageTheLabelBelongs.setScene(scene2);
     }
+
+    @FXML
+    private void getProducts(MouseEvent event) {
+        Scene scene2 = null;
+        Stage stageTheLabelBelongs = (Stage) res.getScene().getWindow();
+        try {
+            scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/ProductsM.fxml")));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        stageTheLabelBelongs.setScene(scene2);
+    }
+
+    
 
 }

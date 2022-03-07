@@ -39,8 +39,9 @@ public static Member getUser(){
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        user.setPicture(null);
         if(user.getPicture()==null){
-            user.setPicture("file:/C:/Users/Asma/Downloads/img.png");
+            user.setPicture("file:/C:/Users/Yassine/Downloads/img.png");
         }
         
          javafx.scene.paint.ImagePattern p;
@@ -96,6 +97,20 @@ public static Member getUser(){
         try {
             
             scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/FrontGym.fxml")));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        stage.setScene(scene2);
+    }
+
+    @FXML
+    private void showProducts(MouseEvent event) {
+         Stage stage = (Stage) c.getScene().getWindow();
+         Scene scene2 = null;
+        
+        try {
+            
+            scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/ClientProduct.fxml")));
         } catch (IOException ex) {
             ex.printStackTrace();
         }

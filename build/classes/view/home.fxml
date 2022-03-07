@@ -28,7 +28,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </AnchorPane>
-      <AnchorPane layoutX="556.0" layoutY="108.0" prefHeight="169.0" prefWidth="169.0" style="-fx-background-radius: 30; -fx-border-radius: 50;">
+      <AnchorPane onMouseClicked="#showProducts" layoutX="556.0" layoutY="108.0" prefHeight="169.0" prefWidth="169.0" style="-fx-background-radius: 30; -fx-border-radius: 50;">
          <children>
             <Button alignment="CENTER" layoutX="-8.0" layoutY="134.0" prefHeight="35.0" prefWidth="177.0" style="-fx-background-color: #ffffff;" text="Products" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="134.0">
                <font>

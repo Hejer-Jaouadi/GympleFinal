@@ -42,5 +42,10 @@
          </effect>
       </TextField>
       <Button fx:id="btnSearch" layoutX="507.0" layoutY="28.0" mnemonicParsing="false" onAction="#SearchItem" prefHeight="50.0" prefWidth="69.0" text="Search" />
+      <Button fx:id="returnbtn" layoutX="244.0" layoutY="34.0" mnemonicParsing="false" onMouseClicked="#back" text="&lt;-">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

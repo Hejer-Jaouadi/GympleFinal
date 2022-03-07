@@ -19,6 +19,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -26,6 +27,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 
@@ -189,6 +191,15 @@ public class ProductsMController implements Initializable {
 
     @FXML
     private void Back(ActionEvent event) {
+         Scene scene2 = null;
+        Stage stageTheLabelBelongs = (Stage) btnBack.getScene().getWindow();
+        try {
+            scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/homeAdmin.fxml")));
+           
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        stageTheLabelBelongs.setScene(scene2);
     }
 
     @FXML
@@ -225,23 +236,35 @@ public class ProductsMController implements Initializable {
     @FXML
     private void notifadd(MouseEvent event) throws Exception {
            Notifications notif = Notifications.create()
-           .title("Alert").text("added successfully");
-
-            notif.show();
+           .title("Success").text("Product added successfully").graphic(null).position(Pos.TOP_RIGHT);
+            
+            notif.showConfirm();
 
 
     }
 
     @FXML
     private void notifup(MouseEvent event) {
+         Notifications notif = Notifications.create()
+           .title("Success").text("Product updated successfully").graphic(null).position(Pos.TOP_RIGHT);
+           
+            notif.showConfirm();
     }
 
     @FXML
     private void notifdel(MouseEvent event) {
+        Notifications notif = Notifications.create()
+           .title("Success").text("Product deleted successfully").graphic(null).position(Pos.TOP_RIGHT);
+         
+            notif.showConfirm();
     }
 
     @FXML
     private void notifex(MouseEvent event) {
+        Notifications notif = Notifications.create()
+           .title("Success").text("File generated successfully").graphic(null).position(Pos.TOP_RIGHT);
+            
+            notif.showConfirm();
     }
 
     

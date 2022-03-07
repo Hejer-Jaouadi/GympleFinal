@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 07 mars 2022 à 15:01
+-- Généré le : lun. 07 mars 2022 à 22:06
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 7.4.27
 
@@ -57,17 +57,6 @@ CREATE TABLE `cart` (
   `idC` int(11) NOT NULL,
   `user` int(11) NOT NULL,
   `total` float DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `category`
---
-
-CREATE TABLE `category` (
-  `idCt` int(11) NOT NULL,
-  `name` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -173,9 +162,17 @@ CREATE TABLE `product` (
   `name` varchar(30) NOT NULL,
   `quantity` int(11) NOT NULL,
   `description` varchar(100) NOT NULL,
-  `category` int(11) NOT NULL,
+  `category` varchar(255) NOT NULL,
   `price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `product`
+--
+
+INSERT INTO `product` (`idP`, `name`, `quantity`, `description`, `category`, `price`) VALUES
+(1, 'test', 22, 'test', 'gggg', 1222),
+(2, 'test', 22, 'test', 'gggjjjjjj', 30);
 
 -- --------------------------------------------------------
 
@@ -301,12 +298,6 @@ ALTER TABLE `cart`
   ADD KEY `user` (`user`) USING BTREE;
 
 --
--- Index pour la table `category`
---
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`idCt`);
-
---
 -- Index pour la table `course`
 --
 ALTER TABLE `course`
@@ -345,8 +336,7 @@ ALTER TABLE `planning`
 -- Index pour la table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`idP`),
-  ADD KEY `category` (`category`);
+  ADD PRIMARY KEY (`idP`);
 
 --
 -- Index pour la table `purchase`
@@ -406,12 +396,6 @@ ALTER TABLE `cart`
   MODIFY `idC` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT pour la table `category`
---
-ALTER TABLE `category`
-  MODIFY `idCt` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT pour la table `course`
 --
 ALTER TABLE `course`
@@ -445,7 +429,7 @@ ALTER TABLE `planning`
 -- AUTO_INCREMENT pour la table `product`
 --
 ALTER TABLE `product`
-  MODIFY `idP` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `purchase`
@@ -501,12 +485,6 @@ ALTER TABLE `course`
 --
 ALTER TABLE `planning`
   ADD CONSTRAINT `planning_ibfk_1` FOREIGN KEY (`gym`) REFERENCES `gym` (`idG`) ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `product`
---
-ALTER TABLE `product`
-  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`category`) REFERENCES `category` (`idCt`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `purchase`

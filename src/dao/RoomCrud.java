@@ -279,6 +279,84 @@ public class RoomCrud implements IdaoR<Room> {
 }
 
    
-    
+    @Override
+    public List<Room> Sort() {
+        String req = "select * from room ORDER BY roomName DESC";
+        ObservableList<Room> list = FXCollections.observableArrayList();
+
+        try {
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+
+                Room r = new Room();
+                r.setIdR(rs.getInt(1));
+                r.setRoomName(rs.getString(2));
+                r.setRoomNumber(rs.getInt(3));
+                r.setMax_nbr(rs.getInt(4));
+                r.setIdgym(rs.getInt(5));
+                list.add(r);
+
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("error in sort room");
+            Logger.getLogger(RoomCrud.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+
+    }
+    @Override
+    public List<Room> Sortnumber() {
+        String req = "select * from room ORDER BY roomNumber ASC";
+        ObservableList<Room> list = FXCollections.observableArrayList();
+
+        try {
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+
+                Room r = new Room();
+                r.setIdR(rs.getInt(1));
+                r.setRoomName(rs.getString(2));
+                r.setRoomNumber(rs.getInt(3));
+                r.setMax_nbr(rs.getInt(4));
+                r.setIdgym(rs.getInt(5));
+                list.add(r);
+
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("error in sort1 room");
+            Logger.getLogger(RoomCrud.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+
+    }
+    @Override
+    public List<Room> Sortcapacity() {
+        String req = "select * from room ORDER BY max_nbr DESC";
+        ObservableList<Room> list = FXCollections.observableArrayList();
+
+        try {
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+
+                Room r = new Room();
+                r.setIdR(rs.getInt(1));
+                r.setRoomName(rs.getString(2));
+                r.setRoomNumber(rs.getInt(3));
+                r.setMax_nbr(rs.getInt(4));
+                r.setIdgym(rs.getInt(5));
+                list.add(r);
+
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("error in sort2 room");
+            Logger.getLogger(RoomCrud.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+
+    }
+
 
 }

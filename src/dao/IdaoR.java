@@ -30,6 +30,8 @@ public interface IdaoR<T> {
 
     public ObservableList<XYChart.Series<String, Double>> statistique();
 
-   
+   public List<T> Sort();
+   public List<T> Sortnumber();
+   public List<T> Sortcapacity();
 
 }

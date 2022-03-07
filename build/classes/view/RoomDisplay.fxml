@@ -51,9 +51,12 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="15.0" layoutY="390.0" prefHeight="57.0" prefWidth="423.0">
                <children>
-                  <Button fx:id="pdf" mnemonicParsing="false" onMouseClicked="#pdf" text="Print" />
+                  <Button fx:id="pdf" mnemonicParsing="false" onMouseClicked="#pdf" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: brown;" text="Print">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Button>
                   <AnchorPane prefHeight="57.0" prefWidth="39.0" />
-                  <Button fx:id="modify" mnemonicParsing="false" onMouseClicked="#modify" prefHeight="35.0" prefWidth="81.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: orange;" text="Modify">
+                  <Button fx:id="modify" mnemonicParsing="false" onMouseClicked="#modify" prefHeight="35.0" prefWidth="81.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: #ff6600;" text="Modify">
                      <font>
                         <Font size="16.0" />
                      </font>

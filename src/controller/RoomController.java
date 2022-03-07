@@ -67,9 +67,13 @@ public class RoomController implements Initializable {
     @FXML
     private Button stat;
     @FXML
-    private Button pdf;
-    @FXML
     private TableColumn<Room, Integer> gym;
+    @FXML
+    private Button sortname;
+    @FXML
+    private Button sortnumber;
+    @FXML
+    private Button sortcapacity;
 
     /**
      * Initializes the controller class.
@@ -207,32 +211,62 @@ public class RoomController implements Initializable {
 
     }
 
-    @FXML
-    private void pdf(MouseEvent event) throws FileNotFoundException, DocumentException {
 
-        Document document = new Document();
-        PdfWriter.getInstance(document, new FileOutputStream("roomPdf2"));
-        document.open();
-        document.add(new Paragraph("The list of rooms : "));
-        document.add(new Paragraph("---------------------------------"));
-
-        PdfPTable table = new PdfPTable(3);
-        table.addCell("room Name");
-        // table.addCell();
-        table.addCell("room Number");
-        table.addCell("room capacity");
-
-        document.add(table);
-        document.close();
-
+    private void Sort(MouseEvent event) {
+        
+      
+        
     }
 
-    private PdfPCell getCell(String text, int alignment) {
-        PdfPCell cell = new PdfPCell(new Phrase(text));
-        cell.setPadding(0);
-        cell.setHorizontalAlignment(alignment);
-        cell.setBorder(PdfPCell.NO_BORDER);
-        return cell;
+    @FXML
+    private void Sortname(MouseEvent event) {
+        RoomList.clear();
+        RoomCrud rc = RoomCrud.getInstance();
+        // RoomList.addAll(rc.displayRoom());
+        RoomList.addAll(rc.Sort());
+        
+
+        tableRoom.setItems(RoomList);
+        
+        idR.setCellValueFactory(new PropertyValueFactory<>("idR"));
+        name.setCellValueFactory(new PropertyValueFactory<>("roomName"));
+        number.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
+        capacity.setCellValueFactory(new PropertyValueFactory<>("max_nbr"));
+        gym.setCellValueFactory(new PropertyValueFactory<>("idgym"));
+    }
+
+    @FXML
+    private void SortNumber(MouseEvent event) {
+        RoomList.clear();
+        RoomCrud rc = RoomCrud.getInstance();
+        // RoomList.addAll(rc.displayRoom());
+        RoomList.addAll(rc.Sortnumber());
+        
+
+        tableRoom.setItems(RoomList);
+        
+        idR.setCellValueFactory(new PropertyValueFactory<>("idR"));
+        name.setCellValueFactory(new PropertyValueFactory<>("roomName"));
+        number.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
+        capacity.setCellValueFactory(new PropertyValueFactory<>("max_nbr"));
+        gym.setCellValueFactory(new PropertyValueFactory<>("idgym"));
+    }
+
+    @FXML
+    private void SortCapacity(MouseEvent event) {
+        RoomList.clear();
+        RoomCrud rc = RoomCrud.getInstance();
+        // RoomList.addAll(rc.displayRoom());
+        RoomList.addAll(rc.Sortcapacity());
+        
+
+        tableRoom.setItems(RoomList);
+        
+        idR.setCellValueFactory(new PropertyValueFactory<>("idR"));
+        name.setCellValueFactory(new PropertyValueFactory<>("roomName"));
+        number.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
+        capacity.setCellValueFactory(new PropertyValueFactory<>("max_nbr"));
+        gym.setCellValueFactory(new PropertyValueFactory<>("idgym"));
     }
 
     

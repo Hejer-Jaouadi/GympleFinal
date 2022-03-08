@@ -33,7 +33,7 @@ public class SendEmail {
           
         Properties properties = System.getProperties();
         //properties.setProperty("mail.smtp.host", host);
-        properties.setProperty("mail.host", "smtp.gmail.com");
+       properties.setProperty("mail.host", "smtp.gmail.com");
         properties.setProperty("mail.username", from);//your gmail
         properties.setProperty("mail.password", "213JFT0135");//your password
         properties.setProperty("mail.defaultEncoding", "UTF-8");

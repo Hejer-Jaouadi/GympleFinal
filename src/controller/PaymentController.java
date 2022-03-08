@@ -75,6 +75,7 @@ public class PaymentController implements Initializable {
         MembershipDao mdao=MembershipDao.getInstance();
         MemberDao memdao=MemberDao.getInstance();
         mdao.insert(u.getMembership());
+        u.setPassword(co.getHashPassword(u.getPassword()));
         memdao.insert(u);
         Scene scene=null;
         try {

@@ -115,7 +115,7 @@ CREATE TABLE `membership` (
 --
 
 INSERT INTO `membership` (`idm`, `expire_date`, `start_date`, `type`) VALUES
-(1, '2020-04-18', '2020-04-18', '1 year'),
+(1, '2020-05-18', '2020-04-18', '1 year'),
 (5, '2023-02-27', '2022-02-27', '1 year'),
 (6, '2022-03-27', '2022-02-27', '1 month'),
 (7, '2022-05-27', '2022-02-27', '3 months'),
@@ -269,9 +269,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `role`, `first_name`, `last_name`, `email`, `password`, `id_card`, `height`, `weight`, `training_level`, `cost_per_hour`, `description`, `experience`, `picture`, `code`, `membership`, `gym`, `block`, `reports`) VALUES
-(13, 'admin', 'Asma', 'Hejaiej', 'email@e.com', 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'file:/C:/Users/Asma/Downloads/img.png', NULL, 8, NULL, 'n', NULL),
+(13, 'admin', 'Asma', 'Hejaiej', 'email@e.com', '098f6bcd4621d373cade4e832627b4f6', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'file:/C:/Users/Asma/Downloads/img.png', NULL, 8, NULL, 'n', NULL),
 (18, 'trainer', 'trainerrrrr', 'trainer', 'test', 'train2', NULL, NULL, NULL, '', 5, 'tessssssst', 'trainer1234566', 'file:/C:/Users/Asma/Downloads/img.png', NULL, NULL, 1, 'y', 5),
-(28, 'member', 'Asmaa', 'Hejaiej', 'asmah@gmail.com', 'gym2', 12345678, 1.69, 55, 'Intermediate', NULL, NULL, NULL, 'file:/C:/Users/Asma/Downloads/img.png', NULL, 5, NULL, 'n', NULL),
+(28, 'member', 'Asmaa', 'Hejaiej', 'asmah@gmail.com', 'bf4f1745ebd51f7f2d784472a3ccb50f', 12345678, 1.69, 55, 'Intermediate', NULL, NULL, NULL, 'file:/C:/Users/Asma/Downloads/img.png', NULL, 5, NULL, 'n', NULL),
 (46, 'trainer', 'f', 'f', 'hejaiej.asma@gmail.com', ';0+[pH6$\"l', NULL, NULL, NULL, '', 13, 'f', 'f', 'file:/C:/Users/Asma/Downloads/img.png', NULL, NULL, 2, 'n', 2),
 (50, 'member', 'f', 'f', 'e@email.com', 'azerty9Z/', 12345678, 1, 1, 'Intermediate', NULL, NULL, NULL, 'file:/C:/Users/Asma/Downloads/img.png', NULL, 14, NULL, 'n', NULL);
 

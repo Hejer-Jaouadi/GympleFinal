@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import utils.Control;
@@ -44,9 +45,9 @@ public class SignupController implements Initializable {
     @FXML
     private javafx.scene.control.TextField card;
     @FXML
-    private javafx.scene.control.TextField pass1;
+    private javafx.scene.control.PasswordField pass1;
     @FXML
-    private javafx.scene.control.TextField pass2;
+    private javafx.scene.control.PasswordField pass2;
     @FXML
     private Button back;
 

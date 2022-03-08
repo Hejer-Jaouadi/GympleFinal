@@ -91,7 +91,7 @@ public class FXMLDocumentController implements Initializable {
         Control t=new Control();
         if((t.trueEmail(email))&&(!password.isEmpty())){
         UserDao ud=UserDao.getInstance();
-        User u=ud.Login(email, password);
+        User u=ud.Login(email, t.getHashPassword(password));
         Scene scene=null;
         if((u!=null))
         {

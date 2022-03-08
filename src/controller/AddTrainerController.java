@@ -68,7 +68,7 @@ public class AddTrainerController implements Initializable {
     @FXML
     private void add(ActionEvent event) {
         Control c=new Control();
-        if ((c.trueString(first.getText())) && (c.trueString(last.getText()))&& (!gym.getSelectionModel().isEmpty())  && (c.trueEmail(em.getText())) && (c.trueFloat(cost.getText())) && (c.trueString(desc.getText())) && (exp.getText().isEmpty())) {
+        if ((c.trueString(first.getText())) && (c.trueString(last.getText()))&& (!gym.getSelectionModel().isEmpty())  && (c.trueEmail(em.getText())) && (c.trueFloat(cost.getText())) && (c.trueString(desc.getText())) && (!exp.getText().isEmpty())) {
 
             Trainer t = new Trainer();
             t.setCost_per_hour(toFloat(cost.getText()));
@@ -80,13 +80,13 @@ public class AddTrainerController implements Initializable {
             t.setPicture(null);
             Gym g=(Gym)gym.getValue();
             t.setGym(g);
-            t.setPassword(new Random().ints(10, 33, 122).collect(StringBuilder::new,
-                    StringBuilder::appendCodePoint, StringBuilder::append)
-                    .toString());
+            String pass=c.passwordGenerator();
+            t.setPassword(pass);
+             SendEmail em=new SendEmail();
+            em.SendEmailTrainer(t.getEmail(), "asma.hejaiej@esprit.tn",t.getPassword());
+            t.setPassword(c.getHashPassword(pass));
             TrainerDao td = TrainerDao.getInstance();
             td.insert(t);
-            SendEmail em=new SendEmail();
-            em.SendEmailTrainer(t.getEmail(), "asma.hejaiej@esprit.tn",t.getPassword());
             this.returnto();
         } else {
             infoBox("Please Enter Correct Informations", "Failed", null);

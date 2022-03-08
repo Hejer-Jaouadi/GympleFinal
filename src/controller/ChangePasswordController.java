@@ -35,6 +35,7 @@ import utils.Control;
  * @author Asma
  */
 public class ChangePasswordController implements Initializable {
+
     @FXML
     private Button next2;
     @FXML
@@ -52,45 +53,44 @@ public class ChangePasswordController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
     private User u;
 
     @FXML
     private void next(ActionEvent event) {
-        Control co=new Control();
+        Control co = new Control();
         System.out.println(co.truePassword(pass1.getText()));
         System.out.println((pass1.getText()).equals(pass2.getText()));
-        if((co.truePassword(pass1.getText()))&&((pass1.getText()).equals(pass2.getText()))){
+        if ((co.truePassword(pass1.getText())) && ((pass1.getText()).equals(pass2.getText()))) {
             Scene scene2 = null;
-        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        u = (User) stage.getUserData();
-        
-        u.setPassword(pass1.getText());
-        UserDao ud=UserDao.getInstance();
-                ud.update(u);
-                switch(u.getRole()){
-                    case "admin":
-                        ProfileAdminController.setUser(u);
-                        break;
-                        case "trainer":
-                        ProfileTrainerController.setUser((Trainer)u);
-                        break;
-                            case "member":
-                        ProfileController.setUser((Member)u);
-                }
-                
-                returnto();
-        }
-        else{
-           infoBox("Please Enter Correct Informations : \n Password must contain : \n at least one digit [0-9].\n" +
-"at least one lowercase Latin character [a-z].\n" +
-"at least one uppercase Latin character [A-Z].\n" +
-"at least one special character like ! @ # & ( ).\n" +
-"Password must contain a length of at least 8 characters and a maximum of 20 characters.", "Failed", null);
+            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            u = (User) stage.getUserData();
+
+            u.setPassword(co.getHashPassword(pass1.getText()));
+            UserDao ud = UserDao.getInstance();
+            ud.update(u);
+            switch (u.getRole()) {
+                case "admin":
+                    ProfileAdminController.setUser(u);
+                    break;
+                case "trainer":
+                    ProfileTrainerController.setUser((Trainer) u);
+                    break;
+                case "member":
+                    ProfileController.setUser((Member) u);
+            }
+
+            returnto();
+        } else {
+            infoBox("Please Enter Correct Informations : \n Password must contain : \n at least one digit [0-9].\n"
+                    + "at least one lowercase Latin character [a-z].\n"
+                    + "at least one uppercase Latin character [A-Z].\n"
+                    + "at least one special character like ! @ # & ( ).\n"
+                    + "Password must contain a length of at least 8 characters and a maximum of 20 characters.", "Failed", null);
         }
     }
-    
-     public static void infoBox(String infoMessage, String titleBar, String headerMessage) {
+
+    public static void infoBox(String infoMessage, String titleBar, String headerMessage) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(titleBar);
         alert.setHeaderText(headerMessage);
@@ -108,35 +108,40 @@ public class ChangePasswordController implements Initializable {
     private void getBack(ActionEvent event) {
         this.returnto();
     }
+
     private void returnto() {
         Stage stage = (Stage) cancel2.getScene().getWindow();
-        User u=(User) stage.getUserData();
-        Scene scene2=null;
-        switch(u.getRole()){
-                case "member":
-        
-        
-        try {
-            scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/profile.fxml")));
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        User u = (User) stage.getUserData();
+        Scene scene2 = null;
+        switch (u.getRole()) {
+            case "member":
+
+                try {
+                    scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/profile.fxml")));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                break;
+            case "trainer":
+                HomeTrainerController.setUser((Trainer) u);
+
+                try {
+                    scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/profileTrainer.fxml")));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                break;
+            case "admin":
+                HomeAdminController.setUser(u);
+
+                try {
+                    scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/profileAdmin.fxml")));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                break;
         }
-        break;
-                case "trainer": HomeTrainerController.setUser((Trainer)u);
-                 
-        try {
-            scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/profileTrainer.fxml")));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        break;
-                case "admin": HomeAdminController.setUser(u);
-         
-        try {
-            scene2 = new Scene(FXMLLoader.load(getClass().getResource("/view/profileAdmin.fxml")));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }break;
-            } stage.setScene(scene2);
-    
-}}
+        stage.setScene(scene2);
+
+    }
+}

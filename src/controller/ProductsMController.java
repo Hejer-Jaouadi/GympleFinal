@@ -77,7 +77,7 @@ public class ProductsMController implements Initializable {
     
  
     
-    
+    public boolean test=false;
       ProductDaoImp pc = new ProductDaoImp();
     @FXML
     private Button btnex;
@@ -103,27 +103,30 @@ public class ProductsMController implements Initializable {
     @FXML
     private void addProduct(ActionEvent event) {
         
-        if (name.getText().length() == 0) {
+       if (name.getText().length() == 0 || name.getText().matches(".*\\d.*")  ) {
                 name.setStyle("-fx-border-color: red ; -fx-border-width: 2px;-fx-border-radius: 15px;-fx-background-radius: 15px;");
-                new animatefx.animation.Shake(name).play();}
-                 if (desc.getText().length()==0){
+                new animatefx.animation.Shake(name).play();
+        return;}
+                 if (desc.getText().length()==0 || name.getText().matches(".*\\d.*")){
                         desc.setStyle("-fx-border-color: red ; -fx-border-width: 2px;-fx-border-radius: 15px;-fx-background-radius: 15px;");
-                new animatefx.animation.Shake(desc).play();}
-                  if (qte.getText().length()==0){
+                new animatefx.animation.Shake(desc).play();
+                 return;}
+                  if (qte.getText().length()==0 ){
                         qte.setStyle("-fx-border-color: red ; -fx-border-width: 2px;-fx-border-radius: 15px;-fx-background-radius: 15px;");
-                new animatefx.animation.Shake(qte).play();}
-                   if (cat.getText().length()==0){
+                new animatefx.animation.Shake(qte).play();
+                  return;}
+                   if (cat.getText().length()==0 || cat.getText().matches(".*\\d.*")){
                         cat.setStyle("-fx-border-color: red ; -fx-border-width: 2px;-fx-border-radius: 15px;-fx-background-radius: 15px;");
-                new animatefx.animation.Shake(cat).play();}
-                    if (price.getText().length()==0){
+                new animatefx.animation.Shake(cat).play();
+                   return;}
+                    if (price.getText().length()==0 ){
                         price.setStyle("-fx-border-color: red ; -fx-border-width: 2px;-fx-border-radius: 15px;-fx-background-radius: 15px;");
-                new animatefx.animation.Shake(price).play();}
-                
-            
-               
-                
+                new animatefx.animation.Shake(price).play();
+                    return;}
               
-        
+     
+                    
+                    test=true;
         String namep = name.getText();
         String description = desc.getText();
         String quantity1 = qte.getText();
@@ -235,11 +238,12 @@ public class ProductsMController implements Initializable {
 
     @FXML
     private void notifadd(MouseEvent event) throws Exception {
+        if(test == true){
            Notifications notif = Notifications.create()
            .title("Success").text("Product added successfully").graphic(null).position(Pos.TOP_RIGHT);
-            
             notif.showConfirm();
-
+            
+        }
 
     }
 

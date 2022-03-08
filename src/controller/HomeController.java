@@ -8,6 +8,7 @@ package controller;
 import entity.Member;
 import java.io.IOException;
 import java.net.URL;
+import java.time.temporal.ChronoUnit;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,7 +21,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-
+import static java.time.temporal.ChronoUnit.DAYS;
+import javafx.scene.control.Alert;
 /**
  * FXML Controller class
  *
@@ -35,10 +37,10 @@ public class HomeController implements Initializable {
     public static Member getUser() {
         return user;
     }
+    
+    public static int ok=0;
 
-    /**
-     * Initializes the controller class.
-     */
+    
     
     
     @Override
@@ -52,6 +54,20 @@ public class HomeController implements Initializable {
         javafx.scene.paint.ImagePattern p;
         p = new javafx.scene.paint.ImagePattern(new Image(user.getPicture()));
         this.c.setFill(p);
+        
+        if(user.getMembership()!=null){
+   
+          if(ok==0) {ok=1;
+              infoBox("You have "+String.valueOf(user.getMembership().getStart_date().until(user.getMembership().getExpire_date(),ChronoUnit.DAYS))+" days left until your membership expires.", "Failed", null);}
+       
+       }
+    }
+    public static void infoBox(String infoMessage, String titleBar, String headerMessage) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titleBar);
+        alert.setHeaderText(headerMessage);
+        alert.setContentText(infoMessage);
+        alert.showAndWait();
     }
 
     @FXML
